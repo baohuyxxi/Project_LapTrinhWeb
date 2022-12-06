@@ -35,5 +35,8 @@ public class AccountModel {
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}	
 }

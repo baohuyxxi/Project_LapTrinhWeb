@@ -9,20 +9,20 @@ public class OrderItemModel {
 	private int productId;
 	private int count;
 	private BigDecimal price;
-	private Date createAt;
-	private Date updateAt;
+	private Date createdAt;
+	private Date updatedAt;
 	public OrderItemModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderItemModel(int orderId, int productId, int count, BigDecimal price, Date createAt, Date updateAt) {
+	public OrderItemModel(int orderId, int productId, int count, BigDecimal price, Date createdAt, Date updatedAt) {
 		super();
 		this.orderId = orderId;
 		this.productId = productId;
 		this.count = count;
 		this.price = price;
-		this.createAt = createAt;
-		this.updateAt = updateAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	public int getOrderId() {
 		return orderId;
@@ -48,20 +48,23 @@ public class OrderItemModel {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setCreatedAt(Date createAt) {
+		this.createdAt = createAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
+	public void setUpdatedAt(Date updateAt) {
+		this.updatedAt = updateAt;
 	}
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
