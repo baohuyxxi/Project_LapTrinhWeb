@@ -1,4 +1,4 @@
-package Model;
+package Models;
 
 public class ImagesModel {
 	private int image_id;
