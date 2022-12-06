@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class OrdersModel {
+	private int id;
 	private int userId;
 	private int storeId;
 	private int deliveryId;
@@ -83,6 +84,9 @@ public class OrdersModel {
 	}
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
+	}
+	public int getId() {
+		return id;
 	}
 	
 	
