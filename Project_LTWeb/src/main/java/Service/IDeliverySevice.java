@@ -1,4 +1,4 @@
-package Sevice;
+package Service;
 
 public class IDeliverySevice {
 	
