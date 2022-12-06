@@ -3,24 +3,25 @@ package Models;
 import java.sql.Date;
 
 public class StoreModel {
+	private int id;
 	private int userId;
 	private String name;
 	private String slug;
 	private String address;
-	private Date createAt;
-	private Date updateAt;
+	private Date createdAt;
+	private Date updatedAt;
 	public StoreModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StoreModel(int userId, String name, String slug, String address, Date createAt, Date updateAt) {
+	public StoreModel(int userId, String name, String slug, String address, Date createdAt, Date updatedAt) {
 		super();
 		this.userId = userId;
 		this.name = name;
 		this.slug = slug;
 		this.address = address;
-		this.createAt = createAt;
-		this.updateAt = updateAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	public int getUserId() {
 		return userId;
@@ -46,19 +47,23 @@ public class StoreModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-		
-		//this.createAt = new Date(System.currentTimeMillis())
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

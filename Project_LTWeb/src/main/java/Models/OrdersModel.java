@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class OrdersModel {
+	private int id;
 	private int userId;
 	private int storeId;
 	private int deliveryId;
@@ -11,14 +12,14 @@ public class OrdersModel {
 	private String phone;
 	private int status;
 	private BigDecimal total_price;
-	private Date createAt;
-	private Date updateAt;
+	private Date createdAt;
+	private Date updatedAt;
 	public OrdersModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public OrdersModel(int userId, int storeId, int deliveryId, String address, String phone, int status,
-			BigDecimal total_price, Date createAt, Date updateAt) {
+			BigDecimal total_price, Date createdAt, Date updatedAt) {
 		super();
 		this.userId = userId;
 		this.storeId = storeId;
@@ -27,8 +28,8 @@ public class OrdersModel {
 		this.phone = phone;
 		this.status = status;
 		this.total_price = total_price;
-		this.createAt = createAt;
-		this.updateAt = updateAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	public int getUserId() {
 		return userId;
@@ -72,17 +73,23 @@ public class OrdersModel {
 	public void setTotal_price(BigDecimal total_price) {
 		this.total_price = total_price;
 	}
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package Models;
 
 public class AccountModel {
+	private int id;
 	private String username;
 	private String password;
 	private int role;
@@ -13,6 +14,9 @@ public class AccountModel {
 		this.username = username;
 		this.password = password;
 		this.role = role;
+	}
+	public int getId() {
+		return id;
 	}
 	public String getUsername() {
 		return username;
@@ -32,6 +36,7 @@ public class AccountModel {
 	public void setRole(int role) {
 		this.role = role;
 	}
-	
-	
+	public void setId(int id) {
+		this.id = id;
+	}	
 }

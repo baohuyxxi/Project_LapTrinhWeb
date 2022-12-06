@@ -27,10 +27,6 @@ public class CategoryModel {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -61,6 +57,10 @@ public class CategoryModel {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

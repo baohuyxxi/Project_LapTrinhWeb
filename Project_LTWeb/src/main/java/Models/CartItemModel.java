@@ -1,14 +1,15 @@
 package Models;
 
-public class CartItemMModel {
+public class CartItemModel {
+	private int id;
 	private int cartId;
 	private int productId;
 	private int count;
-	public CartItemMModel() {
+	public CartItemModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CartItemMModel(int cartId, int productId, int count) {
+	public CartItemModel(int cartId, int productId, int count) {
 		super();
 		this.cartId = cartId;
 		this.productId = productId;
@@ -31,6 +32,12 @@ public class CartItemMModel {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

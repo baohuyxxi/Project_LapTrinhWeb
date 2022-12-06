@@ -1,6 +1,7 @@
 package Models;
 
 public class CartModel {
+	private int id;
 	private int userId;
 	private int storeId;
 	private boolean complete;
@@ -31,6 +32,12 @@ public class CartModel {
 	}
 	public void setComplete(boolean complete) {
 		this.complete = complete;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
