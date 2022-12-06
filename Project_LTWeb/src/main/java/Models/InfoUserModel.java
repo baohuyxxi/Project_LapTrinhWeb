@@ -10,14 +10,14 @@ public class InfoUserModel {
 	private String phone;
 	private String address;
 	private String avatar;
-	private Date createAt;
-	private Date updateAt;
+	private Date createdAt;
+	private Date updatedAt;
 	public InfoUserModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public InfoUserModel(String name, String slug, String email, String phone, String address, String avatar,
-			Date createAt, Date updateAt) {
+			Date createdAt, Date updatedAt) {
 		super();
 		this.name = name;
 		this.slug = slug;
@@ -25,8 +25,8 @@ public class InfoUserModel {
 		this.phone = phone;
 		this.address = address;
 		this.avatar = avatar;
-		this.createAt = createAt;
-		this.updateAt = updateAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	public String getName() {
 		return name;
@@ -64,21 +64,25 @@ public class InfoUserModel {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreateAt(Date createAt) {
-		this.createAt  = createAt;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 	public int getId() {
 		return id;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	
 }

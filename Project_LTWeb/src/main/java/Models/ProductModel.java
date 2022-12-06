@@ -105,5 +105,8 @@ public class ProductModel {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
  }

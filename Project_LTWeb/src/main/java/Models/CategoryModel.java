@@ -59,4 +59,8 @@ public class CategoryModel {
 		this.updatedAt = updatedAt;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }
