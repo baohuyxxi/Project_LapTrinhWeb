@@ -1,21 +1,21 @@
-package Model;
+package Models;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 
 public class ProductModel {
-	 private int id;
-	 private 	String name;
-	 private	String slug	;
-	 private	String description;
-	 private	BigDecimal price;
-	 private	int promotion;
-	 private	int quantity;
-	 private	int sold;
-	 private	int category_id;
-	 private	int	storeId;
-	 private	Date createdAt;
-	 private	Date updatedAt;
+	private int id;
+	private String name;
+	private String slug;
+	private String description;
+	private BigDecimal price;
+	private int promotion;
+	private int quantity;
+	private int sold;
+	private int category_id;
+	private int storeId;
+	private Date createdAt;
+	private Date updatedAt;
 	public ProductModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -38,9 +38,6 @@ public class ProductModel {
 	}
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getName() {
 		return name;

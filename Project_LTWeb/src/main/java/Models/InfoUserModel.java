@@ -3,6 +3,7 @@ package Models;
 import java.sql.Date;
 
 public class InfoUserModel {
+	private int id;
 	private String name;
 	private String slug;
 	private String email;
@@ -74,6 +75,9 @@ public class InfoUserModel {
 	}
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
+	}
+	public int getId() {
+		return id;
 	}
 	
 	

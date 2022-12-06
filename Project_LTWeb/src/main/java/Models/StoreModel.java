@@ -3,6 +3,7 @@ package Models;
 import java.sql.Date;
 
 public class StoreModel {
+	private int id;
 	private int userId;
 	private String name;
 	private String slug;
@@ -59,6 +60,9 @@ public class StoreModel {
 	}
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
+	}
+	public int getId() {
+		return id;
 	}
 
 }
