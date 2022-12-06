@@ -1,4 +1,4 @@
-package Sevices.Impl;
+package Sevice.Impl;
 
 public class DeliverySeviceImpl {
 

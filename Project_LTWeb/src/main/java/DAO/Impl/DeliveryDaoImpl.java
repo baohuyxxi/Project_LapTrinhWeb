@@ -1,4 +1,4 @@
-package Dao.Impl;
+package DAO.Impl;
 
 public class DeliveryDaoImpl {
 	
