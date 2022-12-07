@@ -7,34 +7,42 @@
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th>Tên</th>
-			<th>Tên miền</th>
-			<th>Email</th>
-			<th>Số điện thoại</th>
+			<th>Tên khách hàng</th>
+			<th>Đơn vị giao hàng</th>
 			<th>Địa chỉ</th>
-			<th>Avatar</th>
-			<th>Ngày tạo</th>
+			<th>Số điện thoại</th>
+			<th>Trạng thái</th>
+			<th>Tổng hóa đơn</th>
+			<th>Ngày xuất</th>
 			<th>Ngày cập nhật</th>
+			<th>Chức năng </th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${userList}" var="user">	
+		<c:forEach items="${orderList}" var="order">	
 			<tr>
-				<td>${user.id }</td>
-				<td>${user.name }</td>
-				<td>${user.slug }</td>
-				<td>${user.email }</td>
-				<td>${user.phone }</td>
-				<td>${user.address }</td>
-				<td>${user.avatar }</td>
-				<td>${user.createdAt }</td>
-				<td>${user.updatedAt }</td>
-				<td><a
-					href="<c:url value='/admin/infoUser/edit?id=${user.id }'/>"
-					class="center">Sửa</a> | <a
-					href="<c:url value='/admin/infoUser/delete?id=${user.id }'/>"
-					class="center">Xóa</a>
+				<td>${order.id }</td>
+				<td>${order.userName }</td>
+				<td>${order.deliveryName }</td>
+				<td>${order.address }</td>
+				<td>${order.phone }</td>
+				<%-- <td>${order.status }</td> --%>
+				<td>
+					<c:if test="${order.status == 1 }">
+						Đã hoàn thành
+					</c:if>
+					<c:if test="${order.status == 0 }">
+						Đang vận chuyển
+					</c:if>
 				</td>
+				<td>${order.total_price }</td>
+				<td>${order.createdAt }</td>
+				<td>${order.updatedAt }</td>
+				<td><a
+					href="<c:url value='/admin/category/edit?id=${order.id }'/>"
+					class="center">Sửa</a> | <a
+					href="<c:url value='/admin/category/delete?id=${order.id }'/>"
+					class="center">Chi tiết hóa đơn</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

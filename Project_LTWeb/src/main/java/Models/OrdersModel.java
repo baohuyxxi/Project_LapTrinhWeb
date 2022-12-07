@@ -14,12 +14,25 @@ public class OrdersModel {
 	private BigDecimal total_price;
 	private Date createdAt;
 	private Date updatedAt;
-	public OrdersModel() {
+	private String userName;
+	private String deliveryName;
+	
+	public OrdersModel(int id, String userName, String deliveryName, String address, String phone, int status, BigDecimal total_price, Date createdAt,
+			Date updatedAt) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.address = address;
+		this.phone = phone;
+		this.status = status;
+		this.total_price = total_price;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.userName = userName;
+		this.deliveryName = deliveryName;
 	}
+	
 	public OrdersModel(int userId, int storeId, int deliveryId, String address, String phone, int status,
-			BigDecimal total_price, Date createdAt, Date updatedAt) {
+			BigDecimal total_price, Date createdAt, Date updatedAt, String userName, String deliveryName) {
 		super();
 		this.userId = userId;
 		this.storeId = storeId;
@@ -30,7 +43,30 @@ public class OrdersModel {
 		this.total_price = total_price;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.userName = userName;
+		this.deliveryName = deliveryName;
 	}
+
+	public OrdersModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public OrdersModel(int id, int userId, int storeId, int deliveryId, String address, String phone, int status,
+			BigDecimal total_price, Date createdAt, Date updatedAt) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.storeId = storeId;
+		this.deliveryId = deliveryId;
+		this.address = address;
+		this.phone = phone;
+		this.status = status;
+		this.total_price = total_price;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -90,6 +126,18 @@ public class OrdersModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getDeliveryName() {
+		return deliveryName;
+	}
+	public void setDeliveryName(String deliveryName) {
+		this.deliveryName = deliveryName;
 	}
 	
 	

@@ -41,7 +41,7 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="${link}/home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">Categories</a>
