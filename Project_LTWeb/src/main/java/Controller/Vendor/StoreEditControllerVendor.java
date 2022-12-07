@@ -34,11 +34,12 @@ public class StoreEditControllerVendor extends HttpServlet{
 			req.setCharacterEncoding("UTF-8");
 			
 			StoreModel store = new StoreModel();
+			store.setId(Integer.parseInt(req.getParameter("id")));
 			store.setName(req.getParameter("name"));
 			store.setSlug(req.getParameter("slug"));
 			store.setAddress(req.getParameter("address"));
-
-			storeService.insert(store);
+			
+			storeService.edit(store);
 			resp.sendRedirect(req.getContextPath() + "/vendor/store/list");
 		} catch (Exception e) {
 			e.printStackTrace();
