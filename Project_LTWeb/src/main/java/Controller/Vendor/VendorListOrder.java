@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/vendor/home"})
-public class VendorHomeController extends HttpServlet{
+@WebServlet(value = {"/vendor/order"})
+public class VendorListOrder extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/home.jsp"); 
+		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/order.jsp"); 
 		rd.forward(req, resp);
 	}
 

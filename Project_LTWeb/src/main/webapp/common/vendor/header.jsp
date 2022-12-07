@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<c:url value="/vendor" var="link"></c:url>
 <!-- Header -->
 <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
@@ -50,7 +50,7 @@
                             <a class="nav-link" href="about.html">Product</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Order</a>
+                            <a class="nav-link" href="${link}/order">Order</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Sale</a>
