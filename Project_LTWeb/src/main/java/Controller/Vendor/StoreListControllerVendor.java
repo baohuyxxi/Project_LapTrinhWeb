@@ -22,7 +22,7 @@ public class StoreListControllerVendor extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<StoreModel> storeList = storeService.getAll();
 		req.setAttribute("storeList", storeList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/list-store.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-store.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

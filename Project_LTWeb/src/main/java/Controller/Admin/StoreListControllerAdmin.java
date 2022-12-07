@@ -16,7 +16,7 @@ import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/admin/store/list"})
-public class StoreLisControllertAdmin extends HttpServlet{
+public class StoreListControllerAdmin extends HttpServlet{
 
 	IStoreService storeService = new StoreServiceImpl();
 	@Override

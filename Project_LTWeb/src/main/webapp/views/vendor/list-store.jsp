@@ -15,6 +15,7 @@
 			<th>Địa chỉ</th>
 			<th>Ngày tạo</th>
 			<th>Ngày cập nhật</th>
+			<th>Chức năng</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,7 +29,7 @@
 				<td>${store.createdAt }</td>
 				<td>${store.updatedAt }</td>
 				<td><a
-					href="<c:url value='/admin/store/edit?id=${store.id }'/>"
+					href="<c:url value='/vendor/store/edit?id=${store.id }'/>"
 					class="center">Sửa</a>
 				</td>
 			</tr>
