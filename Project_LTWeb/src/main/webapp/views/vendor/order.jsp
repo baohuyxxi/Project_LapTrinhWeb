@@ -6,26 +6,43 @@
 	style="width: 100%">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Hình</th>
-			<th>Tên danh mục</th>
+			<th>ID</th>
+			<th>Tên khách hàng</th>
+			<th>Đơn vị giao hàng</th>
+			<th>Địa chỉ</th>
+			<th>Số điện thoại</th>
 			<th>Trạng thái</th>
-			<th>Chức năng</th>
+			<th>Tổng hóa đơn</th>
+			<th>Ngày xuất</th>
+			<th>Ngày cập nhật</th>
+			<th>Chức năng </th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${cateList}" var="cate" varStatus="STT">	
+		<c:forEach items="${orderList}" var="order">	
 			<tr>
-				<td>${STT.index+1 }</td>
-				<c:url value="/upload?fname=${cate.image }" var="imgUrl"></c:url>
-				<td><img height="150" width="200" src="${imgUrl}" /></td>
-				<td>${cate.catename }</td>
-				<td></td>
+				<td>${order.id }</td>
+				<td>${order.userName }</td>
+				<td>${order.deliveryName }</td>
+				<td>${order.address }</td>
+				<td>${order.phone }</td>
+				<%-- <td>${order.status }</td> --%>
+				<td>
+					<c:if test="${order.status == 1 }">
+						Đã hoàn thành
+					</c:if>
+					<c:if test="${order.status == 0 }">
+						Đang vận chuyển
+					</c:if>
+				</td>
+				<td>${order.total_price }</td>
+				<td>${order.createdAt }</td>
+				<td>${order.updatedAt }</td>
 				<td><a
-					href="<c:url value='/admin/category/edit?id=${cate.cateid }'/>"
+					href="<c:url value='/admin/category/edit?id=${order.id }'/>"
 					class="center">Sửa</a> | <a
-					href="<c:url value='/admin/category/delete?id=${cate.cateid }'/>"
-					class="center">Xóa</a></td>
+					href="<c:url value='/admin/category/delete?id=${order.id }'/>"
+					class="center">Chi tiết hóa đơn</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
