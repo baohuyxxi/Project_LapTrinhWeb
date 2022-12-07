@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBConnection {
 
 	private final String serverName = "VANTUAN";
-	private final String dbName = "DB_Project_Web";
+	private final String dbName = "DB_Project_LTWeb";
 	private final String portNumber = "1433";
 	private final String instance = "";
 	private final String userID = "sa";

@@ -46,16 +46,16 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 			ps.setString(5, infoUser.getAddress());
 			ps.setString(6, infoUser.getAvatar());
 			ps.setDate(7, new Date(System.currentTimeMillis()));
-			
-			System.out.println(infoUser.getId());
-			System.out.println(infoUser.getName());
-			System.out.println(infoUser.getSlug());
-			System.out.println(infoUser.getEmail());
-			System.out.println(infoUser.getPhone());
-			System.out.println(infoUser.getAddress());
-			System.out.println(infoUser.getAvatar());
-			
 			ps.setInt(8, infoUser.getId());
+			
+//			System.out.println(infoUser.getId());
+//			System.out.println(infoUser.getName());
+//			System.out.println(infoUser.getSlug());
+//			System.out.println(infoUser.getEmail());
+//			System.out.println(infoUser.getPhone());
+//			System.out.println(infoUser.getAddress());
+//			System.out.println(infoUser.getAvatar());
+			
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
