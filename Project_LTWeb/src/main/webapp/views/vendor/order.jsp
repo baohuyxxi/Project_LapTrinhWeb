@@ -6,26 +6,35 @@
 	style="width: 100%">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Hình</th>
-			<th>Tên danh mục</th>
-			<th>Trạng thái</th>
-			<th>Chức năng</th>
+			<th>ID</th>
+			<th>Tên</th>
+			<th>Tên miền</th>
+			<th>Email</th>
+			<th>Số điện thoại</th>
+			<th>Địa chỉ</th>
+			<th>Avatar</th>
+			<th>Ngày tạo</th>
+			<th>Ngày cập nhật</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${cateList}" var="cate" varStatus="STT">	
+		<c:forEach items="${userList}" var="user">	
 			<tr>
-				<td>${STT.index+1 }</td>
-				<c:url value="/upload?fname=${cate.image }" var="imgUrl"></c:url>
-				<td><img height="150" width="200" src="${imgUrl}" /></td>
-				<td>${cate.catename }</td>
-				<td></td>
+				<td>${user.id }</td>
+				<td>${user.name }</td>
+				<td>${user.slug }</td>
+				<td>${user.email }</td>
+				<td>${user.phone }</td>
+				<td>${user.address }</td>
+				<td>${user.avatar }</td>
+				<td>${user.createdAt }</td>
+				<td>${user.updatedAt }</td>
 				<td><a
-					href="<c:url value='/admin/category/edit?id=${cate.cateid }'/>"
+					href="<c:url value='/admin/infoUser/edit?id=${user.id }'/>"
 					class="center">Sửa</a> | <a
-					href="<c:url value='/admin/category/delete?id=${cate.cateid }'/>"
-					class="center">Xóa</a></td>
+					href="<c:url value='/admin/infoUser/delete?id=${user.id }'/>"
+					class="center">Xóa</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>
