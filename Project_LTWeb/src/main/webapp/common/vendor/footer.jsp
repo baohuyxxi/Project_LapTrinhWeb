@@ -32,8 +32,6 @@
                         <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
                         <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
                         <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
                         <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
                     </ul>
                 </div>
@@ -80,6 +78,7 @@
                 </div>
             </div>
         </div>
+        <div class="w-100 bg-black py-3"></div>
 
     </footer>
     <!-- End Footer -->
