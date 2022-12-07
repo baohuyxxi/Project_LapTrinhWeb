@@ -35,7 +35,7 @@ public class InfoUserEditController extends HttpServlet{
 			req.setCharacterEncoding("UTF-8");
 			
 			InfoUserModel user = new InfoUserModel();
-			user.setId(Integer.parseInt(req.getParameter("user")));
+			user.setId(Integer.parseInt(req.getParameter("id")));
 			user.setName(req.getParameter("name"));
 			user.setSlug(req.getParameter("slug"));
 			user.setEmail(req.getParameter("email"));

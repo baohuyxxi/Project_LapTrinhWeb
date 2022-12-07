@@ -10,7 +10,7 @@
 <body>
 	<c:url value="/vendor/store/edit" var="edit"></c:url>
 	<form role="form" action="${edit}" method="post">
-		<input name="store" value="${store.id }" hidden="" name="id">
+		<input value="${store.id }" hidden="" name="id">
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-addon1">Tên cửa hàng</span>  <input type="text" class="form-control"
 				value="${store.name }" name="name" />
@@ -21,7 +21,7 @@
 		</div>
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-addon1">Địa chỉ</span> <input type="text" class="form-control"
-				value="${store.address }" name="email" />
+				value="${store.address }" name="address" />
 		</div>
 	
 		<button type="submit" class="btn btn-default">Sửa</button>

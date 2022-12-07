@@ -29,6 +29,7 @@
     <script src="<c:url value="/assets/js/bootstrap.bundle.min.js"/>"></script>
     <script src="<c:url value="/assets/js/templatemo.js"/>"></script>
     <script src="<c:url value="/assets/js/custom.js"/>"></script>
+
     <!-- End Script -->
 </body>
 </html>
