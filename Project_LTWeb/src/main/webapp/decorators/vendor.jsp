@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/templatemo.css">
@@ -24,7 +24,7 @@
 	
 	<dec:body/>
 	
-	<%@ include file="/common/customer/footer.jsp"%>
+	<%@ include file="/common/vendor/footer.jsp"%>
 	<!-- Start Script -->
     <script src="../assets/js/jquery-1.11.0.min.js"></script>
     <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>

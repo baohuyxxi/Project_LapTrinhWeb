@@ -15,7 +15,7 @@ public class VendorHomeController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/home.jsp"); 
+		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/categories.jsp"); 
 		rd.forward(req, resp);
 	}
 
