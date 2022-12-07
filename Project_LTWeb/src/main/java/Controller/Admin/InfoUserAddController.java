@@ -1,6 +1,10 @@
 package Controller.Admin;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Models.DeliveryModel;
 import Models.InfoUserModel;
 import Service.IInfoUserService;
 import Service.Impl.InfoUserServiceImpl;
@@ -38,20 +43,13 @@ public class InfoUserAddController extends HttpServlet{
 			user.setPhone(req.getParameter("phone"));
 			user.setAddress(req.getParameter("address"));
 			user.setAvatar(req.getParameter("avartar"));
-			
-			
-			System.out.println(user.getName());
-			System.out.println(user.getSlug());
-			System.out.println(user.getEmail());
-			System.out.println(user.getPhone());
-			System.out.println(user.getAddress());
-			System.out.println(user.getAvatar());
 
 			userService.insert(user);
 			resp.sendRedirect(req.getContextPath() + "/admin/infouser/list");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 
