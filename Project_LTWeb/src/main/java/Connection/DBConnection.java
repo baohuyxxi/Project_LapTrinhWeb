@@ -10,7 +10,14 @@ public class DBConnection {
 	private final String portNumber = "1433";
 	private final String instance = "";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
 	private final String userID = "sa";
-	private final String password = "12345";
+	private final String password = "huy";
+
+	// 	private final String serverName = "DESKTOP-8AGARKU";
+	// private final String dbName = "DB_Project_LTWeb";
+	// private final String portNumber = "1433";
+	// private final String instance = "HUY";
+	// private final String userID = "sa";
+	// private final String password = "huy";
 
 	public Connection getConnection() throws Exception {
 		String url = "jdbc:sqlserver://" + serverName + "\\" + instance + ";databaseName=" + dbName;
