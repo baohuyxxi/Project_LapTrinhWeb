@@ -1,6 +1,7 @@
 package DAO.Impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -32,9 +33,11 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 			ps.setString(3, order.getPhone());
 			ps.setInt(4, order.getStatus());
 			ps.setBigDecimal(5, order.getTotal_price());
-			ps.setDate(6, order.getUpdatedAt());
+			ps.setDate(6, new Date(System.currentTimeMillis()));
 			
 			ps.setInt(7, order.getId());
+			
+			System.out.println(order.getId());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -75,7 +78,7 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 //	}
 	public List<OrdersModel> getAll() {
 		List<OrdersModel> orders = new ArrayList<OrdersModel>();
-		String sql = "select *from view_Order_Of_Store";
+		String sql = "select * from view_Order_Of_Store";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
