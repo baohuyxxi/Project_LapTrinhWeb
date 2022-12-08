@@ -154,5 +154,23 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return null;
 	}
+	
+	@Override
+	public String findStoreIdByUserId(int userId) {
+		String sql = "SELECT Store.id FROM InfoUser, Store WHERE InfoUser.id=Store.userId and InfoUser.id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			ps.setInt(1, userId);
+			while (rs.next()) {
+				String storeId = rs.getString("id");
+				return storeId;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

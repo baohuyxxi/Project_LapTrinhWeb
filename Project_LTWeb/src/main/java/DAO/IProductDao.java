@@ -13,4 +13,5 @@ public interface IProductDao {
 	List<ProductModel> getAll();
 	List<ProductModel> search(String keyword);
 	ProductModel findById(int id);
+	String findStoreIdByUserId(int userId);
 }

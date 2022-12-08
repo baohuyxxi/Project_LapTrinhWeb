@@ -56,4 +56,9 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.findById(id);
 	}
 
+	@Override
+	public String findStoreIdByUserId(int userId) {
+		return productDao.findStoreIdByUserId(userId);
+	}
+
 }

@@ -27,7 +27,7 @@ import util.Constant;
 
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/register/add"})
+@WebServlet(urlPatterns = {"/register/create"})
 public class ResgisterController extends HttpServlet{
 
 	IInfoUserService userService = new InfoUserServiceImpl();
