@@ -17,11 +17,9 @@
 <body>
 	<div class="container">
 		<h2>Danh sách người vận chuyển</h2>
-		<div class="col-sm-6">
-			<a href="#addDelivery" class="btn btn-success" data-toggle="modal"><i
-				class="material-icons">&#xE147;</i> <span>Thêm Người Vận
-					Chuyển</span></a>
-		</div>
+		<a class="fa fa-plus-square-o"
+			 href="#addDelivery"  data-toggle="modal">
+			<span>Thêm Người Vận Chuyển</span></a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -44,8 +42,10 @@
 						<td>${delivery.status }</td>
 						<td>${delivery.updatedAt }</td>
 						<td><a class="btn btn-primary" type="button"
-							data-toggle="modal" data-target="#edit${delivery.id}"
-							>Sửa</a></td>
+							data-toggle="modal" data-target="#edit">Sửa</a>
+							<a class="btn btn-danger" type="button"
+							href="<c:url value='delete?did=${delivery.id }'/>"
+							class="center">Xóa</a></td></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -90,53 +90,49 @@
 			</div>
 		</div>
 	</div>
-	
-	
-		<div id=  "edit1" class="modal">
+
+
+	<div id="edit" class="modal">
 		<c:forEach items="${deliveryList}" var="delivery">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<form action="edit" method="post">
-						<h4 align="center" >Thêm Nhân Viên Giao Hàng ${delivery.id }</h4>
-							
+						<h4 align="center">Thêm Nhân Viên Giao Hàng ${delivery.id }</h4>
+
 						<div class="modal-body">
 							<input type="hidden" name="id" value="${delivery.id }" required>
 							<div class="form-group">
-								<label>Tên</label> 
-								<input name="name" type="text" value="${delivery.name }" 
-								class="form-control" required>
+								<label>Tên</label> <input name="name" type="text"
+									value="${delivery.name }" class="form-control" required>
 
-								<label>Số điện thoại</label> 
-								<input name="phone" type="text"
-									value="${delivery.phone }" 
-									class="form-control" required>
+								<label>Số điện thoại</label> <input name="phone" type="text"
+									value="${delivery.phone }" class="form-control" required>
 
-								<label>Giá</label> 
-								<input name="price" type="text" value="${delivery.price }" 
-								class="form-control" required>
+								<label>Giá</label> <input name="price" type="text"
+									value="${delivery.price }" class="form-control" required>
 
-								<label>Trạng Thái</label> 
-								<input name="status" value="${delivery.status }" 
-								class="form-control" required>
+								<label>Trạng Thái</label> <input name="status"
+									value="${delivery.status }" class="form-control" required>
 							</div>
 							<div class="modal-footer">
-								<input type="button" class="btn btn-default" data-dismiss="modal" value="Trở lại"> 
-								<input type="submit" class="btn btn-success" value="Sửa">
+								<input type="button" class="btn btn-default"
+									data-dismiss="modal" value="Trở lại"> <input
+									type="submit" class="btn btn-success" value="Sửa">
 							</div>
 					</form>
 				</div>
 			</div>
 		</c:forEach>
-		</div>
+	</div>
 
 </body>
 </html>
 
 <script>
- btn.onclick = function() {
-        modal.style.display = "block";
-    }
- </script>
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function() {

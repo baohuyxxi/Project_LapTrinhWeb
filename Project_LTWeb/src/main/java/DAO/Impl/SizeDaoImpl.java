@@ -32,7 +32,7 @@ public class SizeDaoImpl extends DBConnection implements ISizeDao{
 
 	@Override
 	public void edit(SizeModel size) {
-		String sql = "UPDATE  Delivery SET size=?, product_id=? WHERE product_id=?";
+		String sql = "UPDATE  Size SET size=?, product_id=? WHERE product_id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class SizeDaoImpl extends DBConnection implements ISizeDao{
 
 	@Override
 	public SizeModel findById(int id) {
-		String sql = "SELECT * FROM delivery WHERE product_id = ? ";
+		String sql = "SELECT * FROM Size WHERE product_id = ? ";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

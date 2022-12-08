@@ -88,7 +88,7 @@ public class ImageDaoImpl extends DBConnection implements IImageDao{
 
 	@Override
 	public List<ImagesModel> getAll() {
-		List<ImagesModel> users= new ArrayList<ImagesModel>();
+		List<ImagesModel> images= new ArrayList<ImagesModel>();
 		String sql = "SELECT * FROM image";
 		try {
 			Connection con = super.getConnection();
@@ -99,12 +99,12 @@ public class ImageDaoImpl extends DBConnection implements IImageDao{
 				image.setImage_id(rs.getInt("image_id"));
 				image.setProduct_id(rs.getInt("product_id"));
 				image.setImg(rs.getString("img"));			
-				users.add(image);
+				images.add(image);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return users;
+		return images;
 	}
 
 	@Override
