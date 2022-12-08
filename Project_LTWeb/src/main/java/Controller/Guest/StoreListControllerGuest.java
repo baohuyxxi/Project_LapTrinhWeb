@@ -15,7 +15,7 @@ import Service.IStoreService;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/guest/store/list"})
+@WebServlet(urlPatterns = {"/web/store/list"})
 public class StoreListControllerGuest extends HttpServlet{
 
 	IStoreService storeService = new StoreServiceImpl();

@@ -30,7 +30,7 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Zay Vendor
+                ShopHuydzPro
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,29 +41,29 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/home">Home</a>
+                            <a class="nav-link" href="${link}/home">Trang Chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Categories</a>
+                            <a class="nav-link" href="about.html">Loại Sản Phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Product</a>
+                            <a class="nav-link" href="about.html">Sản Phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/order">Order</a>
+                            <a class="nav-link" href="${link}/order">Đặt Hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Sale</a>
+                            <a class="nav-link" href="contact.html">Doanh Thu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.html">Liên Hệ</a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
-		           	<a class="nav-link" href="/signin">Sign out </a>
+		           	<a class="nav-link" href="/signin">Đăng xuất </a>
                     </a>
                 </div>
             </div>
