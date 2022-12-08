@@ -5,13 +5,19 @@ import java.sql.DriverManager;
  
 public class DBConnection {
 
-	private final String serverName = "DESKTOP-8AGARKU";
+	private final String serverName = "VANTUAN";
 	private final String dbName = "DB_Project_LTWeb";
 	private final String portNumber = "1433";
-	private final String instance = "HUY";
+	private final String instance = "";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
 	private final String userID = "sa";
 	private final String password = "huy";
 
+	// 	private final String serverName = "DESKTOP-8AGARKU";
+	// private final String dbName = "DB_Project_LTWeb";
+	// private final String portNumber = "1433";
+	// private final String instance = "HUY";
+	// private final String userID = "sa";
+	// private final String password = "huy";
 
 	public Connection getConnection() throws Exception {
 		String url = "jdbc:sqlserver://" + serverName + "\\" + instance + ";databaseName=" + dbName;
@@ -23,6 +29,7 @@ public class DBConnection {
 
 	public static void main(String[] args) {
 		try {
+			System.out.println("Kết nối DB_Project_LTWeb thành công");
 			System.out.println(new DBConnection().getConnection());
 		} catch (Exception e) {
 			e.printStackTrace();
