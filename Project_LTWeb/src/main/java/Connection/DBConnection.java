@@ -5,12 +5,12 @@ import java.sql.DriverManager;
  
 public class DBConnection {
 
-	private final String serverName = "VANTUAN";
-	private final String dbName = "DB_Project_Web";
+	private final String serverName = "DESKTOP-8AGARKU";
+	private final String dbName = "DB_Project_LTWeb";
 	private final String portNumber = "1433";
-	private final String instance = "";
+	private final String instance = "HUY";
 	private final String userID = "sa";
-	private final String password = "12345";
+	private final String password = "huy";
 
 
 	public Connection getConnection() throws Exception {

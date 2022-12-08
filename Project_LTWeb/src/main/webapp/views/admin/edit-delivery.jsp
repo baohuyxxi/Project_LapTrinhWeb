@@ -11,7 +11,7 @@
 	<c:url value="/admin/infoUser/edit" var="edit"></c:url>
 	<form role="form" action="${edit }" method="post">
 		<input name="user" value="${user.id }" hidden="" name="id">
-		<td>"${user.name}"</td>
+		
 		<div class="form-group">
 			<label>Tên:</label> <input type="text" class="form-control"
 				value="${user.name }" name="name" />
