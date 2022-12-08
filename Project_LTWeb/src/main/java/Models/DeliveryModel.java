@@ -68,4 +68,5 @@ public class DeliveryModel {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+		
 }

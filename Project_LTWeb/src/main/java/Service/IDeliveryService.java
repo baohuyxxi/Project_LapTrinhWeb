@@ -1,27 +1,24 @@
-package DAO;
+package Service;
 
 import java.util.List;
 
 import Models.DeliveryModel;
 
-public interface IDeliveryDao {
+public interface IDeliveryService {
 
 	void insert(DeliveryModel delivery);
 
 	void edit(DeliveryModel delivery);
 
+	void delete(int id);
+
 	DeliveryModel get(int id);
 
 	List<DeliveryModel> getAll();
 
-	DeliveryModel findById(int id);
-
-	DeliveryModel getName(String name);
-
 	List<DeliveryModel> search(String keyword);
 
-	void delete(int id);
-
-
+	DeliveryModel findById(int id);
+	
 	
 }

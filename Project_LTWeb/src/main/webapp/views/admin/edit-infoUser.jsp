@@ -10,8 +10,13 @@
 <body>
 	<c:url value="/admin/infoUser/edit" var="edit"></c:url>
 	<form role="form" action="${edit }" method="post">
+<<<<<<< HEAD
+		<input name="user" value="${user.id }" hidden="" name="id">
+		<td>"${user.name}"</td>
+=======
 		<input value="${user.id }" hidden="" name="id">
 		
+>>>>>>> 5d32f3dc16fe70eeac68950017d33f5c26f4e6f0
 		<div class="form-group">
 			<label>Tên:</label> <input type="text" class="form-control"
 				value="${user.name }" name="name" />
