@@ -1,11 +1,10 @@
-package DAO;
+package Service;
 
 import java.util.List;
 
 import Models.AccountModel;
 
-
-public interface IAccountDao {
+public interface IAccountService {
 	void insert(AccountModel account);
 	void edit(AccountModel account);
 	void delete(int id);
