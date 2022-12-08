@@ -20,7 +20,7 @@ public class DeliveryServiceImpl implements IDeliveryService{
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		ideliverydao.delete(id);
 		
 	}
 

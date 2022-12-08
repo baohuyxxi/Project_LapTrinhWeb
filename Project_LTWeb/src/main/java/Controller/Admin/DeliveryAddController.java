@@ -55,9 +55,12 @@ public class DeliveryAddController extends HttpServlet{
 			delivery.setStatus(Integer.parseInt(req.getParameter("status")));
 			
 			deliveryService.insert(delivery);
-			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
 		}
 	}
 

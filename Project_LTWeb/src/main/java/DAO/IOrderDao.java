@@ -2,8 +2,6 @@ package DAO;
 
 import java.util.List;
 
-import org.apache.catalina.startup.LifecycleListenerRule;
-
 import Models.OrdersModel;
 
 public interface IOrderDao {
