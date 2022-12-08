@@ -41,8 +41,7 @@ public class OrderServiceImpl implements IOrderService{
 
 	@Override
 	public OrdersModel findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.findById(id);
 	}
 
 }

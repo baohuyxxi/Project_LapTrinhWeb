@@ -28,4 +28,5 @@ public class InfoUserListController extends HttpServlet{
 		dispatcher.forward(req, resp);
 	}
 	
+	
 }

@@ -11,10 +11,24 @@ public class OrderItemModel {
 	private BigDecimal price;
 	private Date createdAt;
 	private Date updatedAt;
+	private String productName;
+	
+	
 	public OrderItemModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public OrderItemModel(int id, String productName, int count, BigDecimal price, Date createdAt, Date updatedAt) {
+		super();
+		this.id = id;
+		this.count = count;
+		this.price = price;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.productName = productName;
+	}
+
 	public OrderItemModel(int orderId, int productId, int count, BigDecimal price, Date createdAt, Date updatedAt) {
 		super();
 		this.orderId = orderId;
@@ -65,6 +79,12 @@ public class OrderItemModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	
 	
