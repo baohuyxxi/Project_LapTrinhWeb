@@ -11,7 +11,7 @@
 	<c:url value="/admin/infoUser/edit" var="edit"></c:url>
 	<form role="form" action="${edit }" method="post">
 <<<<<<< HEAD
-		<input name="user" value="${user.id }" hidden="" name="id">
+		<input name="user" value="${user.id }" hidden="" name="eid">
 		<td>"${user.name}"</td>
 =======
 		<input value="${user.id }" hidden="" name="id">
