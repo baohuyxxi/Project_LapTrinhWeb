@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Vendor;
 
 import java.io.IOException;
 
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/home"})
-public class HomeController extends HttpServlet{
+@WebServlet(urlPatterns = {"/vendor/contact"})
+public class ContactVendorController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher rd =  req.getRequestDispatcher("/views/about.jsp"); 
+		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/contact.jsp"); 
 		rd.forward(req, resp);
 	}
 
