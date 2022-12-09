@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<c:url value="/zay" var="link"></c:url>
 <!-- Header -->
 <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
@@ -41,7 +41,10 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="${link}/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${link}/product">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>

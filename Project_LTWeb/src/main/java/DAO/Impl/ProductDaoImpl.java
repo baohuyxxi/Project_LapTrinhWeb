@@ -80,7 +80,8 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 	@Override
 	public ProductModel get(int id) {
 		// TODO Auto-generated method stub
-		return null;
+				return null;
+
 	}
 
 	@Override
@@ -128,7 +129,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public ProductModel findById(int id) {
-		String sql = "SELECT * FROM Product WHERE id=?";
+		String sql = " SELECT *FROM  Product, Images WHERE id=? and product_id=id";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -148,6 +149,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				product.setStoreId(Integer.parseInt(rs.getString("storeId")));
 				product.setCreatedAt(rs.getDate("createdAt"));
 				product.setUpdatedAt(rs.getDate("updatedAt"));
+				product.setImg(rs.getString("img"));
 				return product;
 			}
 		} catch (Exception e) {
@@ -175,6 +177,36 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		return null;
 	}
 	
+
+
+	public List<ProductModel> proTop3() {
+		String sql = "select top (3) Product.sold, Product.name, Product.category_id, Images.img, Product.storeId, Product.id\r\n"
+				+ "from Product, Images\r\n"
+				+ "where Images.product_id =Product.id \r\n"
+				+ "ORDER BY Product.sold DESC";
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setStoreId(Integer.parseInt(rs.getString("storeId")));
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setName(rs.getString("name"));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setImg(rs.getString("img"));
+				
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
 	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
 		String sql = "SELECT * FROM Product, Store WHERE Store.id=Product.storeId and Store.id=?";
@@ -204,5 +236,4 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return products;
 	}
-
 }

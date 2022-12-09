@@ -16,6 +16,10 @@ public class ProductModel {
 	private int storeId;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
+	private String img;
+	
 	public ProductModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -109,4 +113,10 @@ public class ProductModel {
 		this.id = id;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
  }
