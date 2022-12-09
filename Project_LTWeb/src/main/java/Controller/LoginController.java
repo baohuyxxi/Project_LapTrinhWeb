@@ -67,8 +67,6 @@ public class LoginController extends HttpServlet {
 				if(account.getRole()==2)
 				{
 					resp.sendRedirect(req.getContextPath() + "/vendor/store");
-				if (account.getRole() == 2) {
-					resp.sendRedirect(req.getContextPath() + "/vendor/product");
 					return;
 				}
 			} else if (account.getRole() == 2) {
