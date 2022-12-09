@@ -48,14 +48,6 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 			ps.setDate(7, new Date(System.currentTimeMillis()));
 			ps.setInt(8, infoUser.getId());
 			
-//			System.out.println(infoUser.getId());
-//			System.out.println(infoUser.getName());
-//			System.out.println(infoUser.getSlug());
-//			System.out.println(infoUser.getEmail());
-//			System.out.println(infoUser.getPhone());
-//			System.out.println(infoUser.getAddress());
-//			System.out.println(infoUser.getAvatar());
-			
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,8 +87,21 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 	}
 
 	@Override
-	public InfoUserModel getName(String name) {
-		// TODO Auto-generated method stub
+	public InfoUserModel getUserName(String username) {
+		String sql = "SELECT InfoUser.id FROM Account,InfoUser WHERE InfoUser.email=Account.username and Account.username=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				InfoUserModel user = new InfoUserModel();
+				user.setId(Integer.parseInt(rs.getString("id")));
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

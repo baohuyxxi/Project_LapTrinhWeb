@@ -56,15 +56,18 @@
                             <a class="nav-link" href="contact.html">Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="https://www.facebook.com/maibaohuy.nocrush/" target="_blank">Contact</a>
                         </li>
                         
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
+                    <i class="fa fa-store"></i>
+		           	<a class="nav-link" href="/Project_LTWeb/vendor/store/my">My Store </a>
+                </div>
+                <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
 		           	<a class="nav-link" href="/signin">Sign out </a>
-                    </a>
                 </div>
             </div>
 

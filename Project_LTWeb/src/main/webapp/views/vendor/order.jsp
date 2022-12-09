@@ -4,7 +4,7 @@
 
 <table id="example" class="table table-striped table-bordered"
 	style="width: 100%">
-	<thead>
+	<thead class="thead-dark">
 		<tr>
 			<th>ID</th>
 			<th>Tên khách hàng</th>
@@ -39,9 +39,9 @@
 				<td>${order.createdAt }</td>
 				<td>${order.updatedAt }</td>
 				<td><a
-					href="<c:url value='/admin/category/edit?id=${order.id }'/>"
+					href="<c:url value='/vendor/order/edit-order?id=${order.id }'/>"
 					class="center">Sửa</a> | <a
-					href="<c:url value='/admin/category/delete?id=${order.id }'/>"
+					href="<c:url value='/vendor/order/detail-order?orderId=${order.id }'/>"
 					class="center">Chi tiết hóa đơn</a></td>
 			</tr>
 		</c:forEach>
