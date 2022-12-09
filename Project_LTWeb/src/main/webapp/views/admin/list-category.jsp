@@ -16,47 +16,45 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Danh sách người vận chuyển</h2>
-		<a class="fa fa-plus-square-o" href="#addDelivery" data-toggle="modal">
-			<span>Thêm Người Vận Chuyển</span>
+		<h2>Danh sách các mặt hàng</h2>
+		<a class="fa fa-plus-square-o" href="#addcategory" data-toggle="modal">
+			<span>Thêm Loại Sản Phẩm</span>
 		</a>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Tên</th>
-					<th>Số điện thoại</th>
-					<th>Giá</th>
-					<th>status</th>
-					<th>Cập nhật gần nhất</th>
-
+					<th>Tên Miền</th>
+					<th>Cập nhật</th>
+					<th>Ngày Tạo</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${deliveryList}" var="delivery">
+				<c:forEach items="${categoryList}" var="category">
 					<tr>
-						<td>${delivery.id }</td>
-						<td>${delivery.name }</td>
-						<td>${delivery.phone }</td>
-						<td>${delivery.price }</td>
-						<td>${delivery.status }</td>
-						<td>${delivery.updatedAt }</td>
+						<td>${category.id }</td>
+						<td>${category.name }</td>
+						<td>${category.slug }</td>
+						<td>${category.updatedAt }</td>
+						<td>${category.createdAt }</td>
 						<td><a class="btn btn-primary" type="button"
-							href="<c:url value='edit?id=${delivery.id }'/>">Sửa</a> <a
+							href="<c:url value='edit?id=${category.id }'/>">Sửa</a> <a
 							class="btn btn-danger" type="button"
-							href="<c:url value='delete?did=${delivery.id }'/>">Xóa</a></td>
+							href="<c:url value='delete?did=${category.id }'/>">Xóa</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 
 
-		<div id="addDelivery" class="modal fade">
+
+		<div id="addcategory" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<form action="add" method="post">
 						<div class="modal-header">
-							<h4 class="modal-title">Thêm Nhân Viên Giao Hàng</h4>
+							<h4 class="modal-title">Thêm Mặt Hàng</h4>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-hidden="true">&times;</button>
 						</div>
@@ -66,17 +64,10 @@
 									class="form-control" required>
 							</div>
 							<div class="form-group">
-								<label>Số điện thoại</label> <input name="phone" type="text"
+								<label>Tên Miền</label> <input name="slug" type="text"
 									class="form-control" required>
 							</div>
-							<div class="form-group">
-								<label>Giá</label> <input name="price" type="text"
-									class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Trạng Thái</label>
-								<textarea name="status" class="form-control" required></textarea>
-							</div>
+
 
 						</div>
 						<div class="modal-footer">

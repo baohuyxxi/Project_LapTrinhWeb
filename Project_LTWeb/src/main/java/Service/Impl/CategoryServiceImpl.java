@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		icategorydao.delete(id);
 		
 	}
 
