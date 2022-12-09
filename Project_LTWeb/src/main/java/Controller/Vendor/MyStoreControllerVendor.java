@@ -19,7 +19,7 @@ import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/vendor/store/my"})
+@WebServlet(urlPatterns = {"/vendor/store"})
 public class MyStoreControllerVendor extends HttpServlet{
 	IStoreService storeService = new StoreServiceImpl();
 	IProductService productService = new ProductServiceImpl();

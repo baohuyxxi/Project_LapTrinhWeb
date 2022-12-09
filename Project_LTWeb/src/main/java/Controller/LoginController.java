@@ -69,7 +69,7 @@ public class LoginController extends HttpServlet{
 				resp.addCookie(cookieId);
 				if(account.getRole()==2)
 				{
-					resp.sendRedirect(req.getContextPath() + "/vendor/store/my");
+					resp.sendRedirect(req.getContextPath() + "/vendor/store");
 					return;
 				}
 			}

@@ -44,16 +44,13 @@
                             <a class="nav-link" href="${link}/home">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/category">Loại</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="${link}/product">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${link}/order">Đơn hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Doanh thu</a>
+                            <a class="nav-link" href="${link}/sale">Doanh thu</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${link}/contact">Liên hệ</a>
@@ -61,10 +58,9 @@
                         
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <i class="fa fa-user text-dark mr-3"></i>
-		           	<a class="nav-link" href="/signin">Đăng Xuất </a>
-                    </a>
+                <div class="navbar align-self-center d-flex"> 
+                	<a class="text-light" href="${link}/store" target="_blank" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i></a>       
+		           	<a class="nav-link" href="../login1">Đăng Xuất </a>
                 </div>
             </div>
 
