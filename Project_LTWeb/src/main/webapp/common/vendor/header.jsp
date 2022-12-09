@@ -26,7 +26,7 @@
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
@@ -41,30 +41,38 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/home">Trang chủ</a>
+                            <a class="nav-link" href="${link}/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/about">Loại</a>
+                            <a class="nav-link" href="${link}/categories">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link }/product">Sản phẩm</a>
+                            <a class="nav-link" href="about.html">Product</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/order">Đơn hàng</a>
+                            <a class="nav-link" href="${link}/order">Order</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Doanh thu</a>
+                            <a class="nav-link" href="contact.html">Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/contact">Liên hệ</a>
+                            <a class="nav-link" href="https://www.facebook.com/maibaohuy.nocrush/" target="_blank">Contact</a>
                         </li>
                         
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
+                    <i class="fa fa-store"></i>
+		           	<a class="nav-link" href="/Project_LTWeb/vendor/store/my">My Store </a>
+                </div>
+                <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
+<<<<<<< HEAD
 		           	<a class="nav-link" href="../login">Đăng Xuất </a>
                     </a>
+=======
+		           	<a class="nav-link" href="/signin">Sign out </a>
+>>>>>>> 4803f96a6164c0656d69e154332ab855acfc4ff8
                 </div>
             </div>
 

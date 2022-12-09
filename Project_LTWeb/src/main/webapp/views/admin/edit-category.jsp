@@ -8,19 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/admin/delivery/edit" var="edit"></c:url>
+	<c:url value="/admin/category/edit" var="edit"></c:url>
 		<div class="container">
 			<form role="form" action="${edit }" method="post">
-				<h4 align="center">Sửa Nhân Viên Giao Hàng</h4>
-				<input type="hidden" name="id" value="${delivery.id }">
+				<h4 align="center">Sửa Mặt Hàng</h4>
+				<input type="hidden" name="id" value="${category.id }">
 				<div class="form-group">
 					<label>Tên</label> <input name="name" type="text"
-						value="${delivery.name }" class="form-control"> <label>Số
-						điện thoại</label> <input name="phone" type="text"
-						value="${delivery.phone }" class="form-control"> <label>Giá</label>
-					<input name="price" type="text" value="${delivery.price }"
-						class="form-control"> <label>Trạng Thái</label> <input
-						name="status" value="${delivery.status }" class="form-control">
+						value="${category.name }" class="form-control"> 
+					<label>Tên Miền</label> 
+						<input name="slug" type="text"
+						value="${category.slug }" class="form-control"> 
+						
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal"
