@@ -9,6 +9,7 @@ import java.util.List;
 
 import Connection.DBConnection;
 import DAO.IProductDao;
+import Models.OrdersModel;
 import Models.ProductModel;
 
 public class ProductDaoImpl extends DBConnection implements IProductDao{
@@ -153,6 +154,54 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	@Override
+	public String findStoreIdByUserId(int userId) {
+		String sql = "SELECT Store.id FROM InfoUser, Store WHERE InfoUser.id=Store.userId and InfoUser.id=?";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String storeId = rs.getString("id");
+				return storeId;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<ProductModel> getAllByStoreId(int storeId) {
+		String sql = "SELECT * FROM Product, Store WHERE Store.id=Product.storeId and Store.id=?";
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				products.add(new ProductModel(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getBigDecimal(5),
+						rs.getInt(6),
+						rs.getInt(7),
+						rs.getInt(8),
+						rs.getInt(9),
+						rs.getInt(10),
+						rs.getDate(11),
+						rs.getDate(12)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
 	}
 
 }

@@ -10,7 +10,7 @@ public interface IInfoUserDao {
 	void edit(InfoUserModel infoUser);
 	void delete(int id);
 	InfoUserModel get(int id);
-	InfoUserModel getName(String name);
+	InfoUserModel getUserName(String username);
 	List<InfoUserModel> getAll();
 	List<InfoUserModel> search(String keyword);
 	InfoUserModel findById(int id);

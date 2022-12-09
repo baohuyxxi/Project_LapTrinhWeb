@@ -53,9 +53,8 @@ public class InfoUserServiceImpl implements IInfoUserService{
 	}
 
 	@Override
-	public InfoUserModel getName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public InfoUserModel getUserName(String username) {
+		return infoUserDao.getUserName(username);
 	}
 
 	@Override

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container" >
 	<c:url value="/vendor/store/edit" var="edit"></c:url>
 	<form role="form" action="${edit}" method="post">
 		<input value="${store.id }" hidden="" name="id">
@@ -27,5 +28,6 @@
 		<button type="submit" class="btn btn-default">Sửa</button>
 		<button type="reset" class="btn btn-primary">Hủy</button>
 	</form>
+	</div>
 </body>
 </html>

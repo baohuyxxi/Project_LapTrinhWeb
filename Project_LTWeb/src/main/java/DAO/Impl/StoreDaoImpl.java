@@ -120,7 +120,7 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 
 	@Override
 	public StoreModel findById(int id) {
-		String sql = "SELECT * FROM Store WHERE id = ? ";
+		String sql = "SELECT * FROM Store WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -129,7 +129,6 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 			while (rs.next()) {
 				StoreModel store = new StoreModel();
 				store.setId(Integer.parseInt(rs.getString("id")));
-				store.setUserId(Integer.parseInt(rs.getString("userId")));
 				store.setName(rs.getString("name"));
 				store.setSlug(rs.getString("slug"));
 				store.setAddress(rs.getString("address"));

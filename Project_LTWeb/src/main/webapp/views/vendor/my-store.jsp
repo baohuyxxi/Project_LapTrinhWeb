@@ -10,8 +10,6 @@
 	style="width: 100%">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>User ID</th>
 			<th>Tên cửa hàng</th>
 			<th>Tên miền</th>
 			<th>Địa chỉ</th>
@@ -21,10 +19,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${storeList}" var="store">	
+		<c:forEach items="${myStorelist }" var="store">	
 			<tr>
-				<td>${store.id }</td>
-				<td>${store.userId }</td>
 				<td>${store.name }</td>
 				<td>${store.slug }</td>
 				<td>${store.address }</td>

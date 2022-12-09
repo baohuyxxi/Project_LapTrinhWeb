@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Window;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,14 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Models.AccountModel;
+import Models.InfoUserModel;
 import Service.IAccountService;
+import Service.IInfoUserService;
 import Service.Impl.AccountServiceImpl;
+import Service.Impl.InfoUserServiceImpl;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/login1"})
 public class LoginController extends HttpServlet{
 
 	IAccountService accountService = new AccountServiceImpl();
+	IInfoUserService userService = new InfoUserServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/login.jsp");
@@ -33,30 +38,57 @@ public class LoginController extends HttpServlet{
 		String pass = req.getParameter("password");
 		AccountModel account= new AccountModel();
 		account = accountService.checkLogin(user, pass);
-		System.out.println(user);
-		System.out.println(pass);
+		
+		//xóa cookies tạm thời
+		//================
+        Cookie[] cookies = null;
+ 
+        // Get an array of Cookies associated with this domain
+        cookies = req.getCookies();
+ 
+        // Set response content type
+        resp.setContentType("text/html");
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                    cookies[i].setMaxAge(0);
+                    resp.addCookie(cookies[i]);
+                }
+            }
+		
+		//============
 		
 		if (account!=null) {
+			Cookie cookieRole = new Cookie("roleLogin",String.valueOf(account.getRole()));
+
+			resp.addCookie(cookieRole);
+			if(account.getRole()==1 || account.getRole()==2)
+			{
+				InfoUserModel infoUser= new InfoUserModel();
+				infoUser = userService.getUserName(account.getUsername());
+				Cookie cookieId = new Cookie("userIdLogin", String.valueOf(infoUser.getId()));
+				resp.addCookie(cookieId);
+				if(account.getRole()==2)
+				{
+					resp.sendRedirect(req.getContextPath() + "/vendor/store/my");
+					return;
+				}
+			}
+			else if(account.getRole()==2)
+			{
+				
+			}
+			
 			// khởi tạo cookie
-			Cookie cookie1 = new Cookie("usernameLogin", account.getUsername());
 			Cookie cookie2 = new Cookie("passwordLogin", account.getPassword());
 			Cookie cookie3 = new Cookie("idLogin",String.valueOf(account.getId()));
-			Cookie cookie4 = new Cookie("roleLogin",String.valueOf(account.getRole()));
 			// thiết lập thời gian tồn tại 30s của cookie
-			cookie1.setMaxAge(30 * 60 * 60);
-			cookie2.setMaxAge(30 * 60 * 60);
-			cookie3.setMaxAge(30 * 60 * 60);
-			cookie4.setMaxAge(30 * 60 * 60);
+
 			// thêm cookie vào response
-			resp.addCookie(cookie1);
 			resp.addCookie(cookie2);
 			resp.addCookie(cookie3);
-			resp.addCookie(cookie4);
 			 //chuyển sang trang HelloServlet
-			resp.sendRedirect(req.getContextPath() + "/vendor/store/list");
+			//resp.sendRedirect(req.getContextPath() + "/vendor/store/list");
 		} else {
-			// chuyển sang trang LoginServlet
-			// resp.sendRedirect("/login");
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}
 	}
