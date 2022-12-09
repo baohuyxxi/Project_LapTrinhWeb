@@ -67,7 +67,12 @@
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
+<<<<<<< HEAD
+		           	<a class="nav-link" href="../login">Đăng Xuất </a>
+                    </a>
+=======
 		           	<a class="nav-link" href="/signin">Sign out </a>
+>>>>>>> 4803f96a6164c0656d69e154332ab855acfc4ff8
                 </div>
             </div>
 
