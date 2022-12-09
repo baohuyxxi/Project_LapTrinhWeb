@@ -10,5 +10,6 @@ public interface IOrderDao {
 	OrdersModel get(int id);
 	List<OrdersModel> getAll();
 	List<OrdersModel> search(String keyword);
+	List<OrdersModel> getAllOfStore(int storeId);
 	OrdersModel findById(int id);
 }

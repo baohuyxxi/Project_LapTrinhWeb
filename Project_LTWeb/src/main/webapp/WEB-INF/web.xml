@@ -21,5 +21,13 @@
 		<filter-name>sitemesh</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<servlet>
+		<servlet-name>SendEmail</servlet-name>
+		<servlet-class>SendEmail</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>SendEmail</servlet-name>
+		<url-pattern>/SendEmail</url-pattern>
+	</servlet-mapping>
 </web-app>
