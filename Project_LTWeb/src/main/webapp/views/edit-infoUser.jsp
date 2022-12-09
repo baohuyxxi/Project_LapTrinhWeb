@@ -14,9 +14,6 @@
 		
 		<div class="form-group">
 			<c:url value="./upload?fname=${user.avatar }" var="imgUrl"></c:url>
-			<script>
-			window.alert(${imgUrl });
-			</script>
 			
 			<img class="img-fluid" width="100px" src="./upload/user/${imgUrl}" alt="">
 			<label>Ảnh đại diện</label> <input type="file" name="avatar"

@@ -2,6 +2,7 @@ package Models;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 public class ProductModel {
 	private int id;
@@ -14,6 +15,7 @@ public class ProductModel {
 	private int sold;
 	private int category_id;
 	private int storeId;
+	private List<SizeModel> sizemd;
 	private Date createdAt;
 	private Date updatedAt;
 	public ProductModel() {
@@ -107,6 +109,12 @@ public class ProductModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public List<SizeModel> getSizemd() {
+		return sizemd;
+	}
+	public void setSizemd(List<SizeModel> sizemd) {
+		this.sizemd = sizemd;
 	}
 	
  }
