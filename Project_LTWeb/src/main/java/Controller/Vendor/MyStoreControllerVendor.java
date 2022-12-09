@@ -13,13 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Models.StoreModel;
+import Service.IProductService;
 import Service.IStoreService;
+import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/vendor/store/my"})
 public class MyStoreControllerVendor extends HttpServlet{
 	IStoreService storeService = new StoreServiceImpl();
+	IProductService productService = new ProductServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userid = null;
@@ -37,8 +41,10 @@ public class MyStoreControllerVendor extends HttpServlet{
       } else {
     	  //
       }
+		
 		List<StoreModel> myStorelist = new ArrayList<StoreModel>();
-		StoreModel myStore = storeService.findById(Integer.parseInt(userid));
+		
+		StoreModel myStore = storeService.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
 		myStorelist.add(myStore);
 		req.setAttribute("myStorelist", myStorelist);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
