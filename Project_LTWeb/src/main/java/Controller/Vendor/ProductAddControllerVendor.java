@@ -2,7 +2,6 @@ package Controller.Vendor;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -19,15 +18,12 @@ import util.ConvertBigDecimal;
 @WebServlet(urlPatterns = {"/vendor/product/add"})
 public class ProductAddControllerVendor extends HttpServlet{
 	IProductService productService = new ProductServiceImpl();
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/add-product.jsp");
-		dispatcher.forward(req, resp);
-	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setContentType("text/html");
+		req.setCharacterEncoding("UTF-8");
 		
 		String id = null;
 
@@ -46,24 +42,22 @@ public class ProductAddControllerVendor extends HttpServlet{
 		}
 		
 		try {
-			resp.setContentType("text/html");
-			req.setCharacterEncoding("UTF-8");
-			
 			ProductModel product = new ProductModel();
 			product.setName(req.getParameter("name"));
 			product.setSlug(req.getParameter("slug"));
 			product.setDescription(req.getParameter("description"));
 			product.setPrice(ConvertBigDecimal.createBigDecimalFromString(req.getParameter("price")));
-			product.setPromotion(Integer.parseInt(req.getParameter("slug")));
+			product.setPromotion(Integer.parseInt(req.getParameter("promotion")));
 			product.setQuantity(Integer.parseInt(req.getParameter("quantity")));
-			product.setSold(Integer.parseInt(req.getParameter("sold")));
 			product.setCategory_id(Integer.parseInt(req.getParameter("category_id")));
 			product.setStoreId(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(id))));
 
 			productService.insert(product);
-			resp.sendRedirect(req.getContextPath() + "/vendor/product/list");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			resp.sendRedirect(req.getContextPath() + "/vendor/product");
 		}
 	}
 

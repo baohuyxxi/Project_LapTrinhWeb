@@ -13,32 +13,33 @@ import Models.SizeModel;
 public class SizeDaoImpl extends DBConnection implements ISizeDao{
 
 	@Override
-	public void insert(SizeModel size) {	// TODO Auto-generated method stub
-		String sql = "INSERT INTO Size(size,product_id) VALUES (?,?)";
+	public void insert(SizeModel size) {
+		String sql = "INSERT INTO Size(size, product_id, quantity) VALUES (?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, size.getSize());
+			ps.setString(1, size.getSize());
 			ps.setInt(2, size.getProduct_id());
+			ps.setInt(3, size.getQuantity());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	@Override
-	public void edit(SizeModel size) {
-		String sql = "UPDATE  Size SET size=?, product_id=? WHERE product_id=?";
+	public void edit(SizeModel size, String name_old) {
+		String sql = "UPDATE  Size SET size=?, quantity=? WHERE product_id=? and size=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, size.getSize());
-			ps.setInt(2, size.getProduct_id());
+			ps.setString(1, size.getSize());
+			ps.setInt(2, size.getQuantity());
 			ps.setInt(3, size.getProduct_id());
+			ps.setString(4, name_old);
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -49,56 +50,45 @@ public class SizeDaoImpl extends DBConnection implements ISizeDao{
 
 	@Override
 	public SizeModel get(int id) {
-		String sql = "SELECT * FROM Size WHERE product_id = ? ";
-		try {
-			Connection con = super.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				SizeModel size = new SizeModel();
-				size.setSize(rs.getInt("size"));
-				size.setProduct_id(rs.getInt("product_id"));
-				return size;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return null;
 	}
 
 	@Override
-	public List<SizeModel> getAll() {
-		List<SizeModel> users= new ArrayList<SizeModel>();
-		String sql = "SELECT * FROM Size";
+	public List<SizeModel> getAllProductId(int productId) {
+		List<SizeModel> sizes = new ArrayList<SizeModel>();
+		String sql = "SELECT * FROM Size WHERE product_id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, productId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				SizeModel size = new SizeModel();
-				size.setSize(rs.getInt("size"));
+				size.setSize(rs.getString("size"));
 				size.setProduct_id(rs.getInt("product_id"));
-				users.add(size);
+				size.setQuantity(rs.getInt("quantity"));
+				sizes.add(size);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return users;
+		return sizes;
 	}
 
 	@Override
-	public SizeModel findById(int id) {
-		String sql = "SELECT * FROM Size WHERE product_id = ? ";
+	public SizeModel findByIdAndSize(String product_id, String size_name) {
+		String sql = "SELECT * FROM Size WHERE product_id = ? and size=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setString(1, product_id);
+			ps.setString(2, size_name);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				SizeModel size = new SizeModel();
-				size.setSize(rs.getInt("size"));
+				size.setSize(rs.getString("size"));
 				size.setProduct_id(rs.getInt("product_id"));
+				size.setQuantity(rs.getInt("quantity"));
 				return size;
 			}
 		} catch (Exception e) {
@@ -123,6 +113,12 @@ public class SizeDaoImpl extends DBConnection implements ISizeDao{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<SizeModel> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

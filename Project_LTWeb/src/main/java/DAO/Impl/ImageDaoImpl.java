@@ -1,14 +1,12 @@
 package DAO.Impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import Connection.DBConnection;
-import DAO.IDeliveryDao;
 import DAO.IImageDao;
 import Models.ImagesModel;
 

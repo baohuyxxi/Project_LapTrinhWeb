@@ -9,14 +9,13 @@ import java.util.List;
 
 import Connection.DBConnection;
 import DAO.IProductDao;
-import Models.OrdersModel;
 import Models.ProductModel;
 
 public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void insert(ProductModel product) {
-		String sql = "INSERT INTO Product(name, slug, description, price, promotion, quantity, sold, category_id, storeId, createdAt, updatedAt) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO Product(name, slug, description, price, promotion, quantity, category_id, storeId, createdAt, updatedAt) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -26,11 +25,10 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
 			ps.setInt(6, product.getQuantity());
-			ps.setInt(7, product.getSold());
-			ps.setInt(8, product.getCategory_id());
-			ps.setInt(9, product.getStoreId());
-			ps.setDate(10,new Date(System.currentTimeMillis()));
-			ps.setDate(11, new Date(System.currentTimeMillis()));
+			ps.setInt(7, product.getCategory_id());
+			ps.setInt(8, product.getStoreId());
+			ps.setDate(9,new Date(System.currentTimeMillis()));
+			ps.setDate(10, new Date(System.currentTimeMillis()));
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,7 +38,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void edit(ProductModel product) {
-		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, quantity=?, sold=?, category_id=?, storeId=?, createdAt=?, updatedAt=? WHERE id=?";
+		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, quantity=?, category_id=?, updatedAt=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -50,12 +48,9 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
 			ps.setInt(6, product.getQuantity());
-			ps.setInt(7, product.getSold());
-			ps.setInt(8, product.getCategory_id());
-			ps.setInt(9, product.getStoreId());
-			ps.setDate(10,new Date(System.currentTimeMillis()));
-			ps.setDate(11, new Date(System.currentTimeMillis()));
-			ps.setInt(1, product.getId());
+			ps.setInt(7, product.getCategory_id());
+			ps.setDate(8, new Date(System.currentTimeMillis()));
+			ps.setInt(9, product.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
