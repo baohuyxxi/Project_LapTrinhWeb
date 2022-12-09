@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,6 @@
 <body>
 <body>
 	<form role="form" action="add" method="post">
-	<div class="form-group">
-			<label>ID User:</label> <input class="form-control"
-				placeholder="Please enter category Name" name="userId" />
-		</div>
 		<div class="form-group">
 			<label>Tên:</label> <input class="form-control"
 				placeholder="please enter category Name" name="name" />
@@ -32,4 +28,4 @@
 
 </body>
 </body>
-</html>
+</html> --%>

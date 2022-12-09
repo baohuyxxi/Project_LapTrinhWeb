@@ -132,8 +132,8 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
 			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductModel product = new ProductModel();
 				product.setId(Integer.parseInt(rs.getString("id")));
@@ -182,6 +182,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, storeId);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
