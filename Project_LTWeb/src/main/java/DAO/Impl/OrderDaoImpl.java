@@ -100,6 +100,7 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 		return orders;
 	}
 	
+	
 
 	@Override
 	public List<OrdersModel> search(String keyword) {
@@ -132,6 +133,38 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<OrdersModel> getAllOfStore(int storeId) {
+		List<OrdersModel> orders = new ArrayList<OrdersModel>();
+		//Lấy các đơn hàng của cửa hàng đó
+		String sql = "select Orders.id, InfoUser.name N'Tên người dùng', Delivery.name, \r\n"
+				+ "Orders.address, Orders.phone, Orders.status, Orders.total_price, Orders.createdAt, Orders.updatedAt\r\n"
+				+ "from Orders, InfoUser, Delivery \r\n"
+				+ "where Orders.StoreId = ? and Orders.UserId = InfoUser.id and Delivery.id = Orders.deliveryId";
+		
+		try {
+			
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, storeId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				orders.add(new OrdersModel(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getInt(6),
+						rs.getBigDecimal(7),
+						rs.getDate(8),
+						rs.getDate(9)));
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orders;
 	}
 
 }

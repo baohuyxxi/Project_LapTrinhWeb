@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
@@ -25,15 +24,16 @@ public class DeliveryEditController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-delivery.jsp");
+		String id = req.getParameter("id");
+		DeliveryModel delivery = deliveryService.findById(Integer.parseInt(id));
+		req.setAttribute("delivery", delivery);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/edit-delivery.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	private static BigDecimal createBigDecimalFromString(String string) {
 		BigDecimal value = null;
 		try {
-			int x =string.length()-3;
-			string =string.substring(0,x);
 			Number number = NumberFormat.getNumberInstance(new Locale("pt", "BR")).parse(string);
 			value = new BigDecimal(Integer.parseInt(number.toString()));
 		} catch (ParseException e) {

@@ -3,12 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addStore" >Tạo cửa hàng</button>
+								
+								
+<div class="container">
 <table id="example" class="table table-striped table-bordered"
 	style="width: 100%">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>User ID</th>
 			<th>Tên cửa hàng</th>
 			<th>Tên miền</th>
 			<th>Địa chỉ</th>
@@ -18,10 +19,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${storeList}" var="store">	
+		<c:forEach items="${myStorelist }" var="store">	
 			<tr>
-				<td>${store.id }</td>
-				<td>${store.userId }</td>
 				<td>${store.name }</td>
 				<td>${store.slug }</td>
 				<td>${store.address }</td>
@@ -35,6 +34,7 @@
 		</c:forEach>
 	</tbody>
 </table>
+</div>
 <script type="text/javascript">$(document).ready(function() {
     $('#example').DataTable();
 	});></script>

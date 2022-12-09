@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,23 @@ public class ProductAddControllerVendor extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String id = null;
+
+		Cookie cookie = null;
+		Cookie[] cookies = null;
+		cookies = req.getCookies();
+		resp.setContentType("text/html");
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				cookie = cookies[i];
+				if (cookie.getName().equals("userIdLogin"))
+					id = cookie.getValue();
+			}
+		} else {
+			//
+		}
+		
 		try {
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
@@ -40,10 +58,10 @@ public class ProductAddControllerVendor extends HttpServlet{
 			product.setQuantity(Integer.parseInt(req.getParameter("quantity")));
 			product.setSold(Integer.parseInt(req.getParameter("sold")));
 			product.setCategory_id(Integer.parseInt(req.getParameter("category_id")));
-			product.setStoreId(Integer.parseInt(req.getParameter("storeId")));
+			product.setStoreId(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(id))));
 
 			productService.insert(product);
-			resp.sendRedirect(req.getContextPath() + "/vendor/store/list");
+			resp.sendRedirect(req.getContextPath() + "/vendor/product/list");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
