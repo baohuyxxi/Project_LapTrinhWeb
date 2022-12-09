@@ -64,8 +64,9 @@ public class LoginController extends HttpServlet {
 				infoUser = userService.getUserName(account.getUsername());
 				Cookie cookieId = new Cookie("userIdLogin", String.valueOf(infoUser.getId()));
 				resp.addCookie(cookieId);
-				if (account.getRole() == 2) {
-					resp.sendRedirect(req.getContextPath() + "/vendor/product");
+				if(account.getRole()==2)
+				{
+					resp.sendRedirect(req.getContextPath() + "/vendor/store");
 					return;
 				}
 			} else if (account.getRole() == 2) {

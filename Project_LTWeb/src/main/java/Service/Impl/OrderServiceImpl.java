@@ -44,4 +44,9 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDao.findById(id);
 	}
 
+	@Override
+	public List<OrdersModel> getAllOfStore(int storeId) {
+		return orderDao.getAllOfStore(storeId);
+	}
+
 }
