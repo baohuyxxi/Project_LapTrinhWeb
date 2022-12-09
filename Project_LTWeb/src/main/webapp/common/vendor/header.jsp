@@ -44,7 +44,7 @@
                             <a class="nav-link" href="${link}/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Categories</a>
+                            <a class="nav-link" href="${link}/categories">Categories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">Product</a>
