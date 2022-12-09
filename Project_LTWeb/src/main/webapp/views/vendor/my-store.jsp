@@ -50,10 +50,6 @@
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label>User ID</label> <input name="userId" type="text"
-									class="form-control" required>
-							</div>
-							<div class="form-group">
 								<label>Tên cửa hàng</label> <input name="name" type="text"
 									class="form-control" required>
 							</div>

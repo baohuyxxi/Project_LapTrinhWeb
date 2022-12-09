@@ -22,7 +22,7 @@ import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/vendor/product/list"})
+@WebServlet(urlPatterns = {"/vendor/product"})
 public class ProductListControllerVendor extends HttpServlet{
 	IProductService productService = new ProductServiceImpl();
 	ICategoryService categoryService = new CategoryServiceImpl();

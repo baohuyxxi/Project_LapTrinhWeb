@@ -47,7 +47,7 @@
                             <a class="nav-link" href="${link}/about">Loại</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Sản phẩm</a>
+                            <a class="nav-link" href="${link }/product">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${link}/order">Đơn hàng</a>
