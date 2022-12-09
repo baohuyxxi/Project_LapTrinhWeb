@@ -13,7 +13,6 @@ public class DBConnection {
 	 private final String userID = "sa";
 	 private final String password = "123456";
 
-<<<<<<< HEAD
 	/*
 	 * private final String serverName = "VANTUAN"; private final String dbName =
 	 * "DB_Project_LTWeb"; private final String portNumber = "1433"; private final
@@ -21,21 +20,13 @@ public class DBConnection {
 	 * SINGLE INSTANCE private final String userID = "sa"; private final String
 	 * password = "12345";
 	 */
-=======
-//	private final String serverName = "VANTUAN";
-//	private final String dbName = "DB_Project_LTWeb";
-//	private final String portNumber = "1433";
-//	private final String instance = "";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
-//	private final String userID = "sa";
-//	private final String password = "12345";
->>>>>>> 6eaec962a909bb926550e7feb262e8f57f2983e5
 
-	 private final String serverName = "DESKTOP-8AGARKU";
-	 private final String dbName = "DB_Project_LTWeb";
-	 private final String portNumber = "1433";
-	 private final String instance = "HUY";
-	 private final String userID = "sa";
-	 private final String password = "huy";
+//	 private final String serverName = "DESKTOP-8AGARKU";
+//	 private final String dbName = "DB_Project_LTWeb";
+//	 private final String portNumber = "1433";
+//	 private final String instance = "HUY";
+//	 private final String userID = "sa";
+//	 private final String password = "huy";
 
 
 	public Connection getConnection() throws Exception {
