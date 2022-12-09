@@ -28,11 +28,14 @@
 				<td>${user.email }</td>
 				<td>${user.phone }</td>
 				<td>${user.address }</td>
-				<td>${user.avatar }</td>
+				<c:url value="/upload/user/${user.avatar}" var="imgAvt"></c:url>
+				<td>
+					<img height="150" width="200" src="${imgAvt }" />
+				</td>
 				<td>${user.createdAt }</td>
 				<td>${user.updatedAt }</td>
 				<td><a
-					href="<c:url value='/admin/infoUser/edit?id=${user.id }'/>"
+					href="<c:url value='/infoUser/edit?id=${user.id }'/>"
 					class="center">Sửa</a> | <a
 					href="<c:url value='/admin/infoUser/delete?id=${user.id }'/>"
 					class="center">Xóa</a>

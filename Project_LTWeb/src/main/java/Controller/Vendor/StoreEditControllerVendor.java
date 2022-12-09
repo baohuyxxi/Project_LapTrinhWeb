@@ -40,7 +40,7 @@ public class StoreEditControllerVendor extends HttpServlet{
 			store.setAddress(req.getParameter("address"));
 			
 			storeService.edit(store);
-			resp.sendRedirect(req.getContextPath() + "/vendor/store/list");
+			resp.sendRedirect(req.getContextPath() + "/vendor/store/my");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

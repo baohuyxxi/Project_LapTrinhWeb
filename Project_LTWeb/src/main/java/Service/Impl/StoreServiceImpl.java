@@ -52,7 +52,6 @@ public class StoreServiceImpl implements IStoreService{
 
 	@Override
 	public StoreModel findById(int id) {
-		
 		return storeDao.findById(id);
 	}
 

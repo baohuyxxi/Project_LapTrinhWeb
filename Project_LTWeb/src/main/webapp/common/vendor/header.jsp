@@ -26,7 +26,7 @@
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
@@ -41,29 +41,29 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/home">Home</a>
+                            <a class="nav-link" href="${link}/home">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Categories</a>
+                            <a class="nav-link" href="${link}/about">Loại</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Product</a>
+                            <a class="nav-link" href="${link }/product">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/order">Order</a>
+                            <a class="nav-link" href="${link}/order">Đơn hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Sale</a>
+                            <a class="nav-link" href="contact.html">Doanh thu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="${link}/contact">Liên hệ</a>
                         </li>
                         
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
-		           	<a class="nav-link" href="/signin">Sign out </a>
+		           	<a class="nav-link" href="/signin">Đăng Xuất </a>
                     </a>
                 </div>
             </div>
