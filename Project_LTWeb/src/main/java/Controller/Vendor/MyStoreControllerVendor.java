@@ -19,7 +19,7 @@ import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/vendor/store/my"})
+@WebServlet(urlPatterns = {"/vendor/store"})
 public class MyStoreControllerVendor extends HttpServlet{
 	IStoreService storeService = new StoreServiceImpl();
 	IProductService productService = new ProductServiceImpl();
@@ -41,13 +41,20 @@ public class MyStoreControllerVendor extends HttpServlet{
       } else {
     	  //
       }
+		try {
+			List<StoreModel> myStorelist = new ArrayList<StoreModel>();
+			
+			StoreModel myStore = storeService.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
+			myStorelist.add(myStore);
+			req.setAttribute("myStorelist", myStorelist);
+		}
+		catch (Exception e) {
+			// chưa có cửa hàng
+		}
+		finally {
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
+			dispatcher.forward(req, resp);
+		}
 		
-		List<StoreModel> myStorelist = new ArrayList<StoreModel>();
-		
-		StoreModel myStore = storeService.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
-		myStorelist.add(myStore);
-		req.setAttribute("myStorelist", myStorelist);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
-		dispatcher.forward(req, resp);
 	}
 }

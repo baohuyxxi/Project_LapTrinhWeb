@@ -63,7 +63,7 @@
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <i class="fa fa-user text-dark mr-3"></i>
-		           	<a class="nav-link" href="/signin">Đăng Xuất </a>
+		           	<a class="nav-link" href="../login">Đăng Xuất </a>
                     </a>
                 </div>
             </div>
