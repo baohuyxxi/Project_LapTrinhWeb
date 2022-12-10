@@ -2,12 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
+<div>
+	<button type="button" class="btn btn-primary"
+						data-toggle="modal" data-target="#addProduct">Thêm sản
+						phẩm</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#addSize">Thêm size</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#addImage">Thêm ảnh</button>
+</div>
 <table id="example" class="table table-striped table-bordered"
 	style="width: 100%">
 	<thead>
 		<tr>
-			<th>ID</th>
 			<th>Tên SP</th>
 			<th>Tên miền</th>
 			<th>Mô tả</th>
@@ -17,24 +24,12 @@
 			<th>SL đã bán</th>
 			<th>Mã Loại</th>
 			<th>Size</th>
-			<th>Ngày thêm</th>
-			<th>Ngày cập nhật</th>
-			<th><button type="button" class="btn btn-primary"
-					data-toggle="modal" data-target="#addProduct">Thêm sản
-					phẩm</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addSize">Thêm size</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addImage">Thêm ảnh</button></th>
-
-
-
+			<th>Chức năng</th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${productList}" var="product">
 			<tr>
-				<td>${product.id }</td>
 				<td>${product.name }</td>
 				<td>${product.slug }</td>
 				<td>${product.description }</td>
@@ -51,8 +46,6 @@
 				
 				
 				</td>
-				<td>${product.createdAt }</td>
-				<td>${product.updatedAt }</td>
 				<td><a class="btn btn-primary" type="button"
 					href="<c:url value='product/edit?id=${product.id }'/>">Sửa</a> <a
 					class="btn btn-danger" type="button"
@@ -140,6 +133,38 @@
 					<div class="form-group">
 						<label>Số lượng</label> <input name="quantity" type="text"
 							class="form-control" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal"
+						value="Trở lại"> <input type="submit"
+						class="btn btn-success" value="Thêm">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="addImage" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="image/add" method="post">
+				<div class="modal-header">
+					<h4 class="modal-title">Thêm ảnh</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Link ảnh</label> <input name="img" type="text"
+							class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Sản phẩm</label> <select name="product_id">
+							<c:forEach items="${productList }" var="product">
+								<option value="${product.id }">${product.name }</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="modal-footer">

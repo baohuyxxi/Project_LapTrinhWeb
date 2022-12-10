@@ -24,7 +24,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setString(3, product.getDescription());
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
-			ps.setInt(6, product.getQuantity());
+			ps.setInt(6, 0);
 			ps.setInt(7, product.getCategory_id());
 			ps.setInt(8, product.getStoreId());
 			ps.setDate(9,new Date(System.currentTimeMillis()));
@@ -38,7 +38,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void edit(ProductModel product) {
-		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, quantity=?, category_id=?, updatedAt=? WHERE id=?";
+		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, category_id=?, updatedAt=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -47,10 +47,9 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setString(3, product.getDescription());
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
-			ps.setInt(6, product.getQuantity());
-			ps.setInt(7, product.getCategory_id());
-			ps.setDate(8, new Date(System.currentTimeMillis()));
-			ps.setInt(9, product.getId());
+			ps.setInt(6, product.getCategory_id());
+			ps.setDate(7, new Date(System.currentTimeMillis()));
+			ps.setInt(8, product.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -230,5 +229,53 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			e.printStackTrace();
 		}
 		return products;
+	}
+	@Override
+	public ProductModel findByProductId(int id) {
+		String sql = "SELECT * FROM Product WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setName(rs.getString("name"));
+				product.setSlug(rs.getString("slug"));
+				product.setDescription(rs.getString("description"));
+				product.setPrice(rs.getBigDecimal("price"));
+				product.setPromotion(Integer.parseInt(rs.getString("promotion")));
+				product.setQuantity(Integer.parseInt(rs.getString("quantity")));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setStoreId(Integer.parseInt(rs.getString("storeId")));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				return product;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String findStoreIdByProductId(int productId) {
+		String sql = "SELECT storeId FROM Product WHERE Product.id=?";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, productId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String storeId = rs.getString("storeId");
+				return storeId;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

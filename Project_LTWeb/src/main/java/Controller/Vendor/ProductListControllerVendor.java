@@ -1,13 +1,11 @@
 package Controller.Vendor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +21,7 @@ import Service.Impl.CategoryServiceImpl;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.SizeServiceImpl;
 import Service.Impl.StoreServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/vendor/product" })
@@ -35,44 +34,37 @@ public class ProductListControllerVendor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String userid = null;
+		// tìm userID từ cookies
+		String userid = ProcessCookies.getUserIdFromCookies(req, resp);
 
-		Cookie cookie = null;
-		Cookie[] cookies = null;
-		cookies = req.getCookies();
-		resp.setContentType("text/html");
-		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				cookie = cookies[i];
-				if (cookie.getName().equals("userIdLogin"))
-					userid = cookie.getValue();
-			}
-		} else {
-			//
-		}
-		
 		if (userid == null) {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		} else {
-			//lấy product
-			String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
-			List<ProductModel> productList = productService.getAllByStoreId(Integer.parseInt(storeId));
-			
-			
-			for (ProductModel product : productList) {
-				//lấy size
-				List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
-				product.setSizemd(sizes);
-			}
-			
-			req.setAttribute("productList", productList);
-			//lấy category
-			List<CategoryModel> categoryList = categoryService.getAll();
-			req.setAttribute("categoryList", categoryList);
 
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
-			dispatcher.forward(req, resp);
+			try {
+				// lấy product
+				String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
+				List<ProductModel> productList = productService.getAllByStoreId(Integer.parseInt(storeId));
+
+				for (ProductModel product : productList) {
+					// lấy size
+					List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
+					product.setSizemd(sizes);
+				}
+
+				req.setAttribute("productList", productList);
+				// lấy category
+				List<CategoryModel> categoryList = categoryService.getAll();
+				req.setAttribute("categoryList", categoryList);
+
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
+				dispatcher.forward(req, resp);
+			} catch (Exception e) {
+
+			} finally {
+
+			}
 		}
 	}
 }

@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<button type="button" class="btn btn-primary" data-toggle="modal"
+
+<c:if test="${myStorelist==null }">
+	<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addStore" >Tạo cửa hàng</button>
+</c:if>
+<c:if test="${myStorelist!=null }">
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#addStore" hidden="hidden">Tạo cửa hàng</button>
+</c:if>
 								
 								
 <div class="container">
@@ -42,7 +49,7 @@
 <div id="addStore" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="add" method="post">
+					<form action="store/add" method="post">
 						<div class="modal-header">
 							<h4 class="modal-title">Tạo cửa hàng</h4>
 							<button type="button" class="close" data-dismiss="modal"

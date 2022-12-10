@@ -14,8 +14,10 @@ import Models.AccountModel;
 import Models.InfoUserModel;
 import Service.IAccountService;
 import Service.IInfoUserService;
+import Service.IProductService;
 import Service.Impl.AccountServiceImpl;
 import Service.Impl.InfoUserServiceImpl;
+import Service.Impl.ProductServiceImpl;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/login" })
@@ -23,6 +25,7 @@ public class LoginController extends HttpServlet {
 
 	IAccountService accountService = new AccountServiceImpl();
 	IInfoUserService userService = new InfoUserServiceImpl();
+	IProductService productService = new ProductServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -64,6 +67,7 @@ public class LoginController extends HttpServlet {
 				infoUser = userService.getUserName(account.getUsername());
 				Cookie cookieId = new Cookie("userIdLogin", String.valueOf(infoUser.getId()));
 				resp.addCookie(cookieId);
+				
 				if(account.getRole()==2)
 				{
 					resp.sendRedirect(req.getContextPath() + "/vendor/store");
