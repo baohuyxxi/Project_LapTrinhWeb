@@ -56,10 +56,11 @@
                             <a class="nav-link" href="${link}/contact">Liên hệ</a>
                         </li>
                         
+                        
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex"> 
-                	<a class="text-light" href="${link}/store" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i> </a>       
+                <div class="navbar align-self-center d-flex">       
+                    <a class="text-light" href="${link}/store" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i> </a>
 		           	<a class="nav-link" href="../login">Đăng Xuất </a>
                 </div>
             </div>

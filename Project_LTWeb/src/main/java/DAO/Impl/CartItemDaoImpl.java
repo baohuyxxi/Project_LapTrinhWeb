@@ -1,5 +1,6 @@
 package DAO.Impl;
 
+import java.nio.channels.NonReadableChannelException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,6 +129,30 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao {
 				cartItem.setCartId(rs.getInt("cartId"));
 				cartItem.setProductId(rs.getInt("productId"));	
 				cartItem.setCount(rs.getInt("complete"));
+				return cartItem;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+	@Override
+	public CartItemModel findCartAndCountProductID(int userId) {
+		String sql = "select CartItem.cartId, count(CartItem.cartId) as sl\r\n"
+				+ "from Cart, CartItem \r\n"
+				+ "where CartItem.cartId = Cart.id and Cart.userId = ?\r\n"
+				+ "Group by CartItem.cartId";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				CartItemModel cartItem = new CartItemModel(rs.getInt(1), rs.getInt(2));
 				return cartItem;
 			}
 		} catch (Exception e) {

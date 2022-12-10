@@ -35,9 +35,7 @@ public class MyStoreControllerVendor extends HttpServlet {
 			return;
 		} else {
 			try {
-
 				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
-
 				StoreModel myStore = storeService
 						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
 				myStorelist.add(myStore);

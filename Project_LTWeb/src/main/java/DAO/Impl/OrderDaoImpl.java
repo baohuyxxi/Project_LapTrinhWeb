@@ -1,5 +1,6 @@
 package DAO.Impl;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,20 +11,19 @@ import java.util.List;
 import Connection.DBConnection;
 import DAO.IOrderDao;
 import Models.OrdersModel;
+import util.ConvertBigDecimal;
 
 public class OrderDaoImpl extends DBConnection implements IOrderDao {
 
 	@Override
 	public void insert(OrdersModel order) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void edit(OrdersModel order) {
-		String sql = "UPDATE Orders SET deliveryId = ?, "
-				+ "address = ?, phone = ?"
-				+ ", status = ?, total_price = ?, "
+		String sql = "UPDATE Orders SET deliveryId = ?, " + "address = ?, phone = ?" + ", status = ?, total_price = ?, "
 				+ "updatedAt = ? WHERE id = ?";
 		try {
 			Connection conn = super.getConnection();
@@ -34,11 +34,11 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 			ps.setInt(4, order.getStatus());
 			ps.setBigDecimal(5, order.getTotal_price());
 			ps.setDate(6, new Date(System.currentTimeMillis()));
-			
+
 			ps.setInt(7, order.getId());
-			
+
 			System.out.println(order.getId());
-			
+
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,23 +84,14 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				orders.add(new OrdersModel(rs.getInt(1),
-						rs.getString(2),
-						rs.getString(3),
-						rs.getString(4),
-						rs.getString(5),
-						rs.getInt(6),
-						rs.getBigDecimal(7),
-						rs.getDate(8),
-						rs.getDate(9)));
+				orders.add(new OrdersModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getBigDecimal(7), rs.getDate(8), rs.getDate(9)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return orders;
 	}
-	
-	
 
 	@Override
 	public List<OrdersModel> search(String keyword) {
@@ -117,15 +108,8 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				OrdersModel order = new OrdersModel(rs.getInt(1), 
-						rs.getInt(2), 
-						rs.getInt(3), 
-						rs.getInt(4), 
-						rs.getString(5), 
-						rs.getString(6), 
-						rs.getInt(7), 
-						rs.getBigDecimal(8), 
-						rs.getDate(9), 
+				OrdersModel order = new OrdersModel(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5), rs.getString(6), rs.getInt(7), rs.getBigDecimal(8), rs.getDate(9),
 						rs.getDate(10));
 				return order;
 			}
@@ -138,33 +122,46 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 	@Override
 	public List<OrdersModel> getAllOfStore(int storeId) {
 		List<OrdersModel> orders = new ArrayList<OrdersModel>();
-		//Lấy các đơn hàng của cửa hàng đó
+		// Lấy các đơn hàng của cửa hàng đó
 		String sql = "select Orders.id, InfoUser.name N'Tên người dùng', Delivery.name, \r\n"
 				+ "Orders.address, Orders.phone, Orders.status, Orders.total_price, Orders.createdAt, Orders.updatedAt\r\n"
 				+ "from Orders, InfoUser, Delivery \r\n"
 				+ "where Orders.StoreId = ? and Orders.UserId = InfoUser.id and Delivery.id = Orders.deliveryId";
-		
+
 		try {
-			
+
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, storeId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				orders.add(new OrdersModel(rs.getInt(1),
-						rs.getString(2),
-						rs.getString(3),
-						rs.getString(4),
-						rs.getString(5),
-						rs.getInt(6),
-						rs.getBigDecimal(7),
-						rs.getDate(8),
-						rs.getDate(9)));
-			}			
+				orders.add(new OrdersModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getBigDecimal(7), rs.getDate(8), rs.getDate(9)));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return orders;
+	}
+
+	@Override
+	public BigDecimal totalSales(int storeId) {
+		String sql = "select sum(total_price) as total from orders where orders.storeId = ?";
+
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, storeId);
+			ResultSet rs = ps.executeQuery();
+			BigDecimal aBigDecimal=null;
+			while (rs.next()) {
+				aBigDecimal = rs.getBigDecimal("total");
+			}
+			return aBigDecimal;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
