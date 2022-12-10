@@ -26,8 +26,9 @@
 							<a class="text-dark" href="#">Thông tin sản phẩm</a>
 						</h3>
 						<div class="mb-1 text-muted">Nov 12</div>
-						<p class="card-text mb-auto">This is a wider card with
-							supporting text below as a natural lead-in to additional content.</p>
+						<div class="mb-2 text-uppercase">${product.name }</div>
+						<p class="card-text mb-auto">${product.description}</p>
+						<p class="card-text mb-auto">Số lượng đã bán: ${product.sold}</p>
 					</div>
 					<img class="card-img-right flex-auto d-none d-md-block"
 						src="<c:url value="/assets/img/banner_img_01.jpg"/>"

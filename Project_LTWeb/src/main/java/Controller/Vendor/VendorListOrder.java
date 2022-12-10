@@ -16,34 +16,21 @@ import Service.IOrderService;
 import Service.IProductService;
 import Service.Impl.OrderServiceImpl;
 import Service.Impl.ProductServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(value = {"/vendor/order"})
 public class VendorListOrder extends HttpServlet{
 	
 	IOrderService orderService = new OrderServiceImpl();
-	IProductService productService = new ProductServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String userid = null;
-		
-		Cookie cookie = null;
-		Cookie[] cookies = null;
-		cookies = req.getCookies();
-		resp.setContentType("text/html");
-		if (cookies != null) {
-          for (int i = 0; i < cookies.length; i++) {
-              cookie = cookies[i];
-              if(cookie.getName().equals("userIdLogin"))
-            	  userid=cookie.getValue();
-          }
-      } else {
-    	  //
-      }
+		//String userid = ProcessCookies.getUserIdFromCookies(req, resp);
+		String storeid = ProcessCookies.getStoreIdFromCookies(req, resp);
 		
 		
-		List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
+		List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid));
 		req.setAttribute("orderList", orderList);
 		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/order.jsp"); 
 		rd.forward(req, resp);

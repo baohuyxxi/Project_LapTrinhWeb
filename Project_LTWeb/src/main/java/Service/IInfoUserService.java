@@ -13,4 +13,5 @@ public interface IInfoUserService {
 	List<InfoUserModel> getAll();
 	List<InfoUserModel> search(String keyword);
 	InfoUserModel findById(int id);
+	public String findUserIdByStoreId(int storeid);
 }
