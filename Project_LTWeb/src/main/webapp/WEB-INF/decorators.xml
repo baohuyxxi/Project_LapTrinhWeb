@@ -3,6 +3,7 @@
 	<excludes>
 		<pattern>/api*</pattern>
 		<pattern>/login*</pattern>
+		<pattern>/info*</pattern>
 	</excludes>
 	<!-- apply Sitemesh default template -->
 	<decorator name="admin" page="admin.jsp">
