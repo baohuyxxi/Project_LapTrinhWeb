@@ -87,4 +87,24 @@ public class ProductServiceImpl implements IProductService{
 		return null;
 	}
 
+	@Override
+	public ProductModel findByProductId(int id) {
+		return productDao.findByProductId(id);
+	}
+
+	@Override
+	public String findStoreIdByProductId(int productId) {
+		return productDao.findStoreIdByProductId(productId);
+	}
+
+	@Override
+	public ProductModel findTop1Product(int storeId) {
+		return productDao.findTop1Product(storeId);
+	}
+
+	@Override
+	public ProductModel findMinSoldProduct(int storeId) {
+		// TODO Auto-generated method stub
+		return productDao.findMinSoldProduct(storeId);
+	}
 }

@@ -13,9 +13,16 @@ public interface IProductService {
 	List<ProductModel> getAll();
 	List<ProductModel> search(String keyword);
 	ProductModel findById(int id);
+	ProductModel findTop1Product(int storeId);
 	String findStoreIdByUserId(int userId);
 	List<ProductModel> getAllByStoreId(int storeId);
 	List<ProductModel> proTop3();
+<<<<<<< HEAD
 	List<ProductModel> findIdbyStore(int storeId);
 	List<ProductModel> findProByAllId(int valueId, String columnId);
+=======
+	ProductModel findByProductId(int id);
+	String findStoreIdByProductId(int productId);
+	ProductModel findMinSoldProduct(int storeId);
+>>>>>>> 62a9bcdf696291440860afcb5ae33706dd54c579
 }

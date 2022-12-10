@@ -24,7 +24,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setString(3, product.getDescription());
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
-			ps.setInt(6, product.getQuantity());
+			ps.setInt(6, 0);
 			ps.setInt(7, product.getCategory_id());
 			ps.setInt(8, product.getStoreId());
 			ps.setDate(9,new Date(System.currentTimeMillis()));
@@ -38,7 +38,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void edit(ProductModel product) {
-		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, quantity=?, category_id=?, updatedAt=? WHERE id=?";
+		String sql = "UPDATE Product SET name=?, slug=?, description=?, price=?, promotion=?, category_id=?, updatedAt=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -47,10 +47,9 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ps.setString(3, product.getDescription());
 			ps.setBigDecimal(4, product.getPrice());
 			ps.setInt(5, product.getPromotion());
-			ps.setInt(6, product.getQuantity());
-			ps.setInt(7, product.getCategory_id());
-			ps.setDate(8, new Date(System.currentTimeMillis()));
-			ps.setInt(9, product.getId());
+			ps.setInt(6, product.getCategory_id());
+			ps.setDate(7, new Date(System.currentTimeMillis()));
+			ps.setInt(8, product.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,7 +59,25 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM Product WHERE id = ?";
+		String sql = "DELETE Images WHERE product_id = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		sql = "DELETE Size WHERE product_id = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		sql = "DELETE Product WHERE id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -247,6 +264,14 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
+	@Override
+	public ProductModel findByProductId(int id) {
+		String sql = "SELECT * FROM Product WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductModel product = new ProductModel();
 				product.setId(Integer.parseInt(rs.getString("id")));
@@ -267,6 +292,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				
 				
 				products.add(product);
+				return product;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -274,4 +300,85 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		return products;
 	}
 
+		return null;
+	}
+	
+	@Override
+	public String findStoreIdByProductId(int productId) {
+		String sql = "SELECT storeId FROM Product WHERE Product.id=?";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, productId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				String storeId = rs.getString("storeId");
+				return storeId;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ProductModel findTop1Product(int storeId) {
+		String sql = "select Top(1) Product.id, Product.name, Product.description, \r\n"
+				+ "Product.sold, Product.category_id , Images.img, Product.updatedAt\r\n"
+				+ "from product, Images \r\n"
+				+ "where storeId = ? and Product.id = Images.product_id \r\n"
+				+ "order by sold DESC";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, storeId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setName(rs.getString("name"));
+				product.setDescription(rs.getString("description"));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setImg(rs.getString("img"));
+				product.setUpdatedAt(new Date(System.currentTimeMillis()));
+				return product;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public ProductModel findMinSoldProduct(int storeId) {
+		String sql = "select Top(1) Product.id, Product.name, Product.description, \r\n"
+				+ "Product.sold, Product.category_id , Images.img, Product.updatedAt\r\n"
+				+ "from product, Images \r\n"
+				+ "where storeId = ? and Product.id = Images.product_id \r\n"
+				+ "order by sold ASC";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, storeId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setName(rs.getString("name"));
+				product.setDescription(rs.getString("description"));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setImg(rs.getString("img"));
+				product.setUpdatedAt(new Date(System.currentTimeMillis()));
+				return product;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

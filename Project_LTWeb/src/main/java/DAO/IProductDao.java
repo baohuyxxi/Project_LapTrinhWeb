@@ -13,8 +13,11 @@ public interface IProductDao {
 	List<ProductModel> getAll();
 	List<ProductModel> search(String keyword);
 	ProductModel findById(int id);
+	ProductModel findTop1Product(int storeId);
 	String findStoreIdByUserId(int userId);
 	List<ProductModel> findProByAllId(int storeId, String columnId);
 	List<ProductModel> proTop3();
 	List<ProductModel> getAllByStoreId(int storeId);
+	ProductModel findByProductId(int id);
+	String findStoreIdByProductId(int productId);
 }

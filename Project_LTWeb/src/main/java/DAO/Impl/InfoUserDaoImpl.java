@@ -164,5 +164,22 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 		}
 		return null;
 	}
+	@Override
+	public String findUserIdByStoreId(int storeid) {
+		String sql = "SELECT InfoUser.id FROM InfoUser, Store WHERE InfoUser.id = Store.userId and Store.id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, storeid);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

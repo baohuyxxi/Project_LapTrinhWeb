@@ -1,14 +1,10 @@
-package DAO;
+package Service;
 
 import java.util.List;
 
 import Models.ImagesModel;
-import Models.SizeModel;
 
-public interface IImageDao {
-
-
-
+public interface IImageService {
 	void edit(ImagesModel image);
 
 	void delete(int id);
@@ -26,5 +22,4 @@ public interface IImageDao {
 	void insert(ImagesModel image);
 	
 	List<ImagesModel> getAllProductId(int productId);
-
 }

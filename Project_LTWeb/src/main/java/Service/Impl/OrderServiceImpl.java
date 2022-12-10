@@ -1,5 +1,6 @@
 package Service.Impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import DAO.IOrderDao;
@@ -47,6 +48,12 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public List<OrdersModel> getAllOfStore(int storeId) {
 		return orderDao.getAllOfStore(storeId);
+	}
+
+	@Override
+	public BigDecimal totalSales(int storeId) {
+		// TODO Auto-generated method stub
+		return orderDao.totalSales(storeId);
 	}
 
 }

@@ -17,44 +17,36 @@ import Service.IProductService;
 import Service.IStoreService;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/vendor/store"})
-public class MyStoreControllerVendor extends HttpServlet{
+@WebServlet(urlPatterns = { "/vendor/store" })
+public class MyStoreControllerVendor extends HttpServlet {
 	IStoreService storeService = new StoreServiceImpl();
 	IProductService productService = new ProductServiceImpl();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String userid = null;
-		
-		Cookie cookie = null;
-		Cookie[] cookies = null;
-		cookies = req.getCookies();
-		resp.setContentType("text/html");
-		if (cookies != null) {
-          for (int i = 0; i < cookies.length; i++) {
-              cookie = cookies[i];
-              if(cookie.getName().equals("userIdLogin"))
-            	  userid=cookie.getValue();
-          }
-      } else {
-    	  //
-      }
-		try {
-			List<StoreModel> myStorelist = new ArrayList<StoreModel>();
-			
-			StoreModel myStore = storeService.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
-			myStorelist.add(myStore);
-			req.setAttribute("myStorelist", myStorelist);
+
+		String userid = ProcessCookies.getUserIdFromCookies(req, resp);
+
+		if (userid == null) {
+			resp.sendRedirect(req.getContextPath() + "/login");
+			return;
+		} else {
+			try {
+				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
+				StoreModel myStore = storeService
+						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
+				myStorelist.add(myStore);
+				req.setAttribute("myStorelist", myStorelist);
+			} catch (Exception e) {
+				// chưa có cửa hàng
+			} finally {
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
+				dispatcher.forward(req, resp);
+			}
 		}
-		catch (Exception e) {
-			// chưa có cửa hàng
-		}
-		finally {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
-			dispatcher.forward(req, resp);
-		}
-		
+
 	}
 }

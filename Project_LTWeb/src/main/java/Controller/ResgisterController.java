@@ -27,7 +27,7 @@ import util.Constant;
 
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/register/create"})
+@WebServlet(urlPatterns = {"/register/add"})
 public class ResgisterController extends HttpServlet{
 
 	IInfoUserService userService = new InfoUserServiceImpl();
@@ -88,11 +88,13 @@ public class ResgisterController extends HttpServlet{
 			userService.insert(user);
 			accountService.insert(account);
 			
-			resp.sendRedirect(req.getContextPath() + "/admin/infouser/list");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();//dang ki khong thanh cong
+		}
+		finally {
+			resp.sendRedirect(req.getContextPath() + "/login");
 		}
 	}
 

@@ -14,8 +14,11 @@ import Models.AccountModel;
 import Models.InfoUserModel;
 import Service.IAccountService;
 import Service.IInfoUserService;
+import Service.IProductService;
 import Service.Impl.AccountServiceImpl;
 import Service.Impl.InfoUserServiceImpl;
+import Service.Impl.ProductServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/login" })
@@ -23,6 +26,7 @@ public class LoginController extends HttpServlet {
 
 	IAccountService accountService = new AccountServiceImpl();
 	IInfoUserService userService = new InfoUserServiceImpl();
+	IProductService productService = new ProductServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -56,20 +60,20 @@ public class LoginController extends HttpServlet {
 
 		try {
 		if (account != null) {
-			Cookie cookieRole = new Cookie("roleLogin", String.valueOf(account.getRole()));
-
-			resp.addCookie(cookieRole);
+			ProcessCookies.addCookieForCookies(req, resp, "roleLogin", String.valueOf(account.getRole()));
 			if (account.getRole() == 1 || account.getRole() == 2) {
 				InfoUserModel infoUser = new InfoUserModel();
 				infoUser = userService.getUserName(account.getUsername());
-				Cookie cookieId = new Cookie("userIdLogin", String.valueOf(infoUser.getId()));
-				resp.addCookie(cookieId);
+				ProcessCookies.addCookieForCookies(req, resp, "userIdLogin", String.valueOf(infoUser.getId()));
+				String storeId = productService.findStoreIdByUserId(infoUser.getId());
+				ProcessCookies.addCookieForCookies(req, resp, "storeIdLogin", String.valueOf(storeId));
+				
 				if(account.getRole()==2)
 				{
-					resp.sendRedirect(req.getContextPath() + "/vendor/store");
-				if (account.getRole() == 2) {
-					resp.sendRedirect(req.getContextPath() + "/vendor/product");
+					resp.sendRedirect(req.getContextPath() + "/vendor/home");
 					return;
+				} else if(account.getRole() == 1) {
+					resp.sendRedirect(req.getContextPath() + "/user/home");
 				}
 			} else if (account.getRole() == 2) {
 				resp.sendRedirect(req.getContextPath() + "/login");
