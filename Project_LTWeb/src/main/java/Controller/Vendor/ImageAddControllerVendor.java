@@ -28,7 +28,6 @@ public class ImageAddControllerVendor extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 
 			ImagesModel img = new ImagesModel();
-			img.setImage_id(Integer.parseInt(req.getParameter("image_id")));
 			img.setImg(req.getParameter("img"));
 			img.setProduct_id(Integer.parseInt(req.getParameter("product_id")));
 
