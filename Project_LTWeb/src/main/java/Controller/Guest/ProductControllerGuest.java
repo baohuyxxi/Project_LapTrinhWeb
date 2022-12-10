@@ -15,7 +15,7 @@ import Service.IProductService;
 import Service.Impl.ProductServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/zay/product"})
+@WebServlet(urlPatterns = {"/product"})
 public class ProductControllerGuest extends HttpServlet{
 
 	IProductService productService = new ProductServiceImpl();
