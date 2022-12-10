@@ -5,10 +5,21 @@ public class CartItemModel {
 	private int cartId;
 	private int productId;
 	private int count;
+	
+	//Biến phụ
+	private int countCartId;
+	
 	public CartItemModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public CartItemModel(int cartId, int countCartId) {
+		super();
+		this.cartId = cartId;
+		this.countCartId = countCartId;
+	}
+
 	public CartItemModel(int cartId, int productId, int count) {
 		super();
 		this.cartId = cartId;
@@ -38,6 +49,12 @@ public class CartItemModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getCountCartId() {
+		return countCartId;
+	}
+	public void setCountCartId(int countCartId) {
+		this.countCartId = countCartId;
 	}
 	
 	
