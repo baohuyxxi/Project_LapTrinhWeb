@@ -9,6 +9,7 @@ import java.util.List;
 import Connection.DBConnection;
 import DAO.IImageDao;
 import Models.ImagesModel;
+import Models.SizeModel;
 
 
 public class ImageDaoImpl extends DBConnection implements IImageDao{
@@ -129,5 +130,28 @@ public class ImageDaoImpl extends DBConnection implements IImageDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+
+	@Override
+	public List<ImagesModel> getAllProductId(int productId) {
+		List<ImagesModel> images= new ArrayList<ImagesModel>();
+		String sql = "SELECT * FROM Images WHERE Images.product_id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, productId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ImagesModel image = new ImagesModel();
+				image.setImage_id(rs.getInt("image_id"));
+				image.setProduct_id(rs.getInt("product_id"));
+				image.setImg(rs.getString("img"));			
+				images.add(image);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return images;
 	}
 }

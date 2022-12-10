@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Models.CategoryModel;
+import Models.ImagesModel;
 import Models.ProductModel;
 import Models.SizeModel;
 import Service.ICategoryService;
+import Service.IImageService;
 import Service.IProductService;
 import Service.ISizeService;
 import Service.IStoreService;
 import Service.Impl.CategoryServiceImpl;
+import Service.Impl.ImageServiceImpl;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.SizeServiceImpl;
 import Service.Impl.StoreServiceImpl;
@@ -30,6 +33,7 @@ public class ProductListControllerVendor extends HttpServlet {
 	ICategoryService categoryService = new CategoryServiceImpl();
 	IStoreService storeService = new StoreServiceImpl();
 	ISizeService sizeService = new SizeServiceImpl();
+	IImageService imageService = new ImageServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,6 +55,9 @@ public class ProductListControllerVendor extends HttpServlet {
 					// lấy size
 					List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
 					product.setSizemd(sizes);
+					
+					List<ImagesModel> images = imageService.getAllProductId(product.getId());
+					product.setImgmd(images);
 				}
 
 				req.setAttribute("productList", productList);
@@ -58,12 +65,12 @@ public class ProductListControllerVendor extends HttpServlet {
 				List<CategoryModel> categoryList = categoryService.getAll();
 				req.setAttribute("categoryList", categoryList);
 
-				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
-				dispatcher.forward(req, resp);
 			} catch (Exception e) {
 
 			} finally {
 
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
+				dispatcher.forward(req, resp);
 			}
 		}
 	}

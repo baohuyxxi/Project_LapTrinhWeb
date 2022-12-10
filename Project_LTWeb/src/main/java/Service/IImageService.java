@@ -20,4 +20,6 @@ public interface IImageService {
 	ImagesModel findById(int id);
 
 	void insert(ImagesModel image);
+	
+	List<ImagesModel> getAllProductId(int productId);
 }

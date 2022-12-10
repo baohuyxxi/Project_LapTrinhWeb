@@ -16,6 +16,7 @@ public class ProductModel {
 	private int category_id;
 	private int storeId;
 	private List<SizeModel> sizemd;
+	private List<ImagesModel> imgmd;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -126,5 +127,11 @@ public class ProductModel {
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public List<ImagesModel> getImgmd() {
+		return imgmd;
+	}
+	public void setImgmd(List<ImagesModel> imgmd) {
+		this.imgmd = imgmd;
 	}
  }
