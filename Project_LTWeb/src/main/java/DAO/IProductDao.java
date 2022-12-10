@@ -20,4 +20,5 @@ public interface IProductDao {
 	List<ProductModel> getAllByStoreId(int storeId);
 	ProductModel findByProductId(int id);
 	String findStoreIdByProductId(int productId);
+	ProductModel findMinSoldProduct(int storeId);
 }

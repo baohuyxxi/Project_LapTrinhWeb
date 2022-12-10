@@ -140,6 +140,7 @@ public class ProductModel {
 	}
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
 	public List<ImagesModel> getImgmd() {
 		return imgmd;
 	}
