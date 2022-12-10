@@ -57,4 +57,9 @@ public class ImageServiceImpl implements IImageService{
 		
 	}
 
+	@Override
+	public List<ImagesModel> getAllProductId(int productId) {
+		return imageDao.getAllProductId(productId);
+	}
+
 }

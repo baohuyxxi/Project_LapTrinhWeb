@@ -61,7 +61,7 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href='./register/create'>
+						<a class="txt2" href='./register/add'>
 							Create your Account
 							<i class="fa fa-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
