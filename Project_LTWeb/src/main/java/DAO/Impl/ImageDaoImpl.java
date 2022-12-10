@@ -15,14 +15,13 @@ public class ImageDaoImpl extends DBConnection implements IImageDao{
 	@Override
 	public void insert(ImagesModel image) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO Images(image_id,img,product_id) VALUES (?,?,?)";
+		String sql = "INSERT INTO Images(img, product_id) VALUES (?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, image.getImage_id());
-			ps.setString(2, image.getImg());
-			ps.setInt(3, image.getProduct_id());
+			ps.setString(1, image.getImg());
+			ps.setInt(2, image.getProduct_id());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {

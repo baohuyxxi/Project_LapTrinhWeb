@@ -1,11 +1,10 @@
-package DAO;
-
-
+package Service;
 
 import java.util.List;
 
 import Models.CartItemModel;
-public interface ICartItemDao {
+
+public interface ICartItemService {
 	void insert(CartItemModel cartItem);
 
 	void edit(CartItemModel cartItem);
@@ -23,5 +22,4 @@ public interface ICartItemDao {
 	List<CartItemModel> getAll();
 	
 	CartItemModel findCartAndCountProductID(int userId);
-
 }

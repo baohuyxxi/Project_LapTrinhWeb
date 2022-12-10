@@ -59,7 +59,25 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM Product WHERE id = ?";
+		String sql = "DELETE Images WHERE product_id = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		sql = "DELETE Size WHERE product_id = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		sql = "DELETE Product WHERE id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

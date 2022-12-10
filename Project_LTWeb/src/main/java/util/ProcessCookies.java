@@ -5,6 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ProcessCookies{
+	public static void addCookieForCookies(HttpServletRequest req, HttpServletResponse resp, String name, String value)
+	{
+		Cookie cookie = new Cookie(name, value);
+		resp.addCookie(cookie);
+	}
+	
 	public static String getUserIdFromCookies(HttpServletRequest req, HttpServletResponse resp)
 	{
 		String userId = null;
