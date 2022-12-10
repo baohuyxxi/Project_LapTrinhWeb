@@ -90,4 +90,9 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.findTop1Product(storeId);
 	}
 
+	@Override
+	public ProductModel findMinSoldProduct(int storeId) {
+		// TODO Auto-generated method stub
+		return productDao.findMinSoldProduct(storeId);
+	}
 }

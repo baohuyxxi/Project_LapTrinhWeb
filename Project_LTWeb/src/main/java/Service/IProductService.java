@@ -19,4 +19,5 @@ public interface IProductService {
 	List<ProductModel> proTop3();
 	ProductModel findByProductId(int id);
 	String findStoreIdByProductId(int productId);
+	ProductModel findMinSoldProduct(int storeId);
 }
