@@ -40,8 +40,7 @@ public class StoreAddController extends HttpServlet {
 			
 			String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
 			if (storeId != null) {
-				Cookie cookieStoreId = new Cookie("storeIdLogin", String.valueOf(storeId));
-				resp.addCookie(cookieStoreId);
+				ProcessCookies.addCookieForCookies(req, resp, "storeIdLogin", String.valueOf(storeId));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

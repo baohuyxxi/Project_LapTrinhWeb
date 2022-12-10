@@ -36,18 +36,12 @@ public class MyStoreControllerVendor extends HttpServlet {
 		} else {
 			try {
 
-				String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
-				if (storeId != null) {
-					Cookie cookieStoreId = new Cookie("storeIdLogin", String.valueOf(storeId));
-					resp.addCookie(cookieStoreId);
+				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
 
-					List<StoreModel> myStorelist = new ArrayList<StoreModel>();
-
-					StoreModel myStore = storeService
-							.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
-					myStorelist.add(myStore);
-					req.setAttribute("myStorelist", myStorelist);
-				}
+				StoreModel myStore = storeService
+						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
+				myStorelist.add(myStore);
+				req.setAttribute("myStorelist", myStorelist);
 			} catch (Exception e) {
 				// chưa có cửa hàng
 			} finally {
