@@ -59,8 +59,8 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex"> 
-                	<a class="text-light" href="${link}/store" target="_blank" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i></a>       
-		           	<a class="nav-link" href="../login1">Đăng Xuất </a>
+                	<a class="text-light" href="${link}/store" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i> </a>       
+		           	<a class="nav-link" href="../login">Đăng Xuất </a>
                 </div>
             </div>
 

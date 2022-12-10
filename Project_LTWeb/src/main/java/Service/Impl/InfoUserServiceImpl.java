@@ -6,7 +6,6 @@ import java.util.List;
 
 import DAO.IInfoUserDao;
 import DAO.Impl.InfoUserDaoImpl;
-import Models.AccountModel;
 import Models.InfoUserModel;
 import Service.IInfoUserService;
 
@@ -71,6 +70,11 @@ public class InfoUserServiceImpl implements IInfoUserService{
 	@Override
 	public InfoUserModel findById(int id) {
 		return infoUserDao.findById(id);
+	}
+
+	@Override
+	public String findUserIdByStoreId(int storeid) {
+		return infoUserDao.findUserIdByStoreId(storeid);
 	}
 
 }

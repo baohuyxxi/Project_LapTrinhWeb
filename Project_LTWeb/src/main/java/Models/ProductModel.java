@@ -18,6 +18,10 @@ public class ProductModel {
 	private List<SizeModel> sizemd;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
+	private String img;
+	
 	public ProductModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -117,4 +121,10 @@ public class ProductModel {
 		this.sizemd = sizemd;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
  }

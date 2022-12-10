@@ -17,7 +17,6 @@ public class HomeController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd =  req.getRequestDispatcher("/views/home.jsp"); 
-
 		rd.forward(req, resp);
 	}
 

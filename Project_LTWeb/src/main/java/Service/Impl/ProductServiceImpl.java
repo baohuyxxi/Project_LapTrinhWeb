@@ -21,7 +21,10 @@ public class ProductServiceImpl implements IProductService{
 		productDao.edit(product);
 		
 	}
-
+	
+	
+	
+	
 	@Override
 	public void delete(int id) {
 		productDao.delete(id);
@@ -44,6 +47,12 @@ public class ProductServiceImpl implements IProductService{
 	public List<ProductModel> getAll() {
 		return productDao.getAll();
 	}
+	
+	@Override
+	public List<ProductModel> proTop3() {
+		return productDao.proTop3();
+	}
+
 
 	@Override
 	public List<ProductModel> search(String keyword) {
@@ -64,6 +73,16 @@ public class ProductServiceImpl implements IProductService{
 	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
 		return productDao.getAllByStoreId(storeId);
+	}
+
+	@Override
+	public ProductModel findByProductId(int id) {
+		return productDao.findByProductId(id);
+	}
+
+	@Override
+	public String findStoreIdByProductId(int productId) {
+		return productDao.findStoreIdByProductId(productId);
 	}
 
 }
