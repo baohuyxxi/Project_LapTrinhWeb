@@ -21,7 +21,8 @@ public class ProductModel {
 	
 	
 	private String img;
-	
+	private String CategoryName;
+	private String storeName;
 	public ProductModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -126,5 +127,17 @@ public class ProductModel {
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public String getCategoryName() {
+		return CategoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		CategoryName = categoryName;
+	}
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
 	}
  }

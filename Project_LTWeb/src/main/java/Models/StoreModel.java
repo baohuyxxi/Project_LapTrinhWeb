@@ -10,12 +10,17 @@ public class StoreModel {
 	private String address;
 	private Date createdAt;
 	private Date updatedAt;
+	private String avatar;
+	private int sold;
+	
 	public StoreModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StoreModel(int userId, String name, String slug, String address, Date createdAt, Date updatedAt) {
+
+	public StoreModel(int id, int userId, String name, String slug, String address, Date createdAt, Date updatedAt) {
 		super();
+		this.id = id;
 		this.userId = userId;
 		this.name = name;
 		this.slug = slug;
@@ -23,6 +28,7 @@ public class StoreModel {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -66,4 +72,21 @@ public class StoreModel {
 		this.id = id;
 	}
 
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public int getSold() {
+		return sold;
+	}
+
+	public void setSold(int sold) {
+		this.sold = sold;
+	}
+
+	
 }

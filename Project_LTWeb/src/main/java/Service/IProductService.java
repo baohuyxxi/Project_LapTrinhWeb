@@ -16,4 +16,6 @@ public interface IProductService {
 	String findStoreIdByUserId(int userId);
 	List<ProductModel> getAllByStoreId(int storeId);
 	List<ProductModel> proTop3();
+	List<ProductModel> findIdbyStore(int storeId);
+	List<ProductModel> findProByAllId(int valueId, String columnId);
 }

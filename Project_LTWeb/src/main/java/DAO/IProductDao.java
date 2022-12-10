@@ -14,6 +14,7 @@ public interface IProductDao {
 	List<ProductModel> search(String keyword);
 	ProductModel findById(int id);
 	String findStoreIdByUserId(int userId);
-	List<ProductModel> getAllByStoreId(int storeId);
+	List<ProductModel> findProByAllId(int storeId, String columnId);
 	List<ProductModel> proTop3();
+	List<ProductModel> getAllByStoreId(int storeId);
 }

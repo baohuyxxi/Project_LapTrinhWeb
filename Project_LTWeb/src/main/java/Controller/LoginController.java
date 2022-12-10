@@ -77,10 +77,12 @@ public class LoginController extends HttpServlet {
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}
+			}
 		}
+		
 		catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-
 }
+

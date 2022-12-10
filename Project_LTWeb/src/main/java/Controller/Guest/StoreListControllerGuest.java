@@ -11,19 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Models.StoreModel;
+import Service.IProductService;
 import Service.IStoreService;
+import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/guest/store/list"})
+@WebServlet(urlPatterns = {"/shops"})
 public class StoreListControllerGuest extends HttpServlet{
 
+	IProductService productService = new ProductServiceImpl();
 	IStoreService storeService = new StoreServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<StoreModel> storeList = storeService.getAll();
-		req.setAttribute("storeList", storeList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/list-store.jsp");
+		
+		List<StoreModel> stor = storeService.getAllInfo();
+		req.setAttribute("stor",stor);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/store-list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

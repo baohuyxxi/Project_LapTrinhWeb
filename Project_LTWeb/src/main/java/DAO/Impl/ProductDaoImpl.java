@@ -175,9 +175,9 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 
 	public List<ProductModel> proTop3() {
-		String sql = "select top (3) Product.sold, Product.name, Product.category_id, Images.img, Product.storeId, Product.id\r\n"
-				+ "from Product, Images\r\n"
-				+ "where Images.product_id =Product.id \r\n"
+		String sql = "select top (3) Product.sold, Product.name, Product.category_id, Product.storeId, Product.id,\r\n"
+				+ "(select top 1 img from Images where Product.id =Images.product_id ) as img\r\n"
+				+ "from Product\r\n"
 				+ "ORDER BY Product.sold DESC";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try {
@@ -231,4 +231,47 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return products;
 	}
+	
+	public List<ProductModel> findProByAllId(int valueId, String columnId ) {
+		String sql = "select sold, name, category_id, id, description, price,\r\n"
+				+ "quantity, slug, storeId, createdAt, updatedAt, promotion,\r\n"
+				+ "(select top 1 img from Images where Product.id =Images.product_id ) as img,\r\n"
+				+ "(select Category.name from Category where category_id =id) as categoryName,\r\n"
+				+"(select Store.name from Store where Store.id = Product.storeId ) as storeName\r\n"
+				+ "from Product\r\n"
+				+ "where " + columnId+" = " + String.valueOf(valueId) +"\r\n"
+				+ " ORDER BY sold DESC";
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setName(rs.getString("name"));
+				product.setSlug(rs.getString("slug"));
+				product.setDescription(rs.getString("description"));
+				product.setPrice(rs.getBigDecimal("price"));
+				product.setPromotion(Integer.parseInt(rs.getString("promotion")));
+				product.setQuantity(Integer.parseInt(rs.getString("quantity")));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setStoreId(Integer.parseInt(rs.getString("storeId")));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				product.setImg(rs.getString("img"));
+				product.setCategoryName(rs.getString("categoryName"));
+				product.setStoreName(rs.getString("storeName"));
+				
+				
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
 }
