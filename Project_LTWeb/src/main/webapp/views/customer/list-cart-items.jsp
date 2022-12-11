@@ -19,7 +19,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%-- <c:forEach items="${products}" var="product">
+		<c:forEach items="${products}" var="product">
 			<tr>
 				<td>${product.name }</td>
 				<td>${product.price }</td>
@@ -34,14 +34,17 @@
 					</select>
 				</td>
 				<td>
-					<img class="d-block w-100" style="width: 150px; height: 150px;" src="${image.img }" alt="First slide">
+					<c:if test="${product.img!=null}">
+						<img class="d-block w-100" style="width: 150px; height: 150px;" src="${product.img }">
+					</c:if>
 				</td>
+				<td>${product.count }</td>
 				<td><a class="btn btn-primary" type="button"
 					href="<c:url value='product/edit?id=${product.id }'/>">Sửa</a> <a
 					class="btn btn-danger" type="button"
 					href="<c:url value='product/delete?id=${product.id }'/>">Xóa</a>
 			</tr>
-		</c:forEach> --%>
+		</c:forEach>
 	</tbody>
 </table>
 <script type="text/javascript">

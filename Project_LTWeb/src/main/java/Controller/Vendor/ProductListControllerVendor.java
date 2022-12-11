@@ -49,28 +49,31 @@ public class ProductListControllerVendor extends HttpServlet {
 			try {
 				// lấy product
 				String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
-				List<ProductModel> productList = productService.getAllByStoreId(Integer.parseInt(storeId));
+				if (storeId == null) {
+					resp.sendRedirect(req.getContextPath() + "/login");
+					return;
+				} else {
+					List<ProductModel> productList = productService.getAllByStoreId(Integer.parseInt(storeId));
 
-				for (ProductModel product : productList) {
-					// lấy size
-					List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
-					product.setSizemd(sizes);
-					
-					List<ImagesModel> images = imageService.getAllProductId(product.getId());
-					product.setImgmd(images);
+					for (ProductModel product : productList) {
+						// lấy size
+						List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
+						product.setSizemd(sizes);
+
+						List<ImagesModel> images = imageService.getAllProductId(product.getId());
+						product.setImgmd(images);
+					}
+
+					req.setAttribute("productList", productList);
+					// lấy category
+					List<CategoryModel> categoryList = categoryService.getAll();
+					req.setAttribute("categoryList", categoryList);
+					RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
+					dispatcher.forward(req, resp);
 				}
-
-				req.setAttribute("productList", productList);
-				// lấy category
-				List<CategoryModel> categoryList = categoryService.getAll();
-				req.setAttribute("categoryList", categoryList);
 
 			} catch (Exception e) {
 
-			} finally {
-
-				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/list-product.jsp");
-				dispatcher.forward(req, resp);
 			}
 		}
 	}

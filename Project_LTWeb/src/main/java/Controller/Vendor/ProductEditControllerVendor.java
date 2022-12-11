@@ -38,6 +38,10 @@ public class ProductEditControllerVendor extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		} else {
+			if (ProcessCookies.getStoreIdFromCookies(req, resp) == null) {
+				resp.sendRedirect(req.getContextPath() + "/login");
+				return;
+			}
 
 			String productid = req.getParameter("id");
 			String storeid = productService.findStoreIdByProductId(Integer.parseInt(productid));

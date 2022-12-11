@@ -25,7 +25,7 @@ public class EvaluateServiceImpl implements IEvaluateService{
 	@Override
 	public List<EvaluateModel> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return evaluatedDao.getAll();
 	}
 	
 }

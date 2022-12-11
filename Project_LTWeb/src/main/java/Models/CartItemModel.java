@@ -6,8 +6,10 @@ public class CartItemModel {
 	private int productId;
 	private int count;
 	
+	
 	//Biến phụ
 	private int countCartId;
+	private ProductModel product;
 	
 	public CartItemModel() {
 		super();
@@ -55,6 +57,14 @@ public class CartItemModel {
 	}
 	public void setCountCartId(int countCartId) {
 		this.countCartId = countCartId;
+	}
+
+	public ProductModel getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductModel product) {
+		this.product = product;
 	}
 	
 	

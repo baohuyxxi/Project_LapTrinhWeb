@@ -34,17 +34,20 @@ public class MyStoreControllerVendor extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		} else {
+			if (ProcessCookies.getUserIdFromCookies(req, resp) == null) {
+				resp.sendRedirect(req.getContextPath() + "/login");
+				return;
+			}
 			try {
 				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
 				StoreModel myStore = storeService
 						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
 				myStorelist.add(myStore);
 				req.setAttribute("myStorelist", myStorelist);
-			} catch (Exception e) {
-				// chưa có cửa hàng
-			} finally {
 				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
 				dispatcher.forward(req, resp);
+			} catch (Exception e) {
+				// chưa có cửa hàng
 			}
 		}
 

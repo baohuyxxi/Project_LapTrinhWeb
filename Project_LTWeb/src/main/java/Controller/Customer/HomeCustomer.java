@@ -21,7 +21,9 @@ public class HomeCustomer extends HttpServlet{
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
+		try {
 		if(Integer.parseInt(ProcessCookies.getRoleFromCookies(req, resp))==1)
 		{
 			CartItemModel cart = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
@@ -32,6 +34,9 @@ public class HomeCustomer extends HttpServlet{
 		}
 		else
 		{
+			resp.sendRedirect(req.getContextPath() + "/login");
+		}
+		}catch (Exception e) {
 			resp.sendRedirect(req.getContextPath() + "/login");
 		}
 		

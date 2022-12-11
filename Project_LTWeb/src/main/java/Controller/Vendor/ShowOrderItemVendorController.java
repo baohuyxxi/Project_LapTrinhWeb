@@ -14,6 +14,7 @@ import DAO.IOrderItemDao;
 import Models.OrderItemModel;
 import Service.IOrderItemService;
 import Service.Impl.OrderItemServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(value = {"/vendor/order/detail-order"})
@@ -22,6 +23,11 @@ public class ShowOrderItemVendorController extends HttpServlet{
 	IOrderItemService orderItemService = new OrderItemServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		if (ProcessCookies.getStoreIdFromCookies(req, resp) == null) {
+			resp.sendRedirect(req.getContextPath() + "/login");
+			return;
+		}
 		String orderId = req.getParameter("orderId");
 		List<OrderItemModel> orderItemLst = orderItemService.getAll(Integer.parseInt(orderId));
 		req.setAttribute("orderItemLst", orderItemLst);

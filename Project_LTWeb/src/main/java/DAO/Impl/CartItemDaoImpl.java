@@ -1,6 +1,5 @@
 package DAO.Impl;
 
-import java.nio.channels.NonReadableChannelException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,7 +99,7 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao {
 				cartItem.setId(rs.getInt("id"));
 				cartItem.setCartId(rs.getInt("cartId"));
 				cartItem.setProductId(rs.getInt("productId"));	
-				cartItem.setCount(rs.getInt("complete"));
+				cartItem.setCount(rs.getInt("count"));
 				cartItems.add(cartItem);
 			}
 		} catch (Exception e) {
