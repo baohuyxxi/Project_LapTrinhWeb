@@ -141,7 +141,13 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public ProductModel findById(int id) {
-		String sql = " SELECT *FROM  Product, Images WHERE id=? and product_id=id";
+		String sql = " SELECT sold, name, category_id, id, description, price, \r\n"
+				+ "quantity, slug, storeId, createdAt, updatedAt, promotion,\r\n"
+				+ "(select top 1 img from Images where Product.id =Images.product_id ) as img,\r\n"
+				+ "(select Category.name from Category where category_id =id) as categoryName,\r\n"
+				+ "(select Store.name from Store where Store.id = Product.storeId ) as storeName\r\n"
+				+ "FROM Product\r\n"
+				+ "WHERE Product.id =?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -162,6 +168,8 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				product.setCreatedAt(rs.getDate("createdAt"));
 				product.setUpdatedAt(rs.getDate("updatedAt"));
 				product.setImg(rs.getString("img"));
+				product.setCategoryName(rs.getString("categoryName"));
+				product.setStoreName(rs.getString("storeName"));
 				
 				return product;
 			}
