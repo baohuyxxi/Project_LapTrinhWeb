@@ -15,6 +15,7 @@ import Models.OrdersModel;
 import Service.IOrderService;
 import Service.Impl.OrderServiceImpl;
 import util.ConvertBigDecimal;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/vendor/order/edit-order" })
@@ -23,6 +24,11 @@ public class VendorEditOrder extends HttpServlet{
 	IOrderService orderService = new OrderServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if (ProcessCookies.getStoreIdFromCookies(req, resp) == null) {
+			resp.sendRedirect(req.getContextPath() + "/login");
+			return;
+		}
+		
 		String id = req.getParameter("id");
 		OrdersModel order = orderService.findById(Integer.parseInt(id));
 		req.setAttribute("order", order);			

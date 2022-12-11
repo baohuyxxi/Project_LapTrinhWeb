@@ -36,6 +36,10 @@ public class StoreEditControllerVendor extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		} else {
+			if (ProcessCookies.getStoreIdFromCookies(req, resp) == null) {
+				resp.sendRedirect(req.getContextPath() + "/login");
+				return;
+			}
 
 			String id = req.getParameter("id");
 
