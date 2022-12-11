@@ -78,7 +78,7 @@ public class ProductServiceImpl implements IProductService{
 	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
 		// TODO Auto-generated method stub
-		return null;
+		return productDao.getAllByStoreId(storeId);
 	}
 
 	@Override

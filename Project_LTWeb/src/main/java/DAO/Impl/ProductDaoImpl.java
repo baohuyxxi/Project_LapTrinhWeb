@@ -162,6 +162,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				product.setCreatedAt(rs.getDate("createdAt"));
 				product.setUpdatedAt(rs.getDate("updatedAt"));
 				product.setImg(rs.getString("img"));
+				
 				return product;
 			}
 		} catch (Exception e) {
@@ -264,14 +265,6 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
-	@Override
-	public ProductModel findByProductId(int id) {
-		String sql = "SELECT * FROM Product WHERE id=?";
-		try {
-			Connection con = super.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductModel product = new ProductModel();
 				product.setId(Integer.parseInt(rs.getString("id")));
@@ -292,16 +285,14 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				
 				
 				products.add(product);
-				return product;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return products;
 	}
+			
 
-		return null;
-	}
 	
 	@Override
 	public String findStoreIdByProductId(int productId) {
@@ -381,4 +372,11 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return null;
 	}
+
+	@Override
+	public ProductModel findByProductId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
+
