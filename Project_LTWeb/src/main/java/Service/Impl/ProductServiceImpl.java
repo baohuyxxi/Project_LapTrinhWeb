@@ -71,8 +71,19 @@ public class ProductServiceImpl implements IProductService{
 	}
 
 	@Override
+	public List<ProductModel> findProByAllId(int valueId, String columnId) {
+		return productDao.findProByAllId(valueId,columnId);
+	}
+
+	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
 		return productDao.getAllByStoreId(storeId);
+	}
+
+	@Override
+	public List<ProductModel> findIdbyStore(int storeId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -94,5 +105,10 @@ public class ProductServiceImpl implements IProductService{
 	public ProductModel findMinSoldProduct(int storeId) {
 		// TODO Auto-generated method stub
 		return productDao.findMinSoldProduct(storeId);
+	}
+
+	@Override
+	public List<ProductModel> findProductByCardId(int cardid) {
+		return productDao.findProductByCardId(cardid);
 	}
 }

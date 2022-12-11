@@ -64,16 +64,16 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				StoreModel store = new StoreModel();
-				store.setUserId(Integer.parseInt(rs.getString("userId")));
-				store.setName(rs.getString("name"));
-				store.setSlug(rs.getString("slug"));
-				store.setAddress(rs.getString("address"));
-				store.setCreatedAt(rs.getDate("createdAt"));
-				store.setUpdatedAt(rs.getDate("updatedAt"));
-				return store;
-			}
+			
+			StoreModel store = new StoreModel();
+			store.setId(Integer.parseInt(rs.getString("id")));
+			store.setUserId(Integer.parseInt(rs.getString("userId")));
+			store.setName(rs.getString("name"));
+			store.setSlug(rs.getString("slug"));
+			store.setAddress(rs.getString("address"));
+			store.setCreatedAt(rs.getDate("createdAt"));
+			store.setUpdatedAt(rs.getDate("updatedAt"));
+			return store;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -141,5 +141,36 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 		}
 		return null;
 	}
-
+	
+	public List<StoreModel> getAllInfo() {
+		String sql = "SELECT id, userId, name, slug, address, createdAt, updatedAt\r\n"
+				+ ",(select  avatar from InfoUser where Store.userId =  InfoUser.id) as avatar\r\n"
+				+ ",(select SUM(Product.sold) from Product where Store.id =Product.storeId) as sold\r\n"
+				+ "FROM Store \r\n"
+				+ "ORDER BY sold  DESC";
+		List<StoreModel> stores = new ArrayList<StoreModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				StoreModel store = new StoreModel();
+				store.setId(Integer.parseInt(rs.getString("id")));
+				store.setUserId(Integer.parseInt(rs.getString("userId")));
+				store.setName(rs.getString("name"));
+				store.setSlug(rs.getString("slug"));
+				store.setAddress(rs.getString("address"));
+				store.setCreatedAt(rs.getDate("createdAt"));
+				store.setUpdatedAt(rs.getDate("updatedAt"));
+				store.setAvatar(rs.getString("avatar"));
+				store.setSold(Integer.parseInt(rs.getString("sold")));
+				stores.add(store);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return stores;
+	}
+	
 }

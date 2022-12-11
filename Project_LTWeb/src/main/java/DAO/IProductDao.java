@@ -15,9 +15,11 @@ public interface IProductDao {
 	ProductModel findById(int id);
 	ProductModel findTop1Product(int storeId);
 	String findStoreIdByUserId(int userId);
-	List<ProductModel> getAllByStoreId(int storeId);
+	List<ProductModel> findProByAllId(int storeId, String columnId);
 	List<ProductModel> proTop3();
+	List<ProductModel> getAllByStoreId(int storeId);
 	ProductModel findByProductId(int id);
 	String findStoreIdByProductId(int productId);
 	ProductModel findMinSoldProduct(int storeId);
+	List<ProductModel> findProductByCardId(int cardid);
 }

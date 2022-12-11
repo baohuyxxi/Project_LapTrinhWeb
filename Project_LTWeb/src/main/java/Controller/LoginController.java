@@ -62,18 +62,25 @@ public class LoginController extends HttpServlet {
 		if (account != null) {
 			ProcessCookies.addCookieForCookies(req, resp, "roleLogin", String.valueOf(account.getRole()));
 			if (account.getRole() == 1 || account.getRole() == 2) {
+				//luu thong tin user
 				InfoUserModel infoUser = new InfoUserModel();
 				infoUser = userService.getUserName(account.getUsername());
 				ProcessCookies.addCookieForCookies(req, resp, "userIdLogin", String.valueOf(infoUser.getId()));
-				String storeId = productService.findStoreIdByUserId(infoUser.getId());
-				ProcessCookies.addCookieForCookies(req, resp, "storeIdLogin", String.valueOf(storeId));
-				
+								
 				if(account.getRole()==2)
 				{
+					//luu thong tin storeid
+					String storeId = productService.findStoreIdByUserId(infoUser.getId());
+					ProcessCookies.addCookieForCookies(req, resp, "storeIdLogin", String.valueOf(storeId));	
 					resp.sendRedirect(req.getContextPath() + "/vendor/home");
 					return;
 				} else if(account.getRole() == 1) {
 					resp.sendRedirect(req.getContextPath() + "/user/home");
+					return;
+				}
+				else
+				{
+					resp.sendRedirect(req.getContextPath() + "/login");
 				}
 			} else if (account.getRole() == 2) {
 				resp.sendRedirect(req.getContextPath() + "/login");
@@ -86,5 +93,4 @@ public class LoginController extends HttpServlet {
 			// TODO: handle exception
 		}
 	}
-
 }

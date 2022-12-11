@@ -135,6 +135,23 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 		return null;
 	}
 	
+	@Override
+	public String findCartIdByUserId(int userid) {
+		String sql = "SELECT * FROM Cart WHERE userId = ? ";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userid);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	
 }
