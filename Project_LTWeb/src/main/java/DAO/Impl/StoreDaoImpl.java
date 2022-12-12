@@ -145,11 +145,12 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 		return null;
 	}
 	
-	public List<StoreModel> getAllInfo() {
+	public List<StoreModel> getAllInfo(int valueId, String columnId ) {
 		String sql = "SELECT id, userId, name, slug, address, createdAt, updatedAt\r\n"
 				+ ",(select  avatar from InfoUser where Store.userId =  InfoUser.id) as avatar\r\n"
 				+ ",(select SUM(Product.sold) from Product where Store.id =Product.storeId) as sold\r\n"
 				+ "FROM Store \r\n"
+				+ "where " + columnId+" = " + String.valueOf(valueId) +"\r\n"
 				+ "ORDER BY sold  DESC";
 		List<StoreModel> stores = new ArrayList<StoreModel>();
 		try {

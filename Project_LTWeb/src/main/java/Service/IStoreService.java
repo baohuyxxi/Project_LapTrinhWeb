@@ -15,6 +15,8 @@ public interface IStoreService {
 	List<StoreModel> getAllStoreAD();
 	List<StoreModel> search(String keyword);
 	StoreModel findById(int id);
-	List<StoreModel> getAllInfo();
+
+	/* List<StoreModel> getAllInfoUser(); */
 	int CountStore();
+	List<StoreModel> getAllInfo(int valueId, String columnId);
 }

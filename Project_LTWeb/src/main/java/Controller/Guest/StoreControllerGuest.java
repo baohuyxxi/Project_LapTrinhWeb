@@ -26,11 +26,10 @@ public class StoreControllerGuest extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int valueId = Integer.parseInt(req.getParameter("id"));
-		String columnId = "storeId";
 		
-		StoreModel stor = storeService.findById(valueId);
+		List<StoreModel> stor = storeService.getAllInfo(valueId,"Store.id");
 		req.setAttribute("stor",stor);
-		List<ProductModel> pro = productService.findProByAllId(valueId,columnId);
+		List<ProductModel> pro = productService.findProByAllId(valueId,"storeId");
 		req.setAttribute("pro",pro);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/store-id.jsp");
 		dispatcher.forward(req, resp);

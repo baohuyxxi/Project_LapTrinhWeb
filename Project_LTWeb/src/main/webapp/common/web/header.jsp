@@ -27,13 +27,13 @@
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light shadow" style="display: block;">
      <div
-		class="container d-flex justify-content-between align-items-center">
+		class="container d-flex justify-content-between align-items-center" style="height: 130px">
 		<div class="c-brand c-pull-left">
 			<a href="${link}home" class="c-logo"> <img
 				src="https://bom.so/NAJjSb" alt=""
-				style="height: 150px; margin-top: -8px;" class="c-desktop-logo">
+				style="height: 150px; margin-top: 35px;" class="c-desktop-logo">
 			</a>
 		</div>
 
@@ -60,10 +60,10 @@
                             <a class="nav-link" href="${link }contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}category">Category</a>
+                            <a class="nav-link" href="${link}home">Category</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="${link}/infouser/list">Users</a>
+                            <a class="nav-link" href="${link}home">Users</a>
                         </li>
                     </ul>
                 </div>
@@ -76,9 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
+      
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
@@ -91,5 +89,14 @@
             </div>
 
         </div>
+        <div
+		class="container  d-flex">
+		<div class="heading col-sm-12 text-center">
+		<form action="/Project_LTWeb/products" class="search" method="post">
+			<input type="text" class="searchTerm"  placeholder="Bạn muốn tìm gì?" name="question" class="form-control" required>
+			<button type="submit" class="searchButton">Tìm Kiếm</button>
+		</form>
+	</div>
+		</div>
     </nav>
     <!-- Close Header -->

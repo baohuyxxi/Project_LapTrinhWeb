@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Models.DeliveryModel;
 import Models.ProductModel;
 import Service.IProductService;
 import Service.Impl.ProductServiceImpl;
@@ -26,5 +27,20 @@ public class ProductAllControllerGuest extends HttpServlet{
 		req.setAttribute("pro",pro);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/productAll.jsp");
 		dispatcher.forward(req, resp);
+	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			resp.setContentType("text/html");
+			req.setCharacterEncoding("UTF-8");
+			
+			String string = req.getParameter("question");
+			List<ProductModel> pro = productService.findProByString(string);
+			req.setAttribute("pro",pro);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/productAll.jsp");
+			dispatcher.forward(req, resp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

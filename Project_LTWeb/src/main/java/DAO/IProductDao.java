@@ -23,4 +23,6 @@ public interface IProductDao {
 	ProductModel findMinSoldProduct(int storeId);
 	int CountProductSold();
 	int CountProduct();
+	String findProductIdByCardId(int cardid);
+	List<ProductModel> findProByString(String string);
 }

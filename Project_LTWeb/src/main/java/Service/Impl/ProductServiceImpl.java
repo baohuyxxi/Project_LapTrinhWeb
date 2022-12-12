@@ -74,10 +74,13 @@ public class ProductServiceImpl implements IProductService{
 	public List<ProductModel> findProByAllId(int valueId, String columnId) {
 		return productDao.findProByAllId(valueId,columnId);
 	}
+	public List<ProductModel> findProByString(String string) {
+		return productDao.findProByString(string);
+	}
 
+	
 	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
-		// TODO Auto-generated method stub
 		return productDao.getAllByStoreId(storeId);
 	}
 
@@ -118,5 +121,9 @@ public class ProductServiceImpl implements IProductService{
 	public int CountProduct() {
 		// TODO Auto-generated method stub
 		return productDao.CountProduct();
+	}
+	public String findProductIdByCardId(int cardid) {
+		return productDao.findProductIdByCardId(cardid);
+
 	}
 }
