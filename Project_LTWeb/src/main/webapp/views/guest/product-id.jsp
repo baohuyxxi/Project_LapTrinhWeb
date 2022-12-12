@@ -153,7 +153,7 @@
 								</div>
 							</c:forEach>
 							<div class="modal-footer">
-								<a type="button" class="custom-btn btn-1" href="#Huydz" data-toggle="modal">
+								<a class="custom-btn btn-1" href="/Project_LTWeb/login" >
 									<span>Thêm Luôn Bạn êi !!!</span>
 								</a>
 							</div>
@@ -161,17 +161,6 @@
 					</div>
 
 				</form>
-			</div>
-
-		</div>
-	</div>
-
-	<div id="Huydz" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Đăng Nhập Trước Thằng Ngu ạ</h4>
-				</div>
 			</div>
 
 		</div>
