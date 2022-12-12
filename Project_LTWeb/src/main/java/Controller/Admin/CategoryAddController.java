@@ -48,7 +48,7 @@ public class CategoryAddController extends HttpServlet{
 			e.printStackTrace();
 		}
 		finally {
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/category");
 		}
 	}
 

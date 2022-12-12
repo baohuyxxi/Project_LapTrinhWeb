@@ -12,6 +12,8 @@ public class InfoUserModel {
 	private String avatar;
 	private Date createdAt;
 	private Date updatedAt;
+	private Boolean status;
+	
 	public InfoUserModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -81,6 +83,12 @@ public class InfoUserModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 	
 	

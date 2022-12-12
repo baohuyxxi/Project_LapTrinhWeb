@@ -15,7 +15,7 @@ import Service.IInfoUserService;
 import Service.Impl.InfoUserServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/admin/infouser/list"})
+@WebServlet(urlPatterns = {"/admin/infouser"})
 public class InfoUserListController extends HttpServlet{
 
 	IInfoUserService userService = new InfoUserServiceImpl();
@@ -24,6 +24,11 @@ public class InfoUserListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<InfoUserModel> userList = userService.getAll();
 		req.setAttribute("userList", userList);
+		req.setAttribute("user", "active");
+		req.setAttribute("delivery", "");
+		req.setAttribute("evaluate", "");
+		req.setAttribute("home", "");
+		req.setAttribute("category", "null");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-infoUser.jsp");
 		dispatcher.forward(req, resp);
 	}

@@ -45,7 +45,7 @@ public class CategoryEditController extends HttpServlet {
 
 			
 			CategoryService.edit(category);
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/category");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

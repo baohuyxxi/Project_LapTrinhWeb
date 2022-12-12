@@ -19,7 +19,7 @@ import Service.IDeliveryService;
 import Service.Impl.DeliveryServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/admin/delivery/list"})
+@WebServlet(urlPatterns = {"/admin/delivery"})
 public class DeliveryListController extends HttpServlet{
 
 	IDeliveryService deliveryService = new DeliveryServiceImpl();
@@ -28,6 +28,10 @@ public class DeliveryListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<DeliveryModel> deliveryList = deliveryService.getAll();
 		req.setAttribute("deliveryList",deliveryList);
+		req.setAttribute("delivery", "active");
+		req.setAttribute("evaluate", "");
+		req.setAttribute("home", "");
+		req.setAttribute("category", "");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-delivery.jsp");
 		dispatcher.forward(req, resp);
 	}

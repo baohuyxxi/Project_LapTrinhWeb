@@ -31,7 +31,7 @@ public class CategoryDeleteController extends HttpServlet{
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
 			categoryService.delete(Integer.parseInt(req.getParameter("did")));
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/category");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class CategoryDeleteController extends HttpServlet{
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
 			categoryService.delete(Integer.parseInt(req.getParameter("did")));
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/category");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

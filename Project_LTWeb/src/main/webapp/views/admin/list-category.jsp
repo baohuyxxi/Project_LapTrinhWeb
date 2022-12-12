@@ -16,6 +16,8 @@
 </head>
 <body>
 	<div class="container">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"
+		style="margin-left: auto !important;">
 		<h2>Danh sách các mặt hàng</h2>
 		<a class="fa fa-plus-square-o" href="#addcategory" data-toggle="modal">
 			<span>Thêm Loại Sản Phẩm</span>
@@ -39,20 +41,21 @@
 						<td>${category.updatedAt }</td>
 						<td>${category.createdAt }</td>
 						<td><a class="btn btn-primary" type="button"
-							href="<c:url value='edit?id=${category.id }'/>">Sửa</a> <a
+							href="<c:url value='category/edit?id=${category.id }'/>">Sửa</a> <a
 							class="btn btn-danger" type="button"
-							href="<c:url value='delete?did=${category.id }'/>">Xóa</a></td>
+							href="<c:url value='category/delete?did=${category.id }'/>">Xóa</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		</main>
 
 
-
+		<c:url value="/admin/category/add" var="add"></c:url>
 		<div id="addcategory" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="add" method="post">
+					<form action="${add }" method="post">
 						<div class="modal-header">
 							<h4 class="modal-title">Thêm Mặt Hàng</h4>
 							<button type="button" class="close" data-dismiss="modal"

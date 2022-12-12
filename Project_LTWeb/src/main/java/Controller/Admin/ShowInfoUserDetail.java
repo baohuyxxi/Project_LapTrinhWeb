@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Models.InfoUserModel;
+import Service.IInfoUserService;
+import Service.Impl.InfoUserServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/admin/trang-chu"})
-public class AdminHomeController extends HttpServlet{
+@WebServlet(urlPatterns = { "/infoUser" })
+public class ShowInfoUserDetail extends HttpServlet{
 
+	IInfoUserService userService = new InfoUserServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/HomeAdmin.jsp");
-		req.setAttribute("home", "active");
-		req.setAttribute("evaluate", "");
-		req.setAttribute("category", "");
-		req.setAttribute("delivery", "");
+		String id = req.getParameter("id");
+		InfoUserModel user = userService.findById(Integer.parseInt(id));
+		req.setAttribute("user", user);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/infoUser.jsp");
 		dispatcher.forward(req, resp);
 	}
-
 }

@@ -3,13 +3,10 @@
 	<excludes>
 		<pattern>/api*</pattern>
 		<pattern>/login*</pattern>
-		<pattern>/info*</pattern>
-	<!-- 	<pattern>/sign-up*</pattern> -->
+		<pattern>/infoUser*</pattern>
+
 	</excludes>
 	<!-- apply Sitemesh default template -->
-<!-- 	<decorator name="admin" page="admin.jsp">
-		<pattern>/admin*</pattern>
-	</decorator> -->
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin*</pattern>
 	</decorator>

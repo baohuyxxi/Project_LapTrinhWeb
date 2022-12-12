@@ -5,48 +5,33 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
 	<div class="sidebar-sticky">
 		<ul class="nav flex-column">
-			<li class="nav-item"><a class="nav-link ${home }" href="${link}/trang-chu"> <span
+			<li class="nav-item"><a class="nav-link ${home }" href="${link}/trang-chu" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
 					data-feather="home"></span> Dashboard <span class="sr-only"></span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file"></span> Orders
+			<li class="nav-item"><a class="nav-link" href="#" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
+					data-feather="file"></span> Account
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="shopping-cart"></span> Products
+			<li class="nav-item"><a class="nav-link" href="#" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
+					data-feather="shopping-cart"></span> Stores
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
+			<li class="nav-item"><a class="nav-link ${user }" href="${link}/infouser" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
 					data-feather="users"></span> Customers
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="bar-chart-2"></span> Reports
+			<li class="nav-item"><a class="nav-link ${category }" href="${link}/category" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
+					data-feather="bar-chart-2"></span> Categories
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="layers"></span> Integrations
-			</a></li>
-			<li class="nav-item"><a class="nav-link ${evaluate }" href="${link}/evaluated"> <span
+			<li class="nav-item"><a class="nav-link ${evaluate }" href="${link}/evaluated" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
 					data-feather="layers"></span> Evaluate
 			</a></li>
-		</ul>
-
-		<h6
-			class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-			<span>Saved reports</span> <a
-				class="d-flex align-items-center text-muted" href="#"> <span
-				data-feather="plus-circle"></span>
-			</a>
-		</h6>
-		<ul class="nav flex-column mb-2">
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Current month
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Last quarter
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Social engagement
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"> <span
-					data-feather="file-text"></span> Year-end sale
+			<li class="nav-item"><a class="nav-link ${delivery }" href="${link}/delivery" style="padding-bottom: 15%;
+    font-size: 20px;"> <span
+					data-feather="layers"></span> Delivery
 			</a></li>
 		</ul>
 	</div>

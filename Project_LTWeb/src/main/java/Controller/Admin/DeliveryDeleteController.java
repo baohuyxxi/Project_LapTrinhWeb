@@ -31,7 +31,7 @@ public class DeliveryDeleteController extends HttpServlet{
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
 			deliveryService.delete(Integer.parseInt(req.getParameter("did")));
-			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/delivery");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class DeliveryDeleteController extends HttpServlet{
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
 			deliveryService.delete(Integer.parseInt(req.getParameter("did")));
-			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/delivery");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -35,7 +35,7 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 
 	@Override
 	public void edit(InfoUserModel infoUser) {
-		String sql = "UPDATE  InfoUser SET name=?, slug=?, email=?, phone=?, address=?, avatar=?, updatedAt=? WHERE id=?";
+		String sql = "UPDATE  InfoUser SET name=?, slug=?, email=?, phone=?, address=?, avatar=?, updatedAt=?, status = ? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -46,7 +46,8 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 			ps.setString(5, infoUser.getAddress());
 			ps.setString(6, infoUser.getAvatar());
 			ps.setDate(7, new Date(System.currentTimeMillis()));
-			ps.setInt(8, infoUser.getId());
+			ps.setBoolean(8, infoUser.getStatus());
+			ps.setInt(9, infoUser.getId());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -124,6 +125,7 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 				user.setAvatar(rs.getString("avatar"));
 				user.setCreatedAt(rs.getDate("createdAt"));
 				user.setUpdatedAt(rs.getDate("updatedAt"));
+				user.setStatus(rs.getBoolean("status"));
 				users.add(user);
 			}
 		} catch (Exception e) {
@@ -157,6 +159,7 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 				user.setAvatar(rs.getString("avatar"));
 				user.setCreatedAt(rs.getDate("createdAt"));
 				user.setUpdatedAt(rs.getDate("updatedAt"));
+				user.setStatus(rs.getBoolean("status"));
 				return user;
 			}
 		} catch (Exception e) {

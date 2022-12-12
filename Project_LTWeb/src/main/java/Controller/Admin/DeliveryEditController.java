@@ -56,7 +56,7 @@ public class DeliveryEditController extends HttpServlet {
 			delivery.setStatus(Integer.parseInt(req.getParameter("status")));
 			
 			deliveryService.edit(delivery);
-			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/delivery");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
