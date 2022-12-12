@@ -55,9 +55,9 @@ public class StoreServiceImpl implements IStoreService{
 		return storeDao.findById(id);
 	}
 
-	public List<StoreModel> getAllInfo() {
+	public List<StoreModel> getAllInfo(int valueId, String columnId ) {
 		
-		return storeDao.getAllInfo();
+		return storeDao.getAllInfo(valueId,columnId);
 	}
 
 }

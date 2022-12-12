@@ -1,0 +1,200 @@
+@charset "ISO-8859-1";
+
+html, body {
+	cursor:
+		url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"),
+		auto;
+}
+
+a:hover {
+	cursor:
+		url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"),
+		auto;
+}
+
+.card.shadow{
+	background-color: red;
+	background-image:url(https://img4.thuthuatphanmem.vn/uploads/2020/07/05/hinh-anh-background-mau-sac-that-dep_034909644.jpg);
+}
+
+.custom-btnDemo {
+	width: 500px;
+	height: 50px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
+		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+	outline: none;
+}
+
+.btn-12 {
+	position: relative;
+	right: 20px;
+	bottom: 20px;
+	border: none;
+	box-shadow: none;
+	width: 500px;
+	height: 50px;
+	line-height: 42px;
+	-webkit-perspective: 230px;
+	perspective: 230px;
+}
+
+.btn-12 span {
+	background: rgb(0, 172, 238);
+	background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%,
+		rgba(2, 126, 251, 1) 100%);
+	display: block;
+	position: absolute;
+	width: 500px;
+	height: 50px;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
+		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+	border-radius: 5px;
+	margin: 0;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+.btn-12 span:nth-child(1) {
+	box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px
+		20px 0px #0002, 4px 4px 5px 0px #0001;
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+}
+
+.btn-12 span:nth-child(2) {
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	-webkit-transform-origin: 50% 50% -20px;
+	-moz-transform-origin: 50% 50% -20px;
+	transform-origin: 50% 50% -20px;
+}
+
+.btn-12:hover span:nth-child(1) {
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
+		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+}
+
+.btn-12:hover span:nth-child(2) {
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
+		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+	color: transparent;
+	-webkit-transform: rotateX(-90deg);
+	-moz-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+}
+
+
+.custom-btn {
+
+  width: 300px;
+
+  height: 40px;
+
+  color: #fff;
+
+  border-radius: 5px;
+
+  padding: 10px 25px;
+
+  font-family: 'Lato', sans-serif;
+
+  font-weight: 500;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  display: inline-block;
+
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+
+   7px 7px 20px 0px rgba(0,0,0,.1),
+
+   4px 4px 5px 0px rgba(0,0,0,.1);
+
+  outline: none;
+
+}
+.btn-1 {
+
+  background: rgb(6,14,131);
+
+  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+
+  border: none;
+
+}
+
+.btn-1:hover {
+
+   background: rgb(0,3,255);
+
+background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+
+}
+
+
+.searchTerm {
+	width: 50%;
+	border: 3px solid #00B4CC;
+	border-right: none;
+	padding: 10px;
+	height: 36px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	color: Black;
+}
+
+.searchTerm:focus {
+	color: Black;
+}
+
+
+
+.searchButton {
+	width: 100px;
+	height: 36px;
+	border: 1px solid #00B4CC;
+	background: #00B4CC;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.rounded-circle.img-fluid.border.store {
+	width: 300px;
+	height: 300px;
+	text-align:center;
+}
+.div1 {
+	 text-align:center;
+}
+

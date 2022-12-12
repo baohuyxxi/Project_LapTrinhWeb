@@ -18,5 +18,6 @@ public interface ICartService {
 	List<CartModel> search(String keyword);
 
 	CartModel findById(int id);
+	String findCartIdByUserId(int userid);
 	
 }

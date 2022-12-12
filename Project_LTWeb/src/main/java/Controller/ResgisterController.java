@@ -18,10 +18,13 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 import Models.AccountModel;
+import Models.CartModel;
 import Models.InfoUserModel;
 import Service.IAccountService;
+import Service.ICartService;
 import Service.IInfoUserService;
 import Service.Impl.AccountServiceImpl;
+import Service.Impl.CartServiceImpl;
 import Service.Impl.InfoUserServiceImpl;
 import util.Constant;
 
@@ -32,6 +35,7 @@ public class ResgisterController extends HttpServlet{
 
 	IInfoUserService userService = new InfoUserServiceImpl();
 	IAccountService accountService = new AccountServiceImpl();
+	ICartService cartService = new CartServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,6 +47,7 @@ public class ResgisterController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		InfoUserModel user = new InfoUserModel();
 		AccountModel account = new AccountModel();
+		CartModel cart = new CartModel();
 		
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
@@ -76,6 +81,7 @@ public class ResgisterController extends HttpServlet{
 					account.setRole(Integer.parseInt(item.getString("UTF-8")));
 				}
 				else{
+					if (item.getSize() > 0) {
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);
@@ -83,10 +89,21 @@ public class ResgisterController extends HttpServlet{
 					File file = new File(Constant.DIR + "/user/" + fileName);
 					item.write(file);
 					user.setAvatar(fileName.toString());
+					} else {
+						user.setAvatar(null);
+					}
 				}
 			}
 			userService.insert(user);
 			accountService.insert(account);
+			
+			//tao gio hang cho khách hàng
+			if(account.getRole()==1)
+			{
+				userService = new InfoUserServiceImpl();
+				cart.setUserId(userService.getUserName(user.getEmail()).getId());
+				cartService.insert(cart);
+			}
 			
 		} catch (FileUploadException e) {
 			e.printStackTrace();

@@ -27,6 +27,10 @@ public class SalesVendorController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String storeid = ProcessCookies.getStoreIdFromCookies(req, resp);
+		if (storeid == null) {
+			resp.sendRedirect(req.getContextPath() + "/login");
+			return;
+		}
 		
 		//Sản phẩm bán nhiều nhất
 		ProductModel top1Product = productService.findTop1Product(Integer.parseInt(storeid));

@@ -13,6 +13,6 @@ public interface IStoreDao {
 	List<StoreModel> getAll();
 	List<StoreModel> search(String keyword);
 	StoreModel findById(int id);
-	List<StoreModel> getAllInfo();
+	List<StoreModel> getAllInfo(int valueId, String columnId );
 	
 }

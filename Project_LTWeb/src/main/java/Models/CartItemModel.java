@@ -5,9 +5,12 @@ public class CartItemModel {
 	private int cartId;
 	private int productId;
 	private int count;
+	private String size;
+	
 	
 	//Biến phụ
 	private int countCartId;
+	private ProductModel product;
 	
 	public CartItemModel() {
 		super();
@@ -20,11 +23,12 @@ public class CartItemModel {
 		this.countCartId = countCartId;
 	}
 
-	public CartItemModel(int cartId, int productId, int count) {
+	public CartItemModel(int cartId, int productId, int count, String size) {
 		super();
 		this.cartId = cartId;
 		this.productId = productId;
 		this.count = count;
+		this.size = size;
 	}
 	public int getCartId() {
 		return cartId;
@@ -55,6 +59,22 @@ public class CartItemModel {
 	}
 	public void setCountCartId(int countCartId) {
 		this.countCartId = countCartId;
+	}
+
+	public ProductModel getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductModel product) {
+		this.product = product;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	
