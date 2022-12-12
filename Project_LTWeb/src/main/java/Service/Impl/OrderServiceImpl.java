@@ -55,4 +55,10 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDao.totalSales(storeId);
 	}
 
+	@Override
+	public int CountOrder() {
+		// TODO Auto-generated method stub
+		return orderDao.CountOrder();
+	}
+
 }

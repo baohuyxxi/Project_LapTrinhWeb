@@ -188,8 +188,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Status</label>
-                        <input name = "status" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="<c:if test="${user.status == true }">Đang hoạt động
-						</c:if><c:if test="${user.status == false }">Ngừng hoạt động</c:if>">
+                        <input name = "status" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="<c:if test="${user.status == true }">Đang hoạt động</c:if><c:if test="${user.status == false }">Ngừng hoạt động</c:if>">
                       </div>
                     </div>
                   </div>

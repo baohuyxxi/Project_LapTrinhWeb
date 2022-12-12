@@ -58,4 +58,21 @@ public class EvaluateDaoImpl extends DBConnection implements IEvaluatedDao{
 		return evaluates;
 	}
 
+	@Override
+	public int CountEvaluated() {
+		String sql = "select count(*) 'sl' from Evaluated";
+		int slEvaluated = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slEvaluated = rs.getInt("sl");
+			}
+			return slEvaluated;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return slEvaluated;
+	}
 }

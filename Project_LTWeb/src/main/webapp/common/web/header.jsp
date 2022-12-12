@@ -27,13 +27,17 @@
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light shadow" style="display: block;">
      <div
-		class="container d-flex justify-content-between align-items-center">
+		class="container d-flex justify-content-between align-items-center" style="height: 130px">
 		<div class="c-brand c-pull-left">
 			<a href="${link}/home" class="c-logo"> <img
 				src="https://bom.so/NAJjSb" alt=""
+<<<<<<< HEAD
 				style="height: 90px; margin-top: -8px;" class="c-desktop-logo">
+=======
+				style="height: 150px; margin-top: 35px;" class="c-desktop-logo">
+>>>>>>> 72d02e9b5809fca484143bd43ab9aace332e4f3f
 			</a>
 		</div>
 
@@ -59,12 +63,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${link }./contact">Contact</a>
                         </li>
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link" href="${link}/category">Category</a>
                         </li>
                          <li class="nav-item">
                             <a class="nav-link" href="${link}/infouser/list">Users</a>
                         </li>
+=======
+>>>>>>> 72d02e9b5809fca484143bd43ab9aace332e4f3f
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -76,14 +83,12 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+      
+                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
@@ -91,5 +96,14 @@
             </div>
 
         </div>
+        <div
+		class="container  d-flex">
+		<div class="heading col-sm-12 text-center">
+		<form action="${link}products" class="search" method="post">
+			<input type="text" class="searchTerm"  placeholder="Bạn muốn tìm gì?" name="question" class="form-control" required>
+			<button type="submit" class="searchButton">Tìm Kiếm</button>
+		</form>
+	</div>
+		</div>
     </nav>
     <!-- Close Header -->

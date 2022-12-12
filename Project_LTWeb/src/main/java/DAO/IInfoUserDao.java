@@ -15,4 +15,5 @@ public interface IInfoUserDao {
 	List<InfoUserModel> search(String keyword);
 	InfoUserModel findById(int id);
 	String findUserIdByStoreId(int storeid);
+	int CountUser();
 }
