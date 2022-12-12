@@ -73,5 +73,19 @@
     <script src="<c:url value="/assets/js/custom.js"/>"></script>
 
     <!-- End Script -->
+    <style>
+	html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;}
+	a:hover{cursor:url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;}
+.rounded-circle {
+	width: 300px;
+	height: 300px;
+	 text-align:center;
+}
+.div1 {
+	 text-align:center;
+}
+
+</style>
+  
 </body>
 </html>

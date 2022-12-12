@@ -242,8 +242,8 @@
 						<p>
 							<b><font face="Helvetica" size="5" color="#0080ff">Phần
 									chém gió</font></b>  </font><img
-								height="70" width="70" alt=":v"
-								src="https://media.tenor.com/p_4wJVPsWdoAAAAj/wielding-a-sword-yasuo.gif"></b>
+								height="70" width="70" alt="Mạng yếu quá :v"
+								src="https://media3.giphy.com/media/wWuRt5BRWrpssHOjqd/giphy.gif"></b>
 						</p>
 						<p>
 							<font face="Helvetica" size="4" color="#000000">- ZAYshop
