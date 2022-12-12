@@ -13,8 +13,7 @@ public class OrderServiceImpl implements IOrderService{
 	IOrderDao orderDao = new OrderDaoImpl();
 	@Override
 	public void insert(OrdersModel order) {
-		// TODO Auto-generated method stub
-		
+		orderDao.insert(order);
 	}
 
 	@Override

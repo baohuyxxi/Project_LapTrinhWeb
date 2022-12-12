@@ -20,6 +20,7 @@ import Service.Impl.CartServiceImpl;
 import Service.Impl.ImageServiceImpl;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.SizeServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/user/cartitem/edit" })
@@ -33,25 +34,36 @@ public class CartItemEditController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
+		String role = ProcessCookies.getRoleFromCookies(req, resp);
 		try {
-			CartItemModel cartitem = new CartItemModel();
-			int cartitemid = Integer.parseInt(req.getParameter("id"));
+			if (userID != null && Integer.parseInt(role) == 1) {
+				try {
+					CartItemModel cartitem = new CartItemModel();
+					int cartitemid = Integer.parseInt(req.getParameter("id"));
 
-			int productid = Integer.parseInt(productService.findProductIdByCardId(cartitemid));
-			cartitem = cartItemService.findById(cartitemid);
+					int productid = Integer.parseInt(productService.findProductIdByCardId(cartitemid));
+					cartitem = cartItemService.findById(cartitemid);
 
-			ProductModel product = productService.findByProductId(cartitem.getProductId());
-			product.setSizemd(sizeService.getAllProductId(product.getId()));
-			product.setImg(productService.findById(productid).getImg());
-			cartitem.setProduct(product);
-			
-			req.setAttribute("cartitem", cartitem);
+					ProductModel product = productService.findByProductId(cartitem.getProductId());
+					product.setSizemd(sizeService.getAllProductId(product.getId()));
+					product.setImg(productService.findById(productid).getImg());
+					cartitem.setProduct(product);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/views/customer/edit-cart-item.jsp");
-			rd.forward(req, resp);
+					req.setAttribute("cartitem", cartitem);
 
+					RequestDispatcher rd = req.getRequestDispatcher("/views/customer/edit-cart-item.jsp");
+					rd.forward(req, resp);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				resp.sendRedirect(req.getContextPath() + "/login");
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			resp.sendRedirect(req.getContextPath() + "/login");
 		}
 
 	}
@@ -61,12 +73,12 @@ public class CartItemEditController extends HttpServlet {
 		try {
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
-			
+
 			CartItemModel cartitem = new CartItemModel();
 			cartitem.setId(Integer.parseInt(req.getParameter("id")));
 			cartitem.setCount(Integer.parseInt(req.getParameter("count")));
 			cartitem.setSize(req.getParameter("size"));
-			
+
 			cartItemService.edit(cartitem);
 		} catch (Exception e) {
 			e.printStackTrace();

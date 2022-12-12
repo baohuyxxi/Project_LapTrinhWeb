@@ -20,5 +20,7 @@ public interface IDeliveryService {
 
 	DeliveryModel findById(int id);
 	
+	String getDeliveryIdTop1();
+	
 	
 }

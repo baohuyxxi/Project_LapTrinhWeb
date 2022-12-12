@@ -22,6 +22,8 @@ public interface IDeliveryDao {
 
 	void delete(int id);
 
+	String getDeliveryIdTop1();
+
 
 	
 }

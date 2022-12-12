@@ -14,13 +14,14 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 	@Override
 	public void insert(CartModel cart) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO Cart(userId,complete) VALUES (?,?)";
+		String sql = "INSERT INTO Cart(userId,complete, deliveryId) VALUES (?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, cart.getUserId());
 			ps.setBoolean(2, false);
+			ps.setInt(3, cart.getDeliveryId());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -32,12 +33,12 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 	
 	@Override
 	public void edit(CartModel cart) {
-		String sql = "UPDATE  Cart SET userId=? WHERE id=?";
+		String sql = "UPDATE  Cart SET deliveryId=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, cart.getUserId());
+			ps.setInt(1, cart.getDeliveryId());
 			ps.setInt(2, cart.getId());
 			
 			ps.executeUpdate();
@@ -121,6 +122,7 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 				cart.setId(rs.getInt("id"));
 				cart.setUserId(rs.getInt("userId"));
 				cart.setComplete(rs.getBoolean("complete"));
+				cart.setDeliveryId(rs.getInt("deliveryId"));
 				return cart;
 			}
 		} catch (Exception e) {
@@ -139,6 +141,23 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String findDeliveryIdByCardId(int cardid) {
+		String sql = "SELECT deliveryId FROM Cart WHERE id = ? ";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cardid);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getString("deliveryId");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

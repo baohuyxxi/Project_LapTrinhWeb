@@ -1,6 +1,5 @@
 package Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,11 +15,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import Models.AccountModel;
 import Models.InfoUserModel;
 import Service.IInfoUserService;
 import Service.Impl.InfoUserServiceImpl;
-import util.Constant;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/infoUser/edit" })
@@ -71,23 +68,13 @@ public class InfoUserEditController extends HttpServlet{
 				else if(item.getFieldName().equals("createdAt")){
 					user.setAddress(item.getString("UTF-8"));
 				}
-				else{
-					if (item.getSize() > 0) {// neu co file d
-					String originalFileName = item.getName();
-					int index = originalFileName.lastIndexOf(".");
-					String ext = originalFileName.substring(index + 1);
-					String fileName = System.currentTimeMillis() + "." + ext;
-					File file = new File(Constant.DIR + "/user/" + fileName);
-					item.write(file);
-					user.setAvatar(fileName);
-					} else {
-						user.setAvatar(null);
-					}
+				else if(item.getFieldName().equals("avatar")){
+					user.setAvatar(item.getString("UTF-8"));
 				}
 			}
 			userService.edit(user);
 			
-			resp.sendRedirect(req.getContextPath() + "/admin/infouser/list");
+			resp.sendRedirect(req.getContextPath() + "/infouser");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
