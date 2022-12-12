@@ -108,7 +108,7 @@ public class ProductServiceImpl implements IProductService{
 	}
 
 	@Override
-	public List<ProductModel> findProductByCardId(int cardid) {
-		return productDao.findProductByCardId(cardid);
+	public String findProductIdByCardId(int cardid) {
+		return productDao.findProductIdByCardId(cardid);
 	}
 }

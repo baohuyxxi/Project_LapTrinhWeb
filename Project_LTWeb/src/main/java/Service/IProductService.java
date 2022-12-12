@@ -23,6 +23,6 @@ public interface IProductService {
 	ProductModel findByProductId(int id);
 	String findStoreIdByProductId(int productId);
 	ProductModel findMinSoldProduct(int storeId);
-	List<ProductModel> findProductByCardId(int cardid);
+	String findProductIdByCardId(int cardid);
 
 }

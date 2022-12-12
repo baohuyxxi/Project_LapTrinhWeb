@@ -41,37 +41,29 @@ public class CartItemController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String role = ProcessCookies.getRoleFromCookies(req, resp);
-		if (Integer.parseInt(role) == 1) {
+		try {
+		if (role != null) {
 			//lấy products
 			int cartid = Integer.parseInt(cartService.findCartIdByUserId(Integer.parseInt(ProcessCookies.getUserIdFromCookies(req, resp))));
-			List<ProductModel> products = productService.findProductByCardId(cartid);
-			req.setAttribute("products", products);
-			
-			//lấy size theo product
-			for (ProductModel product : products) {
-				// lấy size
-				List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
-				product.setSizemd(sizes);
-
-				ProductModel images = productService.findById(cartid);
-				if(images != null)
-				{
-					product.setImg(images.getImg());
-				}
-			}
-			
-			List<CartItemModel> cartitems = cartItemService.getAll();
+			int productid = Integer.parseInt(productService.findProductIdByCardId(cartid));
+			List<CartItemModel> cartitems = cartItemService.getAllByCartId(cartid);
 			for (CartItemModel cartitem : cartitems) {
 				ProductModel product = productService.findByProductId(cartitem.getProductId());
 				product.setSizemd(sizeService.getAllProductId(product.getId()));
-				product.setImg(productService.findById(cartid));
-					cartitem.setProduct(product);
+				product.setImg(productService.findById(productid).getImg());
+				cartitem.setProduct(product);
 			}
+			
+			req.setAttribute("cartitems", cartitems);
 
 			RequestDispatcher rd = req.getRequestDispatcher("/views/customer/list-cart-items.jsp");
 			rd.forward(req, resp);
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/login");
+		}
+		}
+		catch (Exception e) {
+			e.printStackTrace();//null
 		}
 	}
 

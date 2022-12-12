@@ -19,30 +19,24 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${products}" var="product">
+		<c:forEach items="${cartitems }" var="cartitem">
 			<tr>
-				<td>${product.name }</td>
-				<td>${product.price }</td>
-				<td>${product.promotion }</td>
-				<td>${product.quantity }</td>
-				<td>${product.sold }</td>
+				<td>${cartitem.product.name }</td>
+				<td>${cartitem.product.price }</td>
+				<td>${cartitem.product.promotion }</td>
+				<td>${cartitem.product.quantity }</td>
+				<td>${cartitem.product.sold }</td>
+				<td>${cartitem.size }</td>
 				<td>
-					<select name="size">
-						<c:forEach items="${product.sizemd }" var="sizes">
-							<option value=${sizes.size }>${sizes.size } (${sizes.quantity }) </option>
-						</c:forEach>
-					</select>
-				</td>
-				<td>
-					<c:if test="${product.img!=null}">
+					<c:if test="${cartitem.product.img!=null}">
 						<img class="d-block w-100" style="width: 150px; height: 150px;" src="${product.img }">
 					</c:if>
 				</td>
-				<td>${product.count }</td>
+				<td>${cartitem.count }</td>
 				<td><a class="btn btn-primary" type="button"
-					href="<c:url value='product/edit?id=${product.id }'/>">Sửa</a> <a
+					href="<c:url value='cartitem/edit?id=${cartitem.id }'/>">Cập nhật</a> <a
 					class="btn btn-danger" type="button"
-					href="<c:url value='product/delete?id=${product.id }'/>">Xóa</a>
+					href="<c:url value='cartitem/delete?id=${cartitem.id }'/>">Xóa</a>
 			</tr>
 		</c:forEach>
 	</tbody>

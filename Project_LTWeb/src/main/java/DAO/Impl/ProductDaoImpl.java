@@ -414,9 +414,8 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 	}
 	
 	@Override
-	public List<ProductModel> findProductByCardId(int cardid) {
-		String sql = "SELECT * FROM Product, CartItem WHERE Product.id=CartItem.productId and CartItem.productId=?";
-		List<ProductModel> products = new ArrayList<ProductModel>();
+	public String findProductIdByCardId(int cardid) {
+		String sql = "SELECT productId FROM CartItem WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -424,19 +423,12 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				ProductModel product = new ProductModel();
-				product.setId(Integer.parseInt(rs.getString("id")));
-				product.setName(rs.getString("name"));
-				product.setPrice(rs.getBigDecimal("price"));
-				product.setPromotion(Integer.parseInt(rs.getString("promotion")));
-				product.setQuantity(Integer.parseInt(rs.getString("quantity")));
-				product.setSold(Integer.parseInt(rs.getString("sold")));
-				products.add(product);
+				return rs.getString("productId");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return products;
+		return null;
 	}
 }
 
