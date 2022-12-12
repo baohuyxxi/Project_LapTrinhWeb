@@ -20,13 +20,20 @@
 	
 	<dec:body/>
 	<%@ include file="/common/admin/admin_left.jsp"%>
-<%-- 	<!-- Start Script -->
+	
+	
+	<!-- Start Script -->
     <script src="<c:url value="/assets/js/jquery-1.11.0.min.js"/>"></script>
     <script src="<c:url value="/assets/js/jquery-migrate-1.2.1.min.js"/>"></script>
     <script src="<c:url value="/assets/js/bootstrap.bundle.min.js"/>"></script>
     <script src="<c:url value="/assets/js/templatemo.js"/>"></script>
     <script src="<c:url value="/assets/js/custom.js"/>"></script>
 
-    <!-- End Script --> --%>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- End Script -->
 </body>
 </html>

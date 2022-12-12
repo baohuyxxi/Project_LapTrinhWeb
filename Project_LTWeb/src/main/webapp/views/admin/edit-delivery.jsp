@@ -9,6 +9,8 @@
 </head>
 <body>
 	<c:url value="/admin/delivery/edit" var="edit"></c:url>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"
+			style="margin-left: auto !important;">
 		<div class="container">
 			<form role="form" action="${edit }" method="post">
 				<h4 align="center">Sửa Nhân Viên Giao Hàng</h4>
@@ -29,5 +31,6 @@
 				</div>
 			</form>
 		</div>
+	</main>
 </body>
 </html>

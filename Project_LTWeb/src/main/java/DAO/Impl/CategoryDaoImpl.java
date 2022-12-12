@@ -33,7 +33,7 @@ public class CategoryDaoImpl extends DBConnection implements ICategoryDao{
 	}
 	
 	public void edit(CategoryModel category) {
-		String sql = "UPDATE  Category SET name=?, slug=?, createdAt=?, updatedAt=?";
+		String sql = "UPDATE  Category SET name=?, slug=?, createdAt=?, updatedAt=? Where id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -41,6 +41,7 @@ public class CategoryDaoImpl extends DBConnection implements ICategoryDao{
 			ps.setString(2, category.getSlug());
 			ps.setDate(3, new Date(System.currentTimeMillis()));
 			ps.setDate(4, new Date(System.currentTimeMillis()));
+			ps.setInt(5, category.getId());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
