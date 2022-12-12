@@ -14,15 +14,13 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 	@Override
 	public void insert(CartModel cart) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO Cart(id,userId,storeId,complete) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO Cart(userId,complete) VALUES (?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, cart.getId());
-			ps.setInt(2, cart.getUserId());
-			ps.setInt(3, cart.getStoreId());
-			ps.setBoolean(4, false);
+			ps.setInt(1, cart.getUserId());
+			ps.setBoolean(2, false);
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -34,14 +32,13 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 	
 	@Override
 	public void edit(CartModel cart) {
-		String sql = "UPDATE  Cart SET userId=?, storeId=? WHERE id=?";
+		String sql = "UPDATE  Cart SET userId=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, cart.getUserId());
-			ps.setInt(2, cart.getStoreId());
-			ps.setInt(3, cart.getId());
+			ps.setInt(2, cart.getId());
 			
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -68,7 +65,6 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 				
 				cart.setId(rs.getInt("id"));
 				cart.setUserId(rs.getInt("userId"));
-				cart.setStoreId(rs.getInt("storeId"));	
 				cart.setComplete(rs.getBoolean("complete"));
 				
 				return cart;
@@ -96,8 +92,7 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 			while (rs.next()) {
 				CartModel cart = new CartModel();
 				cart.setId(rs.getInt("id"));
-				cart.setUserId(rs.getInt("userId"));
-				cart.setStoreId(rs.getInt("storeId"));	
+				cart.setUserId(rs.getInt("userId"));	
 				cart.setComplete(rs.getBoolean("complete"));
 				Cart.add(cart);
 			}
@@ -125,9 +120,25 @@ public class CartDaoImpl extends DBConnection implements ICartDao {
 				CartModel cart = new CartModel();
 				cart.setId(rs.getInt("id"));
 				cart.setUserId(rs.getInt("userId"));
-				cart.setStoreId(rs.getInt("storeId"));	
 				cart.setComplete(rs.getBoolean("complete"));
 				return cart;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String findCartIdByUserId(int userid) {
+		String sql = "SELECT * FROM Cart WHERE userId = ? ";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userid);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getString("id");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

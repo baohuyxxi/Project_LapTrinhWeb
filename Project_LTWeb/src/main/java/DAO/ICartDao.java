@@ -22,4 +22,6 @@ public interface ICartDao {
 
 	CartModel findById(int id);
 
+	String findCartIdByUserId(int userid);
+
 }

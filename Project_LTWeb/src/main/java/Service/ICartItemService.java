@@ -22,4 +22,6 @@ public interface ICartItemService {
 	List<CartItemModel> getAll();
 	
 	CartItemModel findCartAndCountProductID(int userId);
+	
+	List<CartItemModel> getAllByCartId(int cartid);
 }

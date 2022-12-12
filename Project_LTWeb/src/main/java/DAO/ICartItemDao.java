@@ -24,4 +24,6 @@ public interface ICartItemDao {
 	
 	CartItemModel findCartAndCountProductID(int userId);
 
+	List<CartItemModel> getAllByCartId(int cartid);
+
 }

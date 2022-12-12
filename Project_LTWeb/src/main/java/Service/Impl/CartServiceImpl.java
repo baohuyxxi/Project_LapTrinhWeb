@@ -45,4 +45,9 @@ public class CartServiceImpl implements ICartService {
 	public CartModel findById(int id) {
 		return icartdao.findById(id);
 	}
+
+	@Override
+	public String findCartIdByUserId(int userid) {
+		return icartdao.findCartIdByUserId(userid);
+	}
 }
