@@ -31,13 +31,12 @@ public class AccountDaoImpl extends DBConnection implements IAccountDao{
 
 	@Override
 	public void edit(AccountModel account) {
-		String sql = "UPDATE Account SET username=?, password=? WHERE id=?";
+		String sql = "UPDATE Account SET password=? WHERE id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, account.getUsername());
-			ps.setString(2, account.getPassword());
-			ps.setInt(3, account.getId());
+			ps.setString(1, account.getPassword());
+			ps.setInt(2, account.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,5 +134,28 @@ public class AccountDaoImpl extends DBConnection implements IAccountDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<AccountModel> getAllAccount() {
+		String sql = "select Account.id, InfoUser.name, Account.username, Account.password, Account.role \r\n"
+				+ "from Account, InfoUser where Account.id = InfoUser.id";
+		List<AccountModel> accounts = new ArrayList<AccountModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				accounts.add(new AccountModel(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3),
+						rs.getString(4), 
+						rs.getInt(5)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return accounts;
 	}
 }

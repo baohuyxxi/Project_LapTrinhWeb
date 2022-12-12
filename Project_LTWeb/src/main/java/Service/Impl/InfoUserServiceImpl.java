@@ -77,4 +77,10 @@ public class InfoUserServiceImpl implements IInfoUserService{
 		return infoUserDao.findUserIdByStoreId(storeid);
 	}
 
+	@Override
+	public int CountUser() {
+		// TODO Auto-generated method stub
+		return infoUserDao.CountUser();
+	}
+
 }

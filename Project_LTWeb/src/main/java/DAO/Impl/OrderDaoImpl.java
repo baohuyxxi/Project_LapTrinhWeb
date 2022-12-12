@@ -163,5 +163,22 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 		}
 		return null;
 	}
-
+	
+	@Override
+	public int CountOrder() {
+		String sql = "select count(*) 'sl' from Orders";
+		int slOrders = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slOrders = rs.getInt("sl");
+			}
+			return slOrders;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return slOrders;
+	}
 }

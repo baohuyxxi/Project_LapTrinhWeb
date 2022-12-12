@@ -185,4 +185,21 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 		return null;
 	}
 	
+	@Override
+	public int CountUser() {
+		String sql = "select count(*) 'sl' from InfoUser";
+		int slUser = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slUser = rs.getInt("sl");
+			}
+			return slUser;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return slUser;
+	}
 }

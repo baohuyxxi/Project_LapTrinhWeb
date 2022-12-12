@@ -12,6 +12,7 @@ public interface IAccountService {
 	AccountModel get(int id);
 	AccountModel getName(String name);
 	List<AccountModel> getAll();
+	List<AccountModel> getAllAccount();
 	List<AccountModel> search(String keyword);
 	AccountModel findById(int id);
 }

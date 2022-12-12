@@ -14,4 +14,5 @@ public interface IInfoUserService {
 	List<InfoUserModel> search(String keyword);
 	InfoUserModel findById(int id);
 	public String findUserIdByStoreId(int storeid);
+	int CountUser();
 }

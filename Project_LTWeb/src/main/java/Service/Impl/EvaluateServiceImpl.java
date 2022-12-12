@@ -27,5 +27,11 @@ public class EvaluateServiceImpl implements IEvaluateService{
 		// TODO Auto-generated method stub
 		return evaluatedDao.getAll();
 	}
+
+	@Override
+	public int CountEvaluated() {
+		// TODO Auto-generated method stub
+		return evaluatedDao.CountEvaluated();
+	}
 	
 }
