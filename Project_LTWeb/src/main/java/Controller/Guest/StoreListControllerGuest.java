@@ -25,7 +25,7 @@ public class StoreListControllerGuest extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<StoreModel> stor = storeService.getAllInfo();
+		List<StoreModel> stor = storeService.getAllInfo(0,"0");
 		req.setAttribute("stor",stor);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/store-list.jsp");
 		dispatcher.forward(req, resp);

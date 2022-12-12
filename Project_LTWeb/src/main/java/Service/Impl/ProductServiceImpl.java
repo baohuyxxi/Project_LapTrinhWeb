@@ -74,7 +74,11 @@ public class ProductServiceImpl implements IProductService{
 	public List<ProductModel> findProByAllId(int valueId, String columnId) {
 		return productDao.findProByAllId(valueId,columnId);
 	}
+	public List<ProductModel> findProByString(String string) {
+		return productDao.findProByString(string);
+	}
 
+	
 	@Override
 	public List<ProductModel> getAllByStoreId(int storeId) {
 		return productDao.getAllByStoreId(storeId);

@@ -3,8 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<img style="background-color: #FFEE82; border: 20px solid #fff;"
-	class="img-responsive c-rounded-full" width="256" height="256"
-	src="/images/user/user3.jpg" alt="">
+<body>
+	<div class="wrap">
+		<form action="" class="search" method="post">
+			<input type="text" class="searchTerm" placeholder="Bạn muốn tìm gì?">
+			<button type="submit" class="searchButton">Submit</button>
+		</form>
+	</div>
+	<style>
+
+</style>
 </body>
 </html>
