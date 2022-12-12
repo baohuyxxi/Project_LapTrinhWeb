@@ -60,7 +60,7 @@ public class DeliveryAddController extends HttpServlet{
 			e.printStackTrace();
 		}
 		finally {
-			resp.sendRedirect(req.getContextPath() + "/admin/delivery/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/delivery");
 		}
 	}
 

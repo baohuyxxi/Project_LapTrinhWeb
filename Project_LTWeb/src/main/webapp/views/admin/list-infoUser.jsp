@@ -4,50 +4,60 @@
 
 
 <body>
-<div class="container">
-<table id="example" class="table table-striped table-bordered"
-	style="width: 100%">
-	
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Tên</th>
-			<th>Tên miền</th>
-			<th>Email</th>
-			<th>Số điện thoại</th>
-			<th>Địa chỉ</th>
-			<th>Avatar</th>
-			<th>Ngày tạo</th>
-			<th>Ngày cập nhật</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${userList}" var="user">	
-			<tr>
-				<td>${user.id }</td>
-				<td>${user.name }</td>
-				<td>${user.slug }</td>
-				<td>${user.email }</td>
-				<td>${user.phone }</td>
-				<td>${user.address }</td>
-				<c:url value="/upload/user/${user.avatar}" var="imgAvt"></c:url>
-				<td>
-					<img height="150" width="200" src="${imgAvt }" />
-				</td>
-				<td>${user.createdAt }</td>
-				<td>${user.updatedAt }</td>
-				<td><a
-					href="<c:url value='/infoUser/edit?id=${user.id }'/>"
-					class="center">Sửa</a> | <a
-					href="<c:url value='/admin/infoUser/delete?id=${user.id }'/>"
-					class="center">Xóa</a>
-				</td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
-</div>
+	<div class="">
+		<main role="main" class="px-2"
+			style="margin-left: 340px">
+			<table id="example" class="table table-striped table-bordered"
+				style="width: 100%">
+
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th style="width: 150px">Họ và tên</th>
+						<th>Tên miền</th>
+						<th>Email</th>
+						<th style="width: 125px">Số điện thoại</th>
+						<th style="width: 150px">Địa chỉ</th>
+						<th style="width: 150px">Avatar</th>
+						<th>Ngày tạo</th>
+						<th>Ngày cập nhật</th>
+						<th>Trạng thái tài khoản</th>
+						<th>Chức năng</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${userList}" var="user">
+						<tr>
+							<td>${user.id }</td>
+							<td>${user.name }</td>
+							<td>${user.slug }</td>
+							<td>${user.email }</td>
+							<td>${user.phone }</td>
+							<td>${user.address }</td>
+							<td><img height="150" width="200" src="${user.avatar }" /></td>
+							<td>${user.createdAt }</td>
+							<td>${user.updatedAt }</td>
+							<td>
+								<c:if test="${user.status == true }">
+									Đang hoạt động
+								</c:if>
+								<c:if test="${user.status == false }">
+									Ngừng hoạt động
+								</c:if>
+							</td>
+							<td><a href="<c:url value='infoUser/edit?id=${user.id }'/>"
+								class="center">Sửa</a> | <a
+								href="<c:url value='/infoUser?id=${user.id }'/>"
+								class="center">Thông tin chi tiết</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</main>
+	</div>
 </body>
-<script type="text/javascript">$(document).ready(function() {
-    $('#example').DataTable();
-	});></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});>
+</script>

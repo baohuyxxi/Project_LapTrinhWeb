@@ -19,7 +19,7 @@ import Service.ICategoryService;
 import Service.Impl.CategoryServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/admin/category/list"})
+@WebServlet(urlPatterns = {"/admin/category"})
 public class CategoryListController extends HttpServlet{
 
 	ICategoryService CategoryService = new CategoryServiceImpl();
@@ -28,6 +28,10 @@ public class CategoryListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<CategoryModel> categoryList = CategoryService.getAll();
 		req.setAttribute("categoryList",categoryList);
+		req.setAttribute("delivery", "");
+		req.setAttribute("evaluate", "");
+		req.setAttribute("home", "");
+		req.setAttribute("category", "active");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-category.jsp");
 		dispatcher.forward(req, resp);
 	}
