@@ -383,7 +383,51 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 
 	@Override
 	public ProductModel findByProductId(int id) {
-		// TODO Auto-generated method stub
+		//of Tuấn
+		String sql = "SELECT * FROM Product WHERE id=?";
+		ProductModel product = new ProductModel();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				product.setId(Integer.parseInt(rs.getString("id")));
+				product.setName(rs.getString("name"));
+				product.setSlug(rs.getString("slug"));
+				product.setDescription(rs.getString("description"));
+				product.setPrice(rs.getBigDecimal("price"));
+				product.setPromotion(Integer.parseInt(rs.getString("promotion")));
+				product.setQuantity(Integer.parseInt(rs.getString("quantity")));
+				product.setSold(Integer.parseInt(rs.getString("sold")));
+				product.setCategory_id(Integer.parseInt(rs.getString("category_id")));
+				product.setStoreId(Integer.parseInt(rs.getString("storeId")));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				return product;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String findProductIdByCardId(int cardid) {
+		String sql = "SELECT productId FROM CartItem WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, cardid);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				return rs.getString("productId");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

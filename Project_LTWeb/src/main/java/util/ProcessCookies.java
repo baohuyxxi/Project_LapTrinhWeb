@@ -8,6 +8,7 @@ public class ProcessCookies{
 	public static void addCookieForCookies(HttpServletRequest req, HttpServletResponse resp, String name, String value)
 	{
 		Cookie cookie = new Cookie(name, value);
+		cookie.setMaxAge(10*60);
 		resp.addCookie(cookie);
 	}
 	
@@ -29,6 +30,25 @@ public class ProcessCookies{
 			//
 		} 
 		return userId;
+	}
+	public static String getRoleFromCookies(HttpServletRequest req, HttpServletResponse resp)
+	{
+		String role = null;
+		
+		Cookie cookie = null;
+		Cookie[] cookies = null;
+		cookies = req.getCookies();
+		resp.setContentType("text/html");
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				cookie = cookies[i];
+				if (cookie.getName().equals("roleLogin"))
+					role = cookie.getValue();
+			}
+		} else {
+			//
+		} 
+		return role;
 	}
 	public static String getStoreIdFromCookies(HttpServletRequest req, HttpServletResponse resp)
 	{

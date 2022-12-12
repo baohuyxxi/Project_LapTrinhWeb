@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form role="form" action="add" method="post" enctype="multipart/form-data">
-		<div class="form-group">
+<form role="form" action="add" method="post" enctype="multipart/form-data" style="margin: 15px 500px;">
+		<div class="form-group" style="margin-bottom: 15px">
 			<label>Ảnh đại diện</label> <input type="file" name="avatar" />
 		</div>
 		
@@ -46,47 +46,20 @@
 	<div class="input-group mb-3">
 		<span class="input-group-text" id="basic-addon1">Mật khẩu</span> 
 		<input
-			type="text" class="form-control" placeholder="Password"
+			type="password" class="form-control" placeholder="Password"
 			aria-label="Username" aria-describedby="basic-addon1" name="password">
 	</div>
 	
 	<div>
-	<select name="role">
+	<select name="role" style="border-radius: 5px;padding: 5px;">
 		<option value="1">Khách hàng</option>
 		<option value="2">Người bán hàng</option>
 	</select>
 	</div>
-<button type="submit" class="btn btn-default">Tạo tài khoản</button>
-		<button type="reset" class="btn btn-primary">Hủy</button>
+		<div style="position: relative;left: 330px;">
+			<button type="submit" class="btn btn-default">Tạo tài khoản</button>
+			<button type="reset" class="btn btn-primary">Hủy</button>
+		</div>
 	</form>
-	
-
-
-	<!-- <form role="form" action="add" method="post">
-		<div class="form-group">
-			<label>Tên:</label> <input class="form-control"
-				placeholder="please enter category Name" name="name" />
-		</div>
-		<div class="form-group">
-			<label>Tên miền:</label> <input class="form-control"
-				placeholder="Please enter category Name" name="slug" />
-		</div>
-		<div class="form-group">
-			<label>Email:</label> <input class="form-control"
-				placeholder="please enter category Name" name="email" />
-		</div>
-		<div class="form-group">
-			<label>Số điện thoại:</label> <input class="form-control"
-				placeholder="please enter category Name" name="phone" />
-		</div>
-		<div class="form-group">
-			<label>Địa chỉ:</label> <input class="form-control"
-				placeholder="please enter category Name" name="address" />
-		</div>
-
-		<button type="submit" class="btn btn-default">Thêm</button>
-		<button type="reset" class="btn btn-primary">Hủy</button>
-	</form>
- -->
 </body>
 </html>
