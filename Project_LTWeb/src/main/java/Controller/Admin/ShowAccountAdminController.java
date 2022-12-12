@@ -10,27 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Models.StoreModel;
-import Service.IStoreService;
-import Service.Impl.StoreServiceImpl;
+import Models.AccountModel;
+import Service.IAccountService;
+import Service.Impl.AccountServiceImpl;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/admin/store"})
-public class StoreListControllerAdmin extends HttpServlet{
+@WebServlet(urlPatterns = {"/admin/account"})
+public class ShowAccountAdminController extends HttpServlet{
 
-	IStoreService storeService = new StoreServiceImpl();
+	IAccountService accountService = new AccountServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<StoreModel> storeList = storeService.getAllStoreAD();
-		req.setAttribute("storeList", storeList);
-		req.setAttribute("store", "active");
+		List<AccountModel> accountList = accountService.getAllAccount();
+		req.setAttribute("accountList", accountList);
+		req.setAttribute("account", "active");
+		req.setAttribute("store", "");
 		req.setAttribute("user", "");
 		req.setAttribute("delivery", "");
 		req.setAttribute("evaluate", "");
 		req.setAttribute("home", "");
 		req.setAttribute("category", "");
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-store.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-account.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 }

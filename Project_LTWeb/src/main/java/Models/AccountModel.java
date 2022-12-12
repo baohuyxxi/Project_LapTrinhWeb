@@ -5,6 +5,7 @@ public class AccountModel {
 	private String username;
 	private String password;
 	private int role;
+	private String name;
 	public AccountModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -14,6 +15,14 @@ public class AccountModel {
 		this.username = username;
 		this.password = password;
 		this.role = role;
+	}
+	public AccountModel(int id,String name, String username, String password, int role) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.name = name;
 	}
 	public int getId() {
 		return id;
@@ -38,5 +47,11 @@ public class AccountModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}	
 }

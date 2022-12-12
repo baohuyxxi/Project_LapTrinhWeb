@@ -28,7 +28,8 @@ public class InfoUserListController extends HttpServlet{
 		req.setAttribute("delivery", "");
 		req.setAttribute("evaluate", "");
 		req.setAttribute("home", "");
-		req.setAttribute("category", "null");
+		req.setAttribute("category", "");
+		req.setAttribute("store", "");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-infoUser.jsp");
 		dispatcher.forward(req, resp);
 	}

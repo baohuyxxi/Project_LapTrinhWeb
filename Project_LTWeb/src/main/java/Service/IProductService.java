@@ -27,4 +27,6 @@ public interface IProductService {
 	List<ProductModel> findProByString(String string);
 	
 
+	int CountProductSold();
+	int CountProduct();
 }
