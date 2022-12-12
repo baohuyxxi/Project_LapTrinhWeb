@@ -24,4 +24,6 @@ public interface IProductService {
 	String findStoreIdByProductId(int productId);
 	ProductModel findMinSoldProduct(int storeId);
 
+	int CountProductSold();
+	int CountProduct();
 }

@@ -14,4 +14,5 @@ public interface IOrderDao {
 	List<OrdersModel> getAllOfStore(int storeId);
 	OrdersModel findById(int id);
 	BigDecimal totalSales(int storeId);
+	int CountOrder();
 }

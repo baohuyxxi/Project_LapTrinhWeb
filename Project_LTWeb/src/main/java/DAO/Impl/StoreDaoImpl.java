@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+
 import Connection.DBConnection;
 import DAO.IStoreDao;
 import Models.StoreModel;
@@ -50,6 +52,7 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 		}
 	}
 
+	
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
@@ -172,5 +175,67 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 		}
 		return stores;
 	}
+
+	@Override
+	public List<StoreModel> getAllStoreAD() {
+		String sql = "Select Store.id, InfoUser.name, Store.name 'Store_name',Store.slug, Store.address, Store.createdAt, Store.updatedAt, Store.status\r\n"
+				+ "from Store, InfoUser \r\n"
+				+ "where Store.userId = InfoUser.id";
+		List<StoreModel> stores = new ArrayList<StoreModel>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				StoreModel store = new StoreModel();
+				store.setId(Integer.parseInt(rs.getString("id")));
+				store.setName(rs.getString("Store_name"));
+				store.setUserName(rs.getString("name"));
+				store.setSlug(rs.getString("slug"));
+				store.setAddress(rs.getString("address"));
+				store.setCreatedAt(rs.getDate("createdAt"));
+				store.setUpdatedAt(rs.getDate("updatedAt"));
+				store.setStatus(rs.getBoolean("status"));
+				stores.add(store);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return stores;
+	}
+
+	@Override
+	public void editByAdmin(StoreModel store) {
+		String sql = "UPDATE Store SET updatedAt=?, status = ? WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setDate(1, new Date(System.currentTimeMillis()));
+			ps.setBoolean(2, store.getStatus()); 
+			ps.setInt(3, store.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
 	
+	@Override
+	public int CountStore() {
+		String sql = "select count(*) 'sl' from Store";
+		int slStore = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slStore = rs.getInt("sl");
+			}
+			return slStore;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return slStore;
+	}
 }

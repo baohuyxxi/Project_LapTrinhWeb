@@ -107,4 +107,16 @@ public class ProductServiceImpl implements IProductService{
 		// TODO Auto-generated method stub
 		return productDao.findMinSoldProduct(storeId);
 	}
+
+	@Override
+	public int CountProductSold() {
+		// TODO Auto-generated method stub
+		return productDao.CountProductSold();
+	}
+
+	@Override
+	public int CountProduct() {
+		// TODO Auto-generated method stub
+		return productDao.CountProduct();
+	}
 }

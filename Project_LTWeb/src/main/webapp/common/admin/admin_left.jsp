@@ -9,11 +9,11 @@
     font-size: 20px;"> <span
 					data-feather="home"></span> Dashboard <span class="sr-only"></span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#" style="padding-bottom: 15%;
+			<li class="nav-item"><a class="nav-link ${account }" href="${link}/account" style="padding-bottom: 15%;
     font-size: 20px;"> <span
 					data-feather="file"></span> Account
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#" style="padding-bottom: 15%;
+			<li class="nav-item"><a class="nav-link ${store }" href="${link}/store" style="padding-bottom: 15%;
     font-size: 20px;"> <span
 					data-feather="shopping-cart"></span> Stores
 			</a></li>

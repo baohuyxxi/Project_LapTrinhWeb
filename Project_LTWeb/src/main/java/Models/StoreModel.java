@@ -12,6 +12,8 @@ public class StoreModel {
 	private Date updatedAt;
 	private String avatar;
 	private int sold;
+	private Boolean status;
+	private String userName;
 	
 	public StoreModel() {
 		super();
@@ -88,5 +90,20 @@ public class StoreModel {
 		this.sold = sold;
 	}
 
-	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 }

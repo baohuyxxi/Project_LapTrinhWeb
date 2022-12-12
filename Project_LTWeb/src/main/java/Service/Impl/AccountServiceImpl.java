@@ -60,5 +60,11 @@ public class AccountServiceImpl implements IAccountService{
 	public AccountModel checkLogin(String username, String password) {
 		return accountDao.checkLogin(username, password);
 	}
+
+	@Override
+	public List<AccountModel> getAllAccount() {
+		// TODO Auto-generated method stub
+		return accountDao.getAllAccount();
+	}
 	
 }

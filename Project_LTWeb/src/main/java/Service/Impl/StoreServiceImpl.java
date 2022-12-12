@@ -60,4 +60,20 @@ public class StoreServiceImpl implements IStoreService{
 		return storeDao.getAllInfo();
 	}
 
+	@Override
+	public List<StoreModel> getAllStoreAD() {
+		return storeDao.getAllStoreAD();
+	}
+
+	@Override
+	public void editByAdmin(StoreModel store) {
+		storeDao.editByAdmin(store);
+		
+	}
+
+	@Override
+	public int CountStore() {
+		return storeDao.CountStore();
+	}
+
 }
