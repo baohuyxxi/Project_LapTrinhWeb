@@ -20,13 +20,20 @@
 				<h5 class="text-center mt-3 mb-3">${stor.name }</h5>
 				<h5 class="text-center mt-3 mb-3">Sản phẩm đã bán: ${stor.sold }</h5>
 				<h6 class="text-center mt-3 mb-3">Cập nhật: ${stor.updatedAt }</h6>
-				
-			
+
+
 			</div>
 		</c:forEach>
 	</div>
 
 </table>
+<
+<style>
+.ounded-circle {
+	width: 300px;
+	height: 300px;
+}
+</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#example').DataTable();
