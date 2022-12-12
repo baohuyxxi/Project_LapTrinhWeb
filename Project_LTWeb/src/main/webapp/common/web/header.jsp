@@ -59,12 +59,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${link }contact">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${link}home">Category</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="${link}home">Users</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -77,11 +71,11 @@
                         </div>
                     </div>
       
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
@@ -92,7 +86,7 @@
         <div
 		class="container  d-flex">
 		<div class="heading col-sm-12 text-center">
-		<form action="/Project_LTWeb/products" class="search" method="post">
+		<form action="${link}products" class="search" method="post">
 			<input type="text" class="searchTerm"  placeholder="Bạn muốn tìm gì?" name="question" class="form-control" required>
 			<button type="submit" class="searchButton">Tìm Kiếm</button>
 		</form>
