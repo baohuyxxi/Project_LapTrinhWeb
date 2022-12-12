@@ -3,13 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<img height="32" width="32" alt=":v"
-		referrerpolicy="origin-when-cross-origin"
-		src="https://static.xx.fbcdn.net/images/emoji.php/v9/e7e/1.5/32/PACMAN.png">
+<img style="background-color: #FFEE82; border: 20px solid #fff;"
+	class="img-responsive c-rounded-full" width="256" height="256"
+	src="/images/user/user3.jpg" alt="">
 </body>
 </html>
