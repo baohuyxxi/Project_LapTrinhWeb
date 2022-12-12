@@ -22,9 +22,11 @@ import Models.CartModel;
 import Models.InfoUserModel;
 import Service.IAccountService;
 import Service.ICartService;
+import Service.IDeliveryService;
 import Service.IInfoUserService;
 import Service.Impl.AccountServiceImpl;
 import Service.Impl.CartServiceImpl;
+import Service.Impl.DeliveryServiceImpl;
 import Service.Impl.InfoUserServiceImpl;
 import util.Constant;
 
@@ -36,6 +38,7 @@ public class ResgisterController extends HttpServlet{
 	IInfoUserService userService = new InfoUserServiceImpl();
 	IAccountService accountService = new AccountServiceImpl();
 	ICartService cartService = new CartServiceImpl();
+	IDeliveryService deliveryService = new DeliveryServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -80,20 +83,13 @@ public class ResgisterController extends HttpServlet{
 				else if(item.getFieldName().equals("role")){
 					account.setRole(Integer.parseInt(item.getString("UTF-8")));
 				}
-				else{
-					if (item.getSize() > 0) {
-					String originalFileName = item.getName();
-					int index = originalFileName.lastIndexOf(".");
-					String ext = originalFileName.substring(index + 1);
-					String fileName = System.currentTimeMillis() + "." + ext;
-					File file = new File(Constant.DIR + "/user/" + fileName);
-					item.write(file);
-					user.setAvatar(fileName.toString());
-					} else {
-						user.setAvatar(null);
-					}
+				else if(item.getFieldName().equals("avatar")){
+					user.setAvatar(item.getString("UTF-8"));
 				}
 			}
+			
+			
+			
 			userService.insert(user);
 			accountService.insert(account);
 			
@@ -102,6 +98,7 @@ public class ResgisterController extends HttpServlet{
 			{
 				userService = new InfoUserServiceImpl();
 				cart.setUserId(userService.getUserName(user.getEmail()).getId());
+				cart.setDeliveryId(Integer.parseInt(deliveryService.getDeliveryIdTop1()));
 				cartService.insert(cart);
 			}
 			

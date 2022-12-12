@@ -46,4 +46,9 @@ public class DeliveryServiceImpl implements IDeliveryService{
 		return ideliverydao.findById(id);
 	}
 
+	@Override
+	public String getDeliveryIdTop1() {
+		return ideliverydao.getDeliveryIdTop1();
+	}
+
 }

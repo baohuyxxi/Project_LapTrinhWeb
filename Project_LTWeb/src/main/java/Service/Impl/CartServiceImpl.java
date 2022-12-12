@@ -50,4 +50,9 @@ public class CartServiceImpl implements ICartService {
 	public String findCartIdByUserId(int userid) {
 		return icartdao.findCartIdByUserId(userid);
 	}
+
+	@Override
+	public String findDeliveryIdByCardId(int cardid) {
+		return icartdao.findDeliveryIdByCardId(cardid);
+	}
 }

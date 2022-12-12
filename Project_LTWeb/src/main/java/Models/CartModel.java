@@ -4,14 +4,16 @@ public class CartModel {
 	private int id;
 	private int userId;
 	private boolean complete;
+	private int deliveryId;
 	public CartModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CartModel(int userId, boolean complete) {
+	public CartModel(int userId, boolean complete, int delevery) {
 		super();
 		this.userId = userId;
 		this.complete = complete;
+		this.deliveryId = delevery;
 	}
 	public int getUserId() {
 		return userId;
@@ -30,6 +32,12 @@ public class CartModel {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getDeliveryId() {
+		return deliveryId;
+	}
+	public void setDeliveryId(int deliveryId) {
+		this.deliveryId = deliveryId;
 	}
 	
 	

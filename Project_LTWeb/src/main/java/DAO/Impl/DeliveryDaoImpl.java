@@ -153,4 +153,21 @@ public class DeliveryDaoImpl extends DBConnection implements IDeliveryDao{
 		}
 		return null;
 	}
+	
+	@Override
+	public String getDeliveryIdTop1() {
+		String sql = "SELECT TOP (1) [id]\r\n"
+				+ "  FROM [DB_Project_LTWeb].[dbo].[Delivery]";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
