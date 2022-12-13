@@ -31,7 +31,7 @@ public class AboutControllerGuest extends HttpServlet{
 		// RequestDispatcher rd =  req.getRequestDispatcher("/views/infoUser.jsp"); 
 		// rd.forward(req, resp);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/about.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/about.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

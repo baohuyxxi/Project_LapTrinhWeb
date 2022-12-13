@@ -72,7 +72,7 @@
 	<div class="col-sm-12 text-center"
 		style="margin-bottom: 20px; margin-top: 20px;">
 		<a class="custom-btnDemo btn-12" href="#addProToCart" data-toggle="modal">
-			<span>Thêm Luôn Bạn êi !!!</span><span>Thêm Vào Giỏ Hàng</span>
+			<span>Thêm vào giỏ hàng</span><span>Thêm ngay</span>
 		</a>
 		<div
 			style="width: 140px; height: 1px; margin: 20px auto; border-bottom: 4px solid #00bff3;"></div>
@@ -147,31 +147,27 @@
 								<div
 									class="col-sm-6 col-lg-4 col-xl-3 mb-0 p-1 BoxProduct shadow">
 									<div class="card h-50 text-center">
-										<a><img class="card-img-top" src="${imag.img }"
+										<a></a><img class="card-img-top" src="${imag.img }"
 											alt="Card Image" width="100" height="100"> </a>
 									</div>
 								</div>
 							</c:forEach>
+							<div class="select">
+							  <select>
+							<c:forEach items="${sizes}" var="sizes">
+								<option value="${sizes.size}">${sizes.size}</option>
+							</c:forEach>
+							</select>
+							</div>
 							<div class="modal-footer">
-								<a type="button" class="custom-btn btn-1" href="#Huydz" data-toggle="modal">
-									<span>Thêm Luôn Bạn êi !!!</span>
+								<a class="custom-btn btn-1" href="./cartitem/add?id=${pro.id }" >
+									<span>Thêm vào giỏ hàng</span>
 								</a>
 							</div>
 						</div>
 					</div>
 
 				</form>
-			</div>
-
-		</div>
-	</div>
-
-	<div id="Huydz" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Đăng Nhập Trước Thằng Ngu ạ</h4>
-				</div>
 			</div>
 
 		</div>

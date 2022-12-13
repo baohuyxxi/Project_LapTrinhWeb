@@ -147,11 +147,12 @@
 		</div>
 	</div>
 		
-		
-		
+	<c:if test="${cartitems!=null}">	
 		<div>
 			<button type="submit" class="btn btn-primary">Đặt hàng</button>
 		</div>
+		
+	</c:if>
 	
 	</form>
 

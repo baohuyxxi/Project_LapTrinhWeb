@@ -19,9 +19,8 @@
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"
 		style="margin-left: auto !important;">
 		<h2>Danh sách các mặt hàng</h2>
-		<a class="fa fa-plus-square-o" href="#addcategory" data-toggle="modal">
-			<span>Thêm Loại Sản Phẩm</span>
-		</a>
+		<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#addcategory">Thêm loại hàng</button>
 		<table class="table">
 			<thead>
 				<tr>

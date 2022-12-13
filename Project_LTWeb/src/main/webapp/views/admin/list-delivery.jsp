@@ -18,7 +18,7 @@
 			style="margin-left: auto !important;">
 			<h2>Danh sách người vận chuyển</h2>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#addDelivery">Thêm sản phẩm</button>
+				data-target="#addDelivery">Thêm đối tác vận chuyển</button>
 			<table class="table">
 				<thead>
 					<tr>

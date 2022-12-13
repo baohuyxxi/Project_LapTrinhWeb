@@ -10,28 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+// @SuppressWarnings("serial")
+// @WebServlet(urlPatterns = {"/info"})
+
 import Models.ProductModel;
-import Models.StoreModel;
 import Service.IProductService;
-import Service.IStoreService;
 import Service.Impl.ProductServiceImpl;
-import Service.Impl.StoreServiceImpl;
+
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/user/store"})
-public class StoreControllerCustomer extends HttpServlet{
+@WebServlet(urlPatterns = {"/user/about"})
+public class AboutControllerGuest extends HttpServlet{
 
 	IProductService productService = new ProductServiceImpl();
-	IStoreService storeService = new StoreServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-int valueId = Integer.parseInt(req.getParameter("id"));
-		
-		List<StoreModel> stor = storeService.getAllInfo(valueId,"Store.id");
-		req.setAttribute("stor",stor);
-		List<ProductModel> pro = productService.findProByAllId(valueId,"storeId");
-		req.setAttribute("pro",pro);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/store-id.jsp");
+		// TODO Auto-generated method stub
+		// RequestDispatcher rd =  req.getRequestDispatcher("/views/infoUser.jsp"); 
+		// rd.forward(req, resp);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/about.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

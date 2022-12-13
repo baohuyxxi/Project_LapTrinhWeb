@@ -218,17 +218,20 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 				productService.editSold(product);
 			}
 			
-//			//xoa cartitem
-//			for(CartItemModel cartitem : cartitems)
-//			{
-//				cartItemService.delete(cartitem.getId());
-//			}
+			//xoa cartitem
+			for(CartItemModel cartitem : cartitems)
+			{
+				cartItemService.delete(cartitem.getId());
+			}
 			
 			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		resp.sendRedirect(req.getContextPath() + "/user/my-order");
 	}
 
 	private double total_price_a_product(CartItemModel cartitem) {
