@@ -25,7 +25,7 @@ public class StoreControllerCustomer extends HttpServlet{
 	IStoreService storeService = new StoreServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-int valueId = Integer.parseInt(req.getParameter("id"));
+		int valueId = Integer.parseInt(req.getParameter("id"));
 		
 		List<StoreModel> stor = storeService.getAllInfo(valueId,"Store.id");
 		req.setAttribute("stor",stor);

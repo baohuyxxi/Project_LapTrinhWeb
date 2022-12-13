@@ -72,7 +72,7 @@ public class LoginController extends HttpServlet {
 					//luu thong tin storeid
 					String storeId = productService.findStoreIdByUserId(infoUser.getId());
 					ProcessCookies.addCookieForCookies(req, resp, "storeIdLogin", String.valueOf(storeId));	
-					resp.sendRedirect(req.getContextPath() + "/vendor/home");
+					resp.sendRedirect(req.getContextPath() + "/vendor/store");
 					return;
 				} else if(account.getRole() == 1) {
 					resp.sendRedirect(req.getContextPath() + "/user/home");
