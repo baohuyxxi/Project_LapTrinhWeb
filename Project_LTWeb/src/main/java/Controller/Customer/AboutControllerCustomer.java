@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Service.IProductService;
 import Service.Impl.ProductServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/user/about" })
@@ -27,6 +28,8 @@ public class AboutControllerCustomer extends HttpServlet {
 		// RequestDispatcher rd = req.getRequestDispatcher("/views/infoUser.jsp");
 		// rd.forward(req, resp);
 
+		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
+		req.setAttribute("userId", userID);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/about.jsp");
 		dispatcher.forward(req, resp);
 	}

@@ -30,6 +30,7 @@ public class ProductAllControllerCustomer extends HttpServlet {
 			if (userID != null && Integer.parseInt(role) == 1) {
 				List<ProductModel> pro = productService.findProByAllId(0, "0");
 				req.setAttribute("pro", pro);
+				req.setAttribute("userId", userID);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
 				dispatcher.forward(req, resp);
 			} else {

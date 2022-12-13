@@ -15,6 +15,7 @@ import Service.IProductService;
 import Service.IStoreService;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.StoreServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/user/shops"})
@@ -27,6 +28,8 @@ public class StoreListControllerCustomer extends HttpServlet{
 		
 		List<StoreModel> stor = storeService.getAllInfo(0,"0");
 		req.setAttribute("stor",stor);
+		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
+		req.setAttribute("userId", userID);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/store-list.jsp");
 		dispatcher.forward(req, resp);
 	}
