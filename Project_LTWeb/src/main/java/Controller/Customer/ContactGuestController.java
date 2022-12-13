@@ -31,6 +31,8 @@ public class ContactGuestController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ShowMessage.ShowMessageUtil(req,checkInsert, action, "Cảm ơn bạn đã gửi đánh giá");
 		checkInsert=false;
+		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
+		req.setAttribute("userId", userID);
 		RequestDispatcher rd =  req.getRequestDispatcher("/views/customer/contact.jsp"); 
 		rd.forward(req, resp);
 	}

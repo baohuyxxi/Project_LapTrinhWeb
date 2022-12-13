@@ -37,7 +37,7 @@ public class OrderOfCustomerController extends HttpServlet {
 				List<OrderUserModel> orders = new ArrayList<OrderUserModel>();
 				orders = myOrderCustomerService.myorder(Integer.parseInt(userid));
 				req.setAttribute("orders", orders);
-				
+				req.setAttribute("userId", userid);
 				RequestDispatcher rd = req.getRequestDispatcher("/views/customer/my-order.jsp");
 				rd.forward(req, resp);
 				
