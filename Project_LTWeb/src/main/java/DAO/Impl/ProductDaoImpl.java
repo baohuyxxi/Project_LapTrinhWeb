@@ -511,5 +511,19 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return slProDuct;
 	}
+	
+	@Override
+	public void editSold(ProductModel product) {
+		String sql = "UPDATE Product SET sold=? WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, product.getSold());
+			ps.setInt(2, product.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 

@@ -12,7 +12,7 @@ public class CartItemServiceImpl implements ICartItemService{
 	ICartItemDao cartItemDao = new CartItemDaoImpl();
 	@Override
 	public void insert(CartItemModel cartItem) {
-		// TODO Auto-generated method stub
+		cartItemDao.insert(cartItem);
 		
 	}
 

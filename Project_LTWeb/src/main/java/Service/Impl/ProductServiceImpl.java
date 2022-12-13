@@ -126,4 +126,10 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.findProductIdByCardId(cardid);
 
 	}
+
+	@Override
+	public void editSold(ProductModel product) {
+		productDao.editSold(product);
+		
+	}
 }

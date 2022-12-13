@@ -29,4 +29,5 @@ public interface IProductService {
 
 	int CountProductSold();
 	int CountProduct();
+	void editSold(ProductModel product);
 }

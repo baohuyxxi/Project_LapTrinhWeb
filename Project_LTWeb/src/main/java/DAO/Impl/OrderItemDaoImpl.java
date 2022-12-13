@@ -1,6 +1,7 @@
 package DAO.Impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,7 +16,20 @@ public class OrderItemDaoImpl extends DBConnection implements IOrderItemDao{
 
 	@Override
 	public void insert(OrderItemModel orderItem) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO OrderItem(orderId, productId, count, price, createdAt, updatedAt) VALUES (?,?,?,?,?,?)";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, orderItem.getOrderId());
+			ps.setInt(2, orderItem.getProductId());
+			ps.setInt(3, orderItem.getCount());
+			ps.setBigDecimal(4, orderItem.getPrice());
+			ps.setDate(5, new Date(System.currentTimeMillis()));
+			ps.setDate(6, new Date(System.currentTimeMillis()));
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -68,6 +82,22 @@ public class OrderItemDaoImpl extends DBConnection implements IOrderItemDao{
 	@Override
 	public OrderItemModel findByOrderId(int orderId) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String findStoreIdLast() {
+		String sql = "select top(1) id from orders order by id desc";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	

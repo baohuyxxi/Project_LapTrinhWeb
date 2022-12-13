@@ -49,4 +49,10 @@ public class SizeServiceImpl implements ISizeService{
 	public List<SizeModel> getAllProductId(int productId) {
 		return isizedao.getAllProductId(productId);
 	}
+
+	@Override
+	public void editSize(SizeModel size_new) {
+		isizedao.editSize(size_new);
+		
+	}
 }
