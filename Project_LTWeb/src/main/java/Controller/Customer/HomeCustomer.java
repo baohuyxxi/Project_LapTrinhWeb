@@ -37,7 +37,7 @@ public class HomeCustomer extends HttpServlet {
 			if (Integer.parseInt(ProcessCookies.getRoleFromCookies(req, resp)) == 1 && userID != null) {
 				CartItemModel cart = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
 				req.setAttribute("cart", cart);
-
+				req.setAttribute("userId", userID);
 				RequestDispatcher rd = req.getRequestDispatcher("/views/customer/home.jsp");
 				rd.forward(req, resp);
 			} else {
