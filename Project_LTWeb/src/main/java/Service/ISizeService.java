@@ -14,4 +14,5 @@ public interface ISizeService {
 	List<SizeModel> search(String keyword);
 	SizeModel findByIdAndSize(String product_id, String size_name);
 	List<SizeModel> getAllProductId(int productId);
+	void editSize(SizeModel size_new);
 }

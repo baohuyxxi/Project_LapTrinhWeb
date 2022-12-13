@@ -82,8 +82,9 @@ public class LoginController extends HttpServlet {
 				{
 					resp.sendRedirect(req.getContextPath() + "/login");
 				}
-			} else if (account.getRole() == 2) {
-				resp.sendRedirect(req.getContextPath() + "/login");
+			} else if (account.getRole() == 0) {
+				resp.sendRedirect(req.getContextPath() + "/admin/trang-chu");
+				return;
 			}
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/login");

@@ -72,7 +72,7 @@
 	<div class="col-sm-12 text-center"
 		style="margin-bottom: 20px; margin-top: 20px;">
 		<a class="custom-btnDemo btn-12" href="#addProToCart" data-toggle="modal">
-			<span>Thêm Luôn Bạn êi !!!</span><span>Thêm Vào Giỏ Hàng</span>
+			<span>Thêm vào giỏ hàng</span><span>Thêm ngay</span>
 		</a>
 		<div
 			style="width: 140px; height: 1px; margin: 20px auto; border-bottom: 4px solid #00bff3;"></div>
@@ -152,18 +152,16 @@
 									</div>
 								</div>
 							</c:forEach>
-							<div class="select">
+							<div class="select-size">
 							  <select>
-							   <option selected disabled>Chọn Size</option>
 							<c:forEach items="${sizes}" var="sizes">
 								<option value="${sizes.size}">${sizes.size}</option>
-								 <option value="${sizes.size}">${sizes.size}</option>		
 							</c:forEach>
 							</select>
 							</div>
 							<div class="modal-footer">
-								<a class="custom-btn btn-1" href="/Project_LTWeb/login" >
-									<span>Thêm Luôn Bạn êi !!!</span>
+								<a class="custom-btn btn-1" href="./cartitem/add?id=${pro.id }" >
+									<span>Thêm vào giỏ hàng</span>
 								</a>
 							</div>
 						</div>
