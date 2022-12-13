@@ -153,7 +153,7 @@
 								</div>
 							</c:forEach>
 							<div class="select-size">
-							  <select class="select-size">
+							  <select >
 							   <option selected disabled>Chọn Size</option>
 							<c:forEach items="${sizes}" var="sizes">
 								<option value="${sizes.size}">${sizes.size}</option>

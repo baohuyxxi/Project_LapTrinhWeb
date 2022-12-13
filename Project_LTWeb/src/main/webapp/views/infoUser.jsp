@@ -133,15 +133,6 @@
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>${user.address }
                 </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
-                </div>
-                <hr class="my-4">
-                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                <a href="#">Show more</a>
               </div>
             </div>
           </div>
@@ -196,13 +187,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Day of the commencement</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="${user.createdAt }">
+                        <input type="text" id="input-username" disabled class="form-control form-control-alternative" placeholder="Username" value="${user.createdAt }">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Update</label>
-                        <input class="form-control form-control-alternative" placeholder="jesse@example.com" value="${user.updatedAt }">
+                        <input class="form-control form-control-alternative" disabled placeholder="jesse@example.com" value="${user.updatedAt }">
                       </div>
                     </div>
                   </div>

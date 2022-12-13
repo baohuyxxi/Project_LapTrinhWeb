@@ -25,8 +25,8 @@
 						name="status" value="${delivery.status }" class="form-control">
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal"
-						value="Trở lại"> <input type="submit"
+					<a href="<c:url value="/admin/delivery"></c:url>"><input type="button" class="btn btn-default" data-dismiss="modal"
+						value="Trở lại"></a> <input type="submit"
 						class="btn btn-success" value="Sửa">
 				</div>
 			</form>
