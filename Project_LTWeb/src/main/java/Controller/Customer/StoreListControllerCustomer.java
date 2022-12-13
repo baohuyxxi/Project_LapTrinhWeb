@@ -26,6 +26,7 @@ public class StoreListControllerCustomer extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
 		List<StoreModel> stor = storeService.getAllInfo(0,"0");
 		req.setAttribute("stor",stor);
 		String userID = ProcessCookies.getUserIdFromCookies(req, resp);

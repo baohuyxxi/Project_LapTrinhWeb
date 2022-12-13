@@ -13,20 +13,31 @@ import javax.servlet.http.HttpServletResponse;
 import Models.ProductModel;
 import Service.IProductService;
 import Service.Impl.ProductServiceImpl;
-import util.ProcessCookies;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = { "/user/products" })
-public class ProductAllControllerCustomer extends HttpServlet {
+@WebServlet(urlPatterns = {"/user/products"})
+public class ProductAllControllerCustomer extends HttpServlet{
 
 	IProductService productService = new ProductServiceImpl();
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
-		String role = ProcessCookies.getRoleFromCookies(req, resp);
+		List<ProductModel> pro = productService.findProByAllId(0,"0");
+		req.setAttribute("pro",pro);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
+		dispatcher.forward(req, resp);
+	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			resp.setContentType("text/html");
+			req.setCharacterEncoding("UTF-8");
+			
+			String string = req.getParameter("question");
+			List<ProductModel> pro = productService.findProByString(string);
+			req.setAttribute("pro",pro);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
+			dispatcher.forward(req, resp);
 			if (userID != null && Integer.parseInt(role) == 1) {
 				List<ProductModel> pro = productService.findProByAllId(0, "0");
 				req.setAttribute("pro", pro);
@@ -37,7 +48,7 @@ public class ProductAllControllerCustomer extends HttpServlet {
 				resp.sendRedirect(req.getContextPath() + "/login");
 			}
 		} catch (Exception e) {
-			resp.sendRedirect(req.getContextPath() + "/login");
+			e.printStackTrace();
 		}
 	}
 }

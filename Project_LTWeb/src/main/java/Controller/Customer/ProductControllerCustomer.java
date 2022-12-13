@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Models.CartItemModel;
 import Models.ImagesModel;
 import Models.ProductModel;
 import Models.SizeModel;
+import Service.ICartItemService;
 import Service.IImageService;
 import Service.IProductService;
 import Service.ISizeService;
+import Service.Impl.CartItemServiceImpl;
 import Service.Impl.ImageServiceImpl;
 import Service.Impl.ProductServiceImpl;
 import Service.Impl.SizeServiceImpl;
@@ -28,6 +31,7 @@ public class ProductControllerCustomer extends HttpServlet {
 	IProductService productService = new ProductServiceImpl();
 	IImageService imageService = new ImageServiceImpl();
 	ISizeService sizeService = new SizeServiceImpl();
+	ICartItemService cartItemService = new CartItemServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +39,8 @@ public class ProductControllerCustomer extends HttpServlet {
 		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
 		String role = ProcessCookies.getRoleFromCookies(req, resp);
 		try {
+			CartItemModel cartx = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
+			req.setAttribute("cart", cartx);
 			if (userID != null && Integer.parseInt(role) == 1) {
 
 				int id = Integer.parseInt(req.getParameter("id"));
