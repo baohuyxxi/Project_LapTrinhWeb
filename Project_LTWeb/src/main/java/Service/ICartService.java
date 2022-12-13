@@ -19,5 +19,6 @@ public interface ICartService {
 
 	CartModel findById(int id);
 	String findCartIdByUserId(int userid);
+	String findDeliveryIdByCardId(int cardid);
 	
 }

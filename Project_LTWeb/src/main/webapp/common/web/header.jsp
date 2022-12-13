@@ -31,7 +31,7 @@
      <div
 		class="container d-flex justify-content-between align-items-center" style="height: 130px">
 		<div class="c-brand c-pull-left">
-			<a href="${link}home" class="c-logo"> <img
+			<a href="${link}/home" class="c-logo"> <img
 				src="https://bom.so/NAJjSb" alt=""
 				style="height: 150px; margin-top: 35px;" class="c-desktop-logo">
 			</a>
@@ -45,19 +45,19 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}home">Home</a>
+                            <a class="nav-link" href="${link}./home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}products">Products</a>
+                            <a class="nav-link" href="${link}./products">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link }about">About</a>
+                            <a class="nav-link" href="${link }./about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}shops">Shop</a>
+                            <a class="nav-link" href="${link}./shops">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link }contact">Contact</a>
+                            <a class="nav-link" href="${link }./contact">Contact</a>
                         </li>
                     </ul>
                 </div>

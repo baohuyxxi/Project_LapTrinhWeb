@@ -12,6 +12,53 @@ a:hover {
 		auto;
 }
 
+.select-size {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: DeepSkyBlue;
+  background-image: none;
+}
+
+.select-size {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #fff;
+  overflow: hidden;
+  border-radius: .25em;
+}
+.select-size {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+.select-size::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: DodgerBlue;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+  color: white;
+}
+
+.select-size:hover::after {
+  color: Gainsboro;
+}
+
 .card.shadow{
 	background-color: red;
 	background-image:url(https://img4.thuthuatphanmem.vn/uploads/2020/07/05/hinh-anh-background-mau-sac-that-dep_034909644.jpg);
@@ -197,4 +244,5 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 .div1 {
 	 text-align:center;
 }
+
 

@@ -24,4 +24,6 @@ public interface ICartDao {
 
 	String findCartIdByUserId(int userid);
 
+	String findDeliveryIdByCardId(int cardid);
+
 }
