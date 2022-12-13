@@ -32,6 +32,7 @@ public class CategoryListController extends HttpServlet{
 		req.setAttribute("evaluate", "");
 		req.setAttribute("home", "");
 		req.setAttribute("category", "active");
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list-category.jsp");
 		dispatcher.forward(req, resp);
 	}

@@ -11,13 +11,30 @@ import java.util.List;
 import Connection.DBConnection;
 import DAO.IOrderDao;
 import Models.OrdersModel;
-import util.ConvertBigDecimal;
 
 public class OrderDaoImpl extends DBConnection implements IOrderDao {
 
 	@Override
 	public void insert(OrdersModel order) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO Orders(userId, storeId, deliveryId, address, phone, status, total_price, createdAt, updatedAt) VALUES"
+				+ "(?,?,?,?,?,?,?,?,?)";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, order.getUserId());
+			ps.setInt(2, order.getStoreId());
+			ps.setInt(3, order.getDeliveryId());
+			ps.setString(4, order.getAddress());
+			ps.setString(5, order.getPhone());
+			ps.setInt(6, 0);
+			ps.setBigDecimal(7, order.getTotal_price());
+			ps.setDate(8, new Date(System.currentTimeMillis()));
+			ps.setDate(9, new Date(System.currentTimeMillis()));
+
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

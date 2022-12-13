@@ -8,15 +8,18 @@
 </head>
 <body>
 <form role="form" action="add" method="post" enctype="multipart/form-data" style="margin: 15px 500px;">
-		<div class="form-group" style="margin-bottom: 15px">
-			<label>Ảnh đại diện</label> <input type="file" name="avatar" />
-		</div>
 		
 	<div class="input-group mb-3">
 		<span class="input-group-text" id="basic-addon1">Tên người dùng</span> 
 		<input
 			type="text" class="form-control" placeholder="Name"
 			aria-label="Username" aria-describedby="basic-addon1" name="name">
+	</div>
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="basic-addon1">Link ảnh đại diện</span> 
+		<input
+			type="text" class="form-control" placeholder="Avatar"
+			aria-label="Username" aria-describedby="basic-addon1" name="avatar">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text" id="basic-addon1">Tên miền</span> 

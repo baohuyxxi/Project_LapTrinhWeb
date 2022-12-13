@@ -59,9 +59,8 @@ public class ProductListControllerVendor extends HttpServlet {
 						// lấy size
 						List<SizeModel> sizes = sizeService.getAllProductId(product.getId());
 						product.setSizemd(sizes);
-
-						List<ImagesModel> images = imageService.getAllProductId(product.getId());
-						product.setImgmd(images);
+						if(productService.findById(product.getId())!=null)
+							product.setImg(productService.findById(product.getId()).getImg());
 					}
 
 					req.setAttribute("productList", productList);

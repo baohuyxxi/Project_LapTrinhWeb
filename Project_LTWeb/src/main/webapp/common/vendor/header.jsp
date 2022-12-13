@@ -60,7 +60,7 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">       
-                    <a class="text-light" href="${link}/store" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i> </a>
+                    <a class="text-light" href="<c:url value='../infoUser?id=${userId }'/>" rel="sponsored"><i class="fa fa-user text-dark mr-3"></i> </a>
 		           	<a class="nav-link" href="../login">Đăng Xuất </a>
                 </div>
             </div>
