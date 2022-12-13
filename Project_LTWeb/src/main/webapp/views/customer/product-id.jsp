@@ -147,13 +147,22 @@
 								<div
 									class="col-sm-6 col-lg-4 col-xl-3 mb-0 p-1 BoxProduct shadow">
 									<div class="card h-50 text-center">
-										<a><img class="card-img-top" src="${imag.img }"
+										<a></a><img class="card-img-top" src="${imag.img }"
 											alt="Card Image" width="100" height="100"> </a>
 									</div>
 								</div>
 							</c:forEach>
+							<div class="select">
+							  <select>
+							   <option selected disabled>Chọn Size</option>
+							<c:forEach items="${sizes}" var="sizes">
+								<option value="${sizes.size}">${sizes.size}</option>
+								 <option value="${sizes.size}">${sizes.size}</option>		
+							</c:forEach>
+							</select>
+							</div>
 							<div class="modal-footer">
-								<a type="button" class="custom-btn btn-1" href="#Huydz" data-toggle="modal">
+								<a class="custom-btn btn-1" href="/Project_LTWeb/login" >
 									<span>Thêm Luôn Bạn êi !!!</span>
 								</a>
 							</div>
@@ -161,17 +170,6 @@
 					</div>
 
 				</form>
-			</div>
-
-		</div>
-	</div>
-
-	<div id="Huydz" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Đăng Nhập Trước Thằng Ngu ạ</h4>
-				</div>
 			</div>
 
 		</div>

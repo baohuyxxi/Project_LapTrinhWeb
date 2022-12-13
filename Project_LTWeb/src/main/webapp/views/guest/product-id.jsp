@@ -152,6 +152,15 @@
 									</div>
 								</div>
 							</c:forEach>
+							<div class="select-size">
+							  <select >
+							   <option selected disabled>Chọn Size</option>
+							<c:forEach items="${sizes}" var="sizes">
+								<option value="${sizes.size}">${sizes.size}</option>
+								 <option value="${sizes.size}">${sizes.size}</option>		
+							</c:forEach>
+							</select>
+							</div>
 							<div class="modal-footer">
 								<a class="custom-btn btn-1" href="/Project_LTWeb/login" >
 									<span>Thêm Luôn Bạn êi !!!</span>
@@ -165,7 +174,6 @@
 
 		</div>
 	</div>
-
 
 </body>
 

@@ -33,11 +33,7 @@
 		<div class="c-brand c-pull-left">
 			<a href="${link}/home" class="c-logo"> <img
 				src="https://bom.so/NAJjSb" alt=""
-<<<<<<< HEAD
-				style="height: 90px; margin-top: -8px;" class="c-desktop-logo">
-=======
 				style="height: 150px; margin-top: 35px;" class="c-desktop-logo">
->>>>>>> 72d02e9b5809fca484143bd43ab9aace332e4f3f
 			</a>
 		</div>
 
@@ -63,15 +59,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${link }./contact">Contact</a>
                         </li>
-<<<<<<< HEAD
-                        <li class="nav-item">
-                            <a class="nav-link" href="${link}/category">Category</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="${link}/infouser/list">Users</a>
-                        </li>
-=======
->>>>>>> 72d02e9b5809fca484143bd43ab9aace332e4f3f
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
