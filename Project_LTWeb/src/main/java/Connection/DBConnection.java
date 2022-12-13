@@ -5,6 +5,7 @@ import java.sql.DriverManager;
  
 public class DBConnection {
 	
+<<<<<<< HEAD
 
 	//    private final String serverName = "DESKTOP-IK5D1LO"; 
 	//    private final String dbName = "DB_Project_LTWeb"; 
