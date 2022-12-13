@@ -39,6 +39,9 @@ public class MyStoreControllerVendor extends HttpServlet {
 				return;
 			}
 			try {
+				String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+				
+				req.setAttribute("userId", userId);
 				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
 				StoreModel myStore = storeService
 						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));

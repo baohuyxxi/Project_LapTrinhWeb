@@ -33,6 +33,7 @@ public class OrderOfCustomerController extends HttpServlet {
 			String role = ProcessCookies.getRoleFromCookies(req, resp);
 			CartItemModel cartx = cartItemService.findCartAndCountProductID(Integer.parseInt(userid));
 			req.setAttribute("cart", cartx);
+			
 			if (role != null && Integer.parseInt(role) == 1) {
 				List<OrderUserModel> orders = new ArrayList<OrderUserModel>();
 				orders = myOrderCustomerService.myorder(Integer.parseInt(userid));

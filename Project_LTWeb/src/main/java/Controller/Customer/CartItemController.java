@@ -56,6 +56,9 @@ public class CartItemController extends HttpServlet {
 					if (role != null) {
 						CartItemModel cartx = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
 						req.setAttribute("cart", cartx);
+						
+						String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+						req.setAttribute("userId", userId);
 						// lấy products
 						int cartid = Integer.parseInt(cartService
 								.findCartIdByUserId(Integer.parseInt(ProcessCookies.getUserIdFromCookies(req, resp))));

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Models.EvaluateModel;
 import Service.IEvaluateService;
 import Service.Impl.EvaluateServiceImpl;
+import util.ProcessCookies;
 import util.ShowMessage;
 
 @SuppressWarnings("serial")
@@ -26,6 +27,9 @@ public class ContactVendorController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ShowMessage.ShowMessageUtil(req,checkInsert, action, "Cảm ơn bạn đã gửi đánh giá");
 		checkInsert=false;
+		String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+		
+		req.setAttribute("userId", userId);
 		RequestDispatcher rd =  req.getRequestDispatcher("/views/vendor/contact.jsp"); 
 		rd.forward(req, resp);
 	}

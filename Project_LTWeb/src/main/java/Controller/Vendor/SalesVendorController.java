@@ -32,7 +32,9 @@ public class SalesVendorController extends HttpServlet {
 				resp.sendRedirect(req.getContextPath() + "/login");
 				return;
 			}
-
+			String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+			
+			req.setAttribute("userId", userId);
 			// Sản phẩm bán nhiều nhất
 			ProductModel top1Product = productService.findTop1Product(Integer.parseInt(storeid));
 			req.setAttribute("product", top1Product);
