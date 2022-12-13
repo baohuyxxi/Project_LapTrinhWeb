@@ -13,8 +13,7 @@ public class OrderItemServiceImpl implements IOrderItemService{
 	IOrderItemDao orderItemDao = new OrderItemDaoImpl();
 	@Override
 	public void insert(OrderItemModel orderItem) {
-		// TODO Auto-generated method stub
-		
+		orderItemDao.insert(orderItem);
 	}
 
 	@Override
@@ -45,6 +44,11 @@ public class OrderItemServiceImpl implements IOrderItemService{
 	public OrderItemModel findByOrderId(int orderId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String findStoreIdLast() {
+		return orderItemDao.findStoreIdLast();
 	}
 
 }

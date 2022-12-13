@@ -16,17 +16,22 @@ import Models.DeliveryModel;
 import Models.OrderItemModel;
 import Models.OrdersModel;
 import Models.ProductModel;
+import Models.SizeModel;
 import Models.StoreId_ProductId;
 import Service.ICartItemService;
 import Service.ICartService;
 import Service.IDeliveryService;
+import Service.IOrderItemService;
 import Service.IOrderService;
 import Service.IProductService;
+import Service.ISizeService;
 import Service.Impl.CartItemServiceImpl;
 import Service.Impl.CartServiceImpl;
 import Service.Impl.DeliveryServiceImpl;
+import Service.Impl.OrderItemServiceImpl;
 import Service.Impl.OrderServiceImpl;
 import Service.Impl.ProductServiceImpl;
+import Service.Impl.SizeServiceImpl;
 import util.ProcessCookies;
 
 @SuppressWarnings("serial")
@@ -38,8 +43,9 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 	ICartService cartService = new CartServiceImpl();
 	IDeliveryService deliveryService = new DeliveryServiceImpl();
 	IOrderService orderService = new OrderServiceImpl();
-	
-	
+	IOrderItemService orderItemService = new OrderItemServiceImpl();
+	ISizeService sizeService = new SizeServiceImpl();
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userid = ProcessCookies.getUserIdFromCookies(req, resp);
@@ -79,9 +85,9 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 				}
 
 			}
-			
+
 			List<StoreId_ProductId> listStore = new ArrayList<StoreId_ProductId>();
-			
+
 			for (String store : storeids) {
 				if (listStore.isEmpty()) {
 					StoreId_ProductId s = new StoreId_ProductId();
@@ -97,15 +103,15 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 						}
 					}
 				}
-				
+
 			}
-			
+
 			for (CartItemModel cartitem : cartitems) {
 				for (StoreId_ProductId store : listStore) {
 					String storeidx = productService.findStoreIdByProductId(cartitem.getProduct().getId());
 					if (store.get_storeid().equals(storeidx)) {
 						List<String> list = store.get_productid();
-						if(list == null)
+						if (list == null)
 							list = new ArrayList<String>();
 						list.add(String.valueOf(cartitem.getProduct().getId()));
 						store.set_productid(list);
@@ -113,10 +119,6 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 				}
 
 			}
-			
-			
-			
-			
 
 			List<OrdersModel> orders = new ArrayList<OrdersModel>();
 
@@ -134,10 +136,10 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 
 							// tinh tien cua dơn vi van chuyen
 							DeliveryModel delivery = deliveryService.findById(Integer.parseInt(deliveryId));
-							BigDecimal delivery_price =  BigDecimal.valueOf(delivery.getPrice().doubleValue());
+							BigDecimal delivery_price = BigDecimal.valueOf(delivery.getPrice().doubleValue());
 							BigDecimal total_product = BigDecimal.valueOf(total_price_a_product(cartitem));
 							BigDecimal total = total_product.subtract(delivery_price);
-							
+
 							order.setTotal_price(total);
 							orders.add(order);
 						} else {
@@ -152,10 +154,10 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 
 									// tinh tien cua dơn vi van chuyen
 									DeliveryModel delivery = deliveryService.findById(Integer.parseInt(deliveryId));
-									BigDecimal delivery_price =  BigDecimal.valueOf(delivery.getPrice().doubleValue());
+									BigDecimal delivery_price = BigDecimal.valueOf(delivery.getPrice().doubleValue());
 									BigDecimal total_product = BigDecimal.valueOf(total_price_a_product(cartitem));
 									BigDecimal total = total_product.subtract(delivery_price);
-									
+
 									order.setTotal_price(total);
 									orders.add(order);
 									break;
@@ -163,7 +165,7 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 									BigDecimal total_product = BigDecimal.valueOf(total_price_a_product(cartitem));
 									BigDecimal orderold = ordercount.getTotal_price();
 									BigDecimal total = total_product.add(orderold);
-									
+
 									ordercount.setTotal_price(total);
 								}
 							}
@@ -172,12 +174,57 @@ public class OrdersAddControllerCustomer extends HttpServlet {
 
 				}
 			}
-			
+			//add vao order và orderitem
 			for (OrdersModel order : orders) {
-//				orderService.insert(order);
-//				
-//				OrderItemModel orderitem
+				orderService.insert(order);
+				for (StoreId_ProductId store : listStore) {
+					if (order.getStoreId() == Integer.parseInt(store.get_storeid())) {
+						String orderid = orderItemService.findStoreIdLast();
+						for (String productid : store.get_productid()) {
+							for (CartItemModel cartitem : cartitems) {
+								if (cartitem.getProductId() == Integer.parseInt(productid)) {
+									OrderItemModel orderitem = new OrderItemModel();
+									orderitem.setOrderId(Integer.parseInt(orderid));
+									orderitem.setProductId(Integer.parseInt(productid));
+									orderitem.setCount(cartitem.getCount());
+									orderitem.setPrice(cartitem.getProduct().getPrice());
+									
+									orderItemService.insert(orderitem);
+								}
+							}
+						}
+					}
+				}
+
 			}
+			//cap nhật số lượng của size
+			for(CartItemModel cartitem : cartitems)
+			{
+				SizeModel size_new = new SizeModel();
+				SizeModel size_old = sizeService.findByIdAndSize(String.valueOf(cartitem.getProductId()), cartitem.getSize());
+				size_new.setSize(cartitem.getSize());
+				size_new.setProduct_id(cartitem.getProductId());
+				
+				int size = (size_old.getQuantity()-cartitem.getCount());
+				size_new.setQuantity(size);
+				
+				ProductModel product = new ProductModel();
+				product.setId(cartitem.getProductId());
+				
+				int sold = cartitem.getProduct().getSold() + cartitem.getCount();
+				product.setSold(sold);
+				
+				sizeService.editSize(size_new);
+				productService.editSold(product);
+			}
+			
+//			//xoa cartitem
+//			for(CartItemModel cartitem : cartitems)
+//			{
+//				cartItemService.delete(cartitem.getId());
+//			}
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
