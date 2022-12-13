@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Models.InfoUserModel;
 import Service.IInfoUserService;
 import Service.Impl.InfoUserServiceImpl;
+import util.ProcessCookies;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/admin/infoUser/edit" })
@@ -20,6 +21,8 @@ public class InfoUserEditController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			String storeId = ProcessCookies.getStoreIdFromCookies(req, resp);
+			
 			resp.setContentType("text/html");
 			req.setCharacterEncoding("UTF-8");
 			
@@ -37,7 +40,13 @@ public class InfoUserEditController extends HttpServlet{
 				user.setStatus(true);
 			}
 			userService.edit(user);
-			resp.sendRedirect(req.getContextPath() + "/admin/infouser");
+			
+			if (storeId != "") {
+				resp.sendRedirect(req.getContextPath() + "/vendor/home");
+			}else {
+				resp.sendRedirect(req.getContextPath() + "/admin/infouser");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
