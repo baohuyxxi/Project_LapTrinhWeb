@@ -112,7 +112,18 @@ public class ProductServiceImpl implements IProductService{
 	}
 
 	@Override
+	public int CountProductSold() {
+		// TODO Auto-generated method stub
+		return productDao.CountProductSold();
+	}
+
+	@Override
+	public int CountProduct() {
+		// TODO Auto-generated method stub
+		return productDao.CountProduct();
+	}
 	public String findProductIdByCardId(int cardid) {
 		return productDao.findProductIdByCardId(cardid);
+
 	}
 }

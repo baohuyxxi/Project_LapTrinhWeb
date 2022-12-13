@@ -475,5 +475,41 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		}
 		return null;
 	}
+	
+	@Override
+	public int CountProductSold() {
+		String sql = "select sum(sold) 'total_Sold' from product";
+		int slSold = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slSold = rs.getInt("total_Sold");
+			}
+			return slSold;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return slSold;
+	}
+	
+	@Override
+	public int CountProduct() {
+		String sql = "select count(*) 'sl' from product";
+		int slProDuct = 0;
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				slProDuct = rs.getInt("sl");
+			}
+			return slProDuct;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return slProDuct;
+	}
 }
 
