@@ -62,8 +62,9 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="${link }./login">Đăng Nhập </a>
-                    <a class="nav-link" href="#">Đăng Kí (None) </a>
+                    <a class="nav-link" href="${link }./login">Đăng Nhập </a> 
+                    <p style="margin-top: 15px"> | </p>
+                    <a class="nav-link" href="${link }./register/add">Đăng Kí </a>
                 </div>
             </div>
 

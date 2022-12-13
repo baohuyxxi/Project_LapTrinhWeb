@@ -103,7 +103,7 @@
 		</div>
 	</section>
 
-	<%-- 	<div class="modal fade <!-- show -->" id="global-modal"  
+		<div class="modal fade <!-- show -->" id="global-modal"  
 			aria-labelledby="global-modalLabel" tabindex="-1" aria-modal="true"
 			role="dialog" style="display: block; padding-left: 0px;">
 			<div class="modal-dialog modal-dialog-centered">
@@ -183,7 +183,7 @@
 					</div>
 				</div>
 			</div>
-		</div>	 --%>
+		</div>	
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#global-modal').modal('show');
