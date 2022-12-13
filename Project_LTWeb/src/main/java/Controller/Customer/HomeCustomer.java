@@ -30,7 +30,7 @@ public class HomeCustomer extends HttpServlet {
 		
 		List<ProductModel> pro = productService.proTop3();
 		req.setAttribute("pro",pro);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/guest/home.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/home.jsp");
 		dispatcher.forward(req, resp);
 		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
 		try {
