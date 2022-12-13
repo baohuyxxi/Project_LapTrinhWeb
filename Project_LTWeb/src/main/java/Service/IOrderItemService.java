@@ -12,4 +12,5 @@ public interface IOrderItemService {
 	List<OrderItemModel> getAll(int orderId);
 	List<OrderItemModel> search(String keywork);
 	OrderItemModel findByOrderId(int orderId);
+	String findStoreIdLast();
 }

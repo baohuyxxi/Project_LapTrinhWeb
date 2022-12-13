@@ -24,6 +24,8 @@ public interface ISizeDao {
 
 	List<SizeModel> getAllProductId(int productId);
 
+	void editSize(SizeModel size_new);
+
 
 	
 }

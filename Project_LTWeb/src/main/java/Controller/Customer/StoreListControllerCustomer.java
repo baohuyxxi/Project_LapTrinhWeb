@@ -30,5 +30,4 @@ public class StoreListControllerCustomer extends HttpServlet{
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/store-list.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 }

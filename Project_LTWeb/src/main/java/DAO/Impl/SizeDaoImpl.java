@@ -120,5 +120,22 @@ public class SizeDaoImpl extends DBConnection implements ISizeDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void editSize(SizeModel size_new) {
+		String sql = "UPDATE  Size SET quantity=? WHERE product_id=? and size=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, size_new.getQuantity());
+			ps.setInt(2, size_new.getProduct_id());
+			ps.setString(3, size_new.getSize());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 }

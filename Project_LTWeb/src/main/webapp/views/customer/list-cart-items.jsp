@@ -99,11 +99,11 @@
 
 <div>
 	<form action="./order" method="post">
-		<div class="input-group mb-3">
+		<div class="input-group mb-3" hidden="">
 		  <div class="input-group-prepend">
 		    <label class="input-group-text" for="inputGroupSelect01">Chọn đơn vị vận chuyển</label>
 		  </div>
-		  <select class="custom-select"  name="deliveryid" hidden="">
+		  <select class="custom-select"  name="deliveryid" >
 		  	<c:forEach items="${deliverys }" var="delivery">
 		  		<c:if test="${delivery.id==deliveryfromcartid.id}">
 			    	<option value="${delivery.id }" selected="selected">${delivery.name }: ${delivery.price } (VNĐ)</option>
@@ -115,21 +115,21 @@
 		  </select>
 		  
 		  <div>
-				<button type="submit" class="btn btn-primary" hidden="">Cập nhật giá</button>
+				<button type="submit" class="btn btn-primary" >Cập nhật giá</button>
 		</div>
-		<div class="input-group mb-3" hidden="">
+		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-addon1" >Địa chỉ</span> 
 			<input
 				type="text" class="form-control" placeholder="Address"
 				aria-label="Username" aria-describedby="basic-addon1" name="address" value="${infoUser.address }">
 		</div>
-		<div class="input-group mb-3" hidden="">
+		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-addon1">Số điện thoại</span> 
 			<input
 				type="text" class="form-control" placeholder="Phone"
 				aria-label="Username" aria-describedby="basic-addon1" name="phone" value="${infoUser.phone }">
 		</div>
-		<div class="input-group mb-3" hidden="">
+		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-addon1">Tổng khuyến mãi</span> 
 			<input
 				type="text" class="form-control"
@@ -137,7 +137,7 @@
 				<span
 			class="input-group-text" id="basic-addon2">VNĐ</span>
 		</div>
-		<div class="input-group mb-3" hidden="">
+		<div class="input-group mb-3">
 			<span class="input-group-text" id="basic-ad	don1">Tổng tiền</span> 
 			<input
 				type="text" class="form-control"
@@ -147,11 +147,12 @@
 		</div>
 	</div>
 		
-		
-		
+	<c:if test="${cartitems!=null}">	
 		<div>
 			<button type="submit" class="btn btn-primary">Đặt hàng</button>
 		</div>
+		
+	</c:if>
 	
 	</form>
 
