@@ -42,6 +42,9 @@ public class ContactGuestController extends HttpServlet{
 		
 		String userID = ProcessCookies.getUserIdFromCookies(req, resp);
 		try {
+			String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+			
+			req.setAttribute("userId", userId);
 			CartItemModel cartx = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
 			req.setAttribute("cart", cartx);
 			resp.setContentType("text/html");

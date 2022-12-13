@@ -41,8 +41,11 @@ public class ProductControllerCustomer extends HttpServlet {
 		try {
 			CartItemModel cartx = cartItemService.findCartAndCountProductID(Integer.parseInt(userID));
 			req.setAttribute("cart", cartx);
+			String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+			
+			req.setAttribute("userId", userId);
 			if (userID != null && Integer.parseInt(role) == 1) {
-
+				
 				int id = Integer.parseInt(req.getParameter("id"));
 				ProductModel pro = productService.findById(id);
 				req.setAttribute("pro", pro);
