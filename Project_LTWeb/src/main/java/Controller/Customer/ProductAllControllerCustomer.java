@@ -53,11 +53,30 @@ public class ProductAllControllerCustomer extends HttpServlet{
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
 			dispatcher.forward(req, resp);
 			if (userID != null && Integer.parseInt(role) == 1) {
+				String link ="./products?";
 				
-				pro = productService.findProByAllId(0, "0");
-				req.setAttribute("pro", pro);
-				req.setAttribute("userId", userID);
-				dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
+				String string= "";
+				
+				if(req.getParameter("question") != null )
+				{
+					string = req.getParameter("question");
+					link = link +"question=" + string;
+				}
+				String pageIdCheck = req.getParameter("page");
+				int pageid =1;
+				
+				if(pageIdCheck != null )
+					pageid= Integer.parseInt(pageIdCheck);
+				
+				req.setAttribute("link",link);
+				
+				ProductModel amountPage = productService.PagePro(string);
+				req.setAttribute("amountPage",amountPage);
+				
+				List<ProductModel> pro = productService.findProByString(string, pageid);
+				req.setAttribute("pro",pro);
+					dispatcher = req.getRequestDispatcher("/views/customer/productAll.jsp");
+
 				dispatcher.forward(req, resp);
 			} else {
 				resp.sendRedirect(req.getContextPath() + "/login");

@@ -24,6 +24,10 @@ public class ProductModel {
 	private String img;
 	private String CategoryName;
 	private String storeName;
+	
+	private int pageId;
+	private int element;
+	
 	public ProductModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -147,4 +151,18 @@ public class ProductModel {
 	public void setImgmd(List<ImagesModel> imgmd) {
 		this.imgmd = imgmd;
 	}
+	public int getPageId() {
+		return pageId;
+	}
+	public void setPageId(int pageId) {
+		this.pageId = pageId;
+	}
+	public int getElement() {
+		return element;
+	}
+	public void setElement(int element) {
+		this.element = element;
+	}
+
+	
  }

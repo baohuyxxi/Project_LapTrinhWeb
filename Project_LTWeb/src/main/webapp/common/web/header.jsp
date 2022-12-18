@@ -72,9 +72,9 @@
         <div
 		class="container  d-flex">
 		<div class="heading col-sm-12 text-center">
-		<form action="${link}products" class="search" method="post">
+		<form action="${link}products" class="search" method="get" id="cpa-form">
 			<input type="text" class="searchTerm"  placeholder="Bạn muốn tìm gì?" name="question" class="form-control" required>
-			<button type="submit" class="searchButton">Tìm Kiếm</button>
+			<button type="submit" class="searchButton" id="timkiem_btn">Tìm Kiếm</button>
 		</form>
 	</div>
 		</div>

@@ -300,7 +300,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		return products;
 	}
 			
-	public List<ProductModel> findProByString(String string ) {
+	public List<ProductModel> findProByString(String string, int pageid) {
 		String sql = "DECLARE @value nvarchar(50)\r\n"
 				+ "set @value= N'%"+ string +"%'\r\n"
 				+ "select distinct Product.id, Product.sold, Product.name, Product.category_id,  description, price,\r\n"
@@ -312,11 +312,14 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 				+ "where  Product.name  LIKE @value\r\n"
 				+ "or (Product.category_id = Category.id and Category.name  LIKE @value)\r\n"
 				+ "or (Product.storeId = Store.id and Store.name  LIKE @value) \r\n"
-				+ "ORDER BY sold DESC";
+				+ "ORDER BY Product.id\r\n"
+				+ "OFFSET (?-1)*12 ROWS\r\n"
+				+ "FETCH FIRST 12 ROWS ONLY";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, pageid);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
@@ -524,6 +527,32 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ProductModel PagePro(String key)
+	{
+		String sql = "DECLARE @value nvarchar(50)\r\n"
+				+ "set @value= N'%"+ key +"%'\r\n"
+				+ "select COUNT  (distinct Product.id+11)/12 as count,\r\n"
+				+ "COUNT (distinct Product.id) as element\r\n"
+				+ "	from Product, Category, Store\r\n"
+				+ "where  Product.name  LIKE @value\r\n"
+				+ "or (Product.category_id = Category.id and Category.name  LIKE @value)\r\n"
+				+ "or (Product.storeId = Store.id and Store.name  LIKE @value) \r\n";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel page = new ProductModel();
+				page.setPageId(rs.getInt("count"));
+				page.setElement(rs.getInt("element"));
+				return page;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
 

@@ -5,7 +5,7 @@
 	rel="stylesheet">
 
 <body>
-	
+
 	<div class="container">
 
 		<div class="row">
@@ -22,6 +22,20 @@
 				<div
 					style="width: 100px; height: 1px; margin: 20px auto; border-bottom: 4px solid #e90606;"></div>
 			</div>
+			<div class="text-center">
+				<h2>Tổng số sản phẩm: ${amountPage.element }</h2>
+			</div>
+			<div class="pagination pagination-centered">
+				<ul class="pagination pagination-lg">
+					<c:forEach var="i" begin="1" end="${amountPage.pageId }">
+						<li class="page-item"><a class="page-link"
+							href="${link}&page=${i}">${i}</a></li>
+						<li>
+					</c:forEach>
+				</ul>
+			</div>
+
+
 			<c:forEach items="${pro}" var="pro">
 				<div class="col-sm-6 col-lg-4 col-xl-3 mb-0 p-1 BoxProduct shadow">
 					<div class="card h-50 text-center">
