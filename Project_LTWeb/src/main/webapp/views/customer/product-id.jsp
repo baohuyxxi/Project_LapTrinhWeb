@@ -152,13 +152,6 @@
 									</div>
 								</div>
 							</c:forEach>
-							<div class="select-size">
-							  <select>
-							<c:forEach items="${sizes}" var="sizes">
-								<option value="${sizes.size}">${sizes.size}</option>
-							</c:forEach>
-							</select>
-							</div>
 							<div class="modal-footer">
 								<a class="custom-btn btn-1" href="./cartitem/add?id=${pro.id }" >
 									<span>Thêm vào giỏ hàng</span>

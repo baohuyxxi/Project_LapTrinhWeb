@@ -11,8 +11,8 @@ public class MyOrderCustomerServiceImpl implements IMyOrderCustomerService{
 
 	IMyOrderCustomerDao myOrderCustomerDao = new MyOrderCustomerDaoImpl();
 	@Override
-	public List<OrderUserModel> myorder(int userid) {
-		return myOrderCustomerDao.myorder(userid);
+	public List<OrderUserModel> myorder(int userid, int status) {
+		return myOrderCustomerDao.myorder(userid, status);
 	}
 
 }

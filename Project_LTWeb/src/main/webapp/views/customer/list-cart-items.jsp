@@ -31,7 +31,7 @@
 				<td>${cartitem.size }</td>
 				<td>
 					<c:if test="${cartitem.product.img!=null}">
-						<img class="d-block w-100" style="width: 150px; height: 150px;" src="${product.img }">
+						<img class="d-block w-100" style="width: 150px; height: 150px;" src="${cartitem.product.img }">
 					</c:if>
 				</td>
 				<td>${cartitem.count }</td>
