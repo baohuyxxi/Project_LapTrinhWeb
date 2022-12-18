@@ -24,6 +24,8 @@ public interface IProductDao {
 	int CountProductSold();
 	int CountProduct();
 	String findProductIdByCardId(int cardid);
-	List<ProductModel> findProByString(String string);
+	List<ProductModel> findProByString(String string,int pageid);
 	void editSold(ProductModel product);
+	
+	ProductModel PagePro(String key);
 }

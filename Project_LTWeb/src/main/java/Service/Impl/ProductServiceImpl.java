@@ -74,8 +74,8 @@ public class ProductServiceImpl implements IProductService{
 	public List<ProductModel> findProByAllId(int valueId, String columnId) {
 		return productDao.findProByAllId(valueId,columnId);
 	}
-	public List<ProductModel> findProByString(String string) {
-		return productDao.findProByString(string);
+	public List<ProductModel> findProByString(String string, int pageid) {
+		return productDao.findProByString(string,pageid);
 	}
 
 	
@@ -132,4 +132,10 @@ public class ProductServiceImpl implements IProductService{
 		productDao.editSold(product);
 		
 	}
-}
+	
+	public ProductModel PagePro(String key)
+	{
+		return productDao.PagePro(key);
+	}
+
+}	
