@@ -17,7 +17,7 @@ public class StoreDaoImpl extends DBConnection implements IStoreDao{
 
 	@Override
 	public void insert(StoreModel store) {
-		String sql = "INSERT INTO Store(userId, name, slug, address, createdAt, updatedAt) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO Store(userId, name, slug, address, createdAt, updatedAt, status) VALUES (?,?,?,?,?,?,1)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

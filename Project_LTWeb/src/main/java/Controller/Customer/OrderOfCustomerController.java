@@ -35,9 +35,21 @@ public class OrderOfCustomerController extends HttpServlet {
 			req.setAttribute("cart", cartx);
 			
 			if (role != null && Integer.parseInt(role) == 1) {
-				List<OrderUserModel> orders = new ArrayList<OrderUserModel>();
-				orders = myOrderCustomerService.myorder(Integer.parseInt(userid));
-				req.setAttribute("orders", orders);
+				List<OrderUserModel> orders0 = new ArrayList<OrderUserModel>();
+				List<OrderUserModel> orders1 = new ArrayList<OrderUserModel>();
+				List<OrderUserModel> orders2 = new ArrayList<OrderUserModel>();
+				List<OrderUserModel> orders3 = new ArrayList<OrderUserModel>();
+				
+				
+				orders0 = myOrderCustomerService.myorder(Integer.parseInt(userid), 0);
+				req.setAttribute("orders0", orders0);
+				orders1 = myOrderCustomerService.myorder(Integer.parseInt(userid), 1);
+				req.setAttribute("orders1", orders1);
+				orders2 = myOrderCustomerService.myorder(Integer.parseInt(userid), 2);
+				req.setAttribute("orders2", orders2);
+				orders3 = myOrderCustomerService.myorder(Integer.parseInt(userid), 3);
+				req.setAttribute("orders3", orders3);
+				
 				req.setAttribute("userId", userid);
 				RequestDispatcher rd = req.getRequestDispatcher("/views/customer/my-order.jsp");
 				rd.forward(req, resp);
