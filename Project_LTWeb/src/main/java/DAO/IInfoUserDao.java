@@ -16,4 +16,5 @@ public interface IInfoUserDao {
 	InfoUserModel findById(int id);
 	String findUserIdByStoreId(int storeid);
 	int CountUser();
+	void editStatusByAdmin(InfoUserModel user);
 }

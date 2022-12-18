@@ -15,4 +15,5 @@ public interface IInfoUserService {
 	InfoUserModel findById(int id);
 	public String findUserIdByStoreId(int storeid);
 	int CountUser();
+	void editStatusByAdmin(InfoUserModel user);
 }

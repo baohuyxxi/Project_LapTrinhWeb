@@ -11,7 +11,7 @@ public interface IOrderService {
 	OrdersModel get(int id);
 	List<OrdersModel> getAll();
 	List<OrdersModel> search(String keyword);
-	List<OrdersModel> getAllOfStore(int storeId);
+	List<OrdersModel> getAllOfStore(int storeId, int status);
 	OrdersModel findById(int id);
 	BigDecimal totalSales(int storeId);
 	int CountOrder();
