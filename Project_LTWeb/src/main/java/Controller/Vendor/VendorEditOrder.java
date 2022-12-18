@@ -49,7 +49,7 @@ public class VendorEditOrder extends HttpServlet{
 			order.setPhone(req.getParameter("phone"));
 			order.setStatus(Integer.parseInt(req.getParameter("status")));
 			order.setTotal_price(ConvertBigDecimal.createBigDecimalFromString(req.getParameter("total_price")));
-
+			
 			orderService.edit(order);
 			resp.sendRedirect(req.getContextPath()+ "/vendor/order");
 

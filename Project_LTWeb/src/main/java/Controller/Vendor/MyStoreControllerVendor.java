@@ -39,6 +39,9 @@ public class MyStoreControllerVendor extends HttpServlet {
 				return;
 			}
 			try {
+				String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+				
+				req.setAttribute("userId", userId);
 				List<StoreModel> myStorelist = new ArrayList<StoreModel>();
 				StoreModel myStore = storeService
 						.findById(Integer.parseInt(productService.findStoreIdByUserId(Integer.parseInt(userid))));
@@ -47,7 +50,9 @@ public class MyStoreControllerVendor extends HttpServlet {
 				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
 				dispatcher.forward(req, resp);
 			} catch (Exception e) {
-				// chưa có cửa hàng
+				req.setAttribute("myStorelist", null);
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/views/vendor/my-store.jsp");
+				dispatcher.forward(req, resp);
 			}
 		}
 

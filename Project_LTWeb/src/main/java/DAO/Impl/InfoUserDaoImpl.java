@@ -10,12 +10,13 @@ import java.util.List;
 import Connection.DBConnection;
 import DAO.IInfoUserDao;
 import Models.InfoUserModel;
+import Models.StoreModel;
 
 public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 
 	@Override
 	public void insert(InfoUserModel infoUser) {
-		String sql = "INSERT INTO InfoUser(name, slug, email, phone, address, avatar, createdAt, updatedAt) VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO InfoUser(name, slug, email, phone, address, avatar, createdAt, updatedAt, status) VALUES (?,?,?,?,?,?,?,?,1)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -201,5 +202,21 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 			// TODO: handle exception
 		}
 		return slUser;
+	}
+	
+	@Override
+	public void editStatusByAdmin(InfoUserModel user) {
+		String sql = "UPDATE Store SET updatedAt=?, status = ? WHERE id=?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setDate(1, new Date(System.currentTimeMillis()));
+			ps.setBoolean(2, user.getStatus()); 
+			ps.setInt(3, user.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 	}
 }

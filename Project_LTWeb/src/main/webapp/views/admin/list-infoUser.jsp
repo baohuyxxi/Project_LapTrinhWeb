@@ -45,10 +45,12 @@
 									Ngừng hoạt động
 								</c:if>
 							</td>
-							<td><a href="<c:url value='infoUser/edit?id=${user.id }'/>"
-								class="center">Sửa</a> | <a
-								href="<c:url value='/infoUser?id=${user.id }'/>"
-								class="center">Thông tin chi tiết</a></td>
+							<td>
+								<c:if test="${user.status == false }"><a href="<c:url value='./infouser/change?id=${user.id }&status=true'/>"
+								class="center" style="text-decoration: none">Cập nhật trạng thái</a></c:if>
+								<c:if test="${user.status == true }"><a href="<c:url value='./infouser/change?id=${user.id }&status=false'/>"
+								class="center" style="text-decoration: none">Cập nhật trạng thái</a></c:if>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

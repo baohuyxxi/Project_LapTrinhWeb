@@ -47,6 +47,9 @@ public class ProductListControllerVendor extends HttpServlet {
 		} else {
 
 			try {
+				String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+				
+				req.setAttribute("userId", userId);
 				// lấy product
 				String storeId = productService.findStoreIdByUserId(Integer.parseInt(userid));
 				if (storeId == null) {

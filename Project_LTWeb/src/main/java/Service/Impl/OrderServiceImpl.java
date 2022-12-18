@@ -45,8 +45,8 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	@Override
-	public List<OrdersModel> getAllOfStore(int storeId) {
-		return orderDao.getAllOfStore(storeId);
+	public List<OrdersModel> getAllOfStore(int storeId, int status) {
+		return orderDao.getAllOfStore(storeId, status);
 	}
 
 	@Override

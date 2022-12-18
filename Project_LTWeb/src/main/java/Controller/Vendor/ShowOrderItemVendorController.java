@@ -23,7 +23,9 @@ public class ShowOrderItemVendorController extends HttpServlet{
 	IOrderItemService orderItemService = new OrderItemServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String userId = ProcessCookies.getUserIdFromCookies(req, resp);
 		
+		req.setAttribute("userId", userId);
 		if (ProcessCookies.getStoreIdFromCookies(req, resp) == null) {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;

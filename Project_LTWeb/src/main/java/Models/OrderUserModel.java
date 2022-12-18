@@ -9,14 +9,14 @@ public class OrderUserModel {
 	private String deliveryname;
 	private String address;
 	private String phone;
-	private String status;
+	private int status;
 	private BigDecimal total_price;
 	private Date dayorder;
 	public OrderUserModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderUserModel(int id, String storename, String deliveryname, String address, String phone, String status,
+	public OrderUserModel(int id, String storename, String deliveryname, String address, String phone, int status,
 			BigDecimal total_price, Date dayorder) {
 		super();
 		this.id = id;
@@ -58,10 +58,10 @@ public class OrderUserModel {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public BigDecimal getTotal_price() {
