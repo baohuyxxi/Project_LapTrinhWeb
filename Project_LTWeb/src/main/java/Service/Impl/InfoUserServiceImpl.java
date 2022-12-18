@@ -83,4 +83,10 @@ public class InfoUserServiceImpl implements IInfoUserService{
 		return infoUserDao.CountUser();
 	}
 
+	@Override
+	public void editStatusByAdmin(InfoUserModel user) {
+		infoUserDao.editStatusByAdmin(user);
+		
+	}
+
 }

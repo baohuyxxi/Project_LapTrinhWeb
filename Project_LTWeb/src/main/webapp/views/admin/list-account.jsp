@@ -36,7 +36,7 @@
 						<td>${account.id }</td>
 						<td>${account.name }</td>
 						<td>${account.username }</td>
-						<td>${account.password }</td>
+						<td class="hidetext">${account.password }</td>
 						<%-- <td><input name="password" type="text" value="${account.password }"
 						class="form-control"></td> --%>
 						<td>${account.role }</td>
@@ -49,7 +49,9 @@
 		</table>
 		</main>
 	</div>
-
+<style>
+.hidetext { -webkit-text-security: square; }
+</style>
 </body>
 </html>
 

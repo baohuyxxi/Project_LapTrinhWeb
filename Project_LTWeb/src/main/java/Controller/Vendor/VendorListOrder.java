@@ -27,8 +27,14 @@ public class VendorListOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			String storeid = ProcessCookies.getStoreIdFromCookies(req, resp);
+			String status = req.getParameter("status");
 
-			List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid));
+			if(status == null)
+			{
+				List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid), 0);
+				req.setAttribute("orderList", orderList);
+			}
+			List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid), Integer.parseInt(status));
 			req.setAttribute("orderList", orderList);
 		} catch (Exception e) {
 			// TODO: handle exception

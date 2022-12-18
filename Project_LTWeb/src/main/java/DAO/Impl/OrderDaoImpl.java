@@ -137,19 +137,21 @@ public class OrderDaoImpl extends DBConnection implements IOrderDao {
 	}
 
 	@Override
-	public List<OrdersModel> getAllOfStore(int storeId) {
+	public List<OrdersModel> getAllOfStore(int storeId, int status) {
 		List<OrdersModel> orders = new ArrayList<OrdersModel>();
 		// Lấy các đơn hàng của cửa hàng đó
-		String sql = "select Orders.id, InfoUser.name N'Tên người dùng', Delivery.name, \r\n"
+		String sql = "select Orders.id, InfoUser.name N'Tên người dùng', Delivery.name,\r\n"
 				+ "Orders.address, Orders.phone, Orders.status, Orders.total_price, Orders.createdAt, Orders.updatedAt\r\n"
-				+ "from Orders, InfoUser, Delivery \r\n"
-				+ "where Orders.StoreId = ? and Orders.UserId = InfoUser.id and Delivery.id = Orders.deliveryId";
+				+ "from Orders, InfoUser, Delivery\r\n"
+				+ "where Orders.StoreId = ? and Orders.UserId = InfoUser.id and Delivery.id = Orders.deliveryId\r\n"
+				+ "and Orders.status = ?";
 
 		try {
 
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, storeId);
+			ps.setInt(2, status);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				orders.add(new OrdersModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
