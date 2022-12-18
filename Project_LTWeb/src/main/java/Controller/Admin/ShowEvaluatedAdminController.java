@@ -25,7 +25,7 @@ public class ShowEvaluatedAdminController extends HttpServlet{
 		List<EvaluateModel> evaluateList = evaluateService.getAll();
 		req.setAttribute("evaluateList", evaluateList);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/evaluated.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/review.jsp");
 		req.setAttribute("home", "");
 		req.setAttribute("evaluate", "active");
 		dispatcher.forward(req, resp);

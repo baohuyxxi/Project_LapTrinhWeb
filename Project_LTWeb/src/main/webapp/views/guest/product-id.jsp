@@ -72,7 +72,7 @@
 	<div class="col-sm-12 text-center"
 		style="margin-bottom: 20px; margin-top: 20px;">
 		<a class="custom-btnDemo btn-12" href="#addProToCart" data-toggle="modal">
-			<span>Thêm Luôn Bạn êi !!!</span><span>Thêm Vào Giỏ Hàng</span>
+			<span>Ấn Để Thêm Vào Giỏ Hàng</span><span>Thêm Vào Giỏ Hàng</span>
 		</a>
 		<div
 			style="width: 140px; height: 1px; margin: 20px auto; border-bottom: 4px solid #00bff3;"></div>
@@ -163,7 +163,7 @@
 							</div>
 							<div class="modal-footer">
 								<a class="custom-btn btn-1" href="/Project_LTWeb/login" >
-									<span>Thêm Luôn Bạn êi !!!</span>
+									<span>Đăng Nhập Để Tiếp Tục !!!</span>
 								</a>
 							</div>
 						</div>

@@ -35,6 +35,10 @@ public class VendorListOrder extends HttpServlet {
 				req.setAttribute("orderList", orderList);
 			}
 			List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid), Integer.parseInt(status));
+			String userId = ProcessCookies.getUserIdFromCookies(req, resp);
+			
+			req.setAttribute("userId", userId);
+			List<OrdersModel> orderList = orderService.getAllOfStore(Integer.parseInt(storeid));
 			req.setAttribute("orderList", orderList);
 		} catch (Exception e) {
 			// TODO: handle exception

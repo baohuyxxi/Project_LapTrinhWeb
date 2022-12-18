@@ -16,7 +16,7 @@ public class InfoUserDaoImpl extends DBConnection implements IInfoUserDao{
 
 	@Override
 	public void insert(InfoUserModel infoUser) {
-		String sql = "INSERT INTO InfoUser(name, slug, email, phone, address, avatar, createdAt, updatedAt) VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO InfoUser(name, slug, email, phone, address, avatar, createdAt, updatedAt, status) VALUES (?,?,?,?,?,?,?,?,1)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);

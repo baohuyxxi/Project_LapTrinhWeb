@@ -45,40 +45,26 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}./home">Home</a>
+                            <a class="nav-link" href="${link}./home">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}./products">Products</a>
+                            <a class="nav-link" href="${link}./products">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link }./about">About</a>
+                            <a class="nav-link" href="${link }./about">Thông tin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link}./shops">Shop</a>
+                            <a class="nav-link" href="${link}./shops">Cửa Hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${link }./contact">Contact</a>
+                            <a class="nav-link" href="${link }./contact">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-      
-                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/Project_LTWeb/login">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                    </a>
+                    <a class="nav-link" href="${link }./login">Đăng Nhập </a> 
+                    <p style="margin-top: 15px"> | </p>
+                    <a class="nav-link" href="${link }./register/add">Đăng Kí </a>
                 </div>
             </div>
 

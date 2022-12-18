@@ -44,7 +44,7 @@
 		class="container d-flex justify-content-between align-items-center"
 		style="height: 130px">
 		<div class="c-brand c-pull-left">
-			<a href="${link}home" class="c-logo"> <img
+			<a href="${link}/home" class="c-logo"> <img
 				src="https://bom.so/NAJjSb" alt=""
 				style="height: 150px; margin-top: 35px;" class="c-desktop-logo">
 			</a>
@@ -66,12 +66,14 @@
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="${link}/products">Products</a></li>
-					<li class="nav-item"><a class="nav-link" href="${link }/about">About</a>
-					</li>
 					<li class="nav-item"><a class="nav-link" href="${link}/shops">Shop</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
-						href="${link }/contact">Contact</a></li>				
+						href="${link }/my-order">Order</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${link }/contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="${link }/about">About</a>
+					</li>				
 				</ul>
 			</div>
 			<div class="navbar align-self-center d-flex">
@@ -102,7 +104,7 @@
 	
 	<div class="container  d-flex">
 		<div class="heading col-sm-12 text-center">
-			<form action="${link}products" class="search" method="post">
+			<form action="${link}/products" class="search" method="post">
 				<input type="text" class="searchTerm" placeholder="Bạn muốn tìm gì?"
 					name="question" class="form-control" required>
 				<button type="submit" class="searchButton">Tìm Kiếm</button>
